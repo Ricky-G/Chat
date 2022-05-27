@@ -20,7 +20,7 @@
 <br />
  <MudButton Variant="Variant.Filled" 
             EndIcon="@Icons.Material.Filled.Send" 
-            OnClick="Send"
+            OnClick="Broadcast"
             Color="Color.Primary">Send</MudButton>
 
 
@@ -37,7 +37,7 @@
             
             .Build();
 
-        hubConnection.On<string, string>("Broadcast", (name, message) =>
+        hubConnection.On<string, string>(nameof(Broadcast), (name, message) =>
         {
             var encodedMsg = $"{name} {message}";
             messages.Add(encodedMsg);
@@ -47,22 +47,16 @@
         await hubConnection.StartAsync();
     }
 
-    private async Task Send()
+    private async Task Broadcast()
     {
         if (hubConnection is not null)
         {
-            await hubConnection.SendAsync("Broadcast", name, message);
+            await hubConnection.SendAsync(nameof(Broadcast), name, message);
             message = null;
         }
     }
 
-    public bool IsConnected => hubConnection?.State == HubConnectionState.Connected;
-
     public async ValueTask DisposeAsync()
-    {
-        if (hubConnection is not null)
-        {
-            await hubConnection.DisposeAsync();
-        }
-    }
+        => await hubConnection.DisposeAsync();    
+   
 }
