@@ -1,10 +1,15 @@
+using Microsoft.AspNetCore.SignalR;
+
 var builder = WebApplication.CreateBuilder(args);
-    builder.Services.AddEndpointsApiExplorer();
-    builder.Services.AddSwaggerGen();
+    builder.Services.AddSignalR();
 
 var app = builder.Build();
-    app.UseSwagger();
-    app.UseSwaggerUI();
-    app.UseHttpsRedirection();
+    app.MapHub<Chat>(nameof(Chat));
     app.Run();
 
+public class Chat : Hub
+{
+    public void Broadcast(string name, string message)
+        => Clients.All.SendAsync(nameof(Broadcast), name, message);
+    
+}
