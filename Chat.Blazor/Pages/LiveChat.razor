@@ -1,19 +1,20 @@
 ﻿@page "/chat"
 @implements IAsyncDisposable
 @using Microsoft.AspNetCore.SignalR.Client
+@using System.Collections.ObjectModel
 
-@if (messages != null)
+
+
+@foreach (var message in messages)
 {
-    @foreach (var message in messages)
-    {
-        <MudCard>
-            <MudCardContent>
-                <MudText Typo="Typo.body2">@message</MudText>  
-            </MudCardContent>
-        </MudCard>
-        <br />
-    }
+    <MudCard>
+        <MudCardContent>
+            <MudText Typo="Typo.body2">@message</MudText>  
+        </MudCardContent>
+    </MudCard>
+    <br />
 }
+
 
 <MudTextField @bind-Value="name" Label="Name" Variant="Variant.Outlined"></MudTextField>
 <MudTextField @bind-Value="message" Label="Message" Variant="Variant.Outlined"></MudTextField>
@@ -26,7 +27,7 @@
 
 @code {
     private HubConnection? hubConnection;
-    private List<string> messages = new List<string>();
+    private ObservableCollection<string> messages = new ObservableCollection<string>();
     private string? name;
     private string? message;
 
@@ -34,7 +35,7 @@
     {
         hubConnection = new HubConnectionBuilder()   
             .WithUrl("https://microsoft-chat.azurewebsites.net/chat")
-            
+
             .Build();
 
         hubConnection.On<string, string>(nameof(Broadcast), (name, message) =>
@@ -49,11 +50,8 @@
 
     private async Task Broadcast()
     {
-        if (hubConnection is not null)
-        {
-            await hubConnection.SendAsync(nameof(Broadcast), name, message);
-            message = null;
-        }
+        await hubConnection?.SendAsync(nameof(Broadcast), name, message);
+        message = null; 
     }
 
     public async ValueTask DisposeAsync()
