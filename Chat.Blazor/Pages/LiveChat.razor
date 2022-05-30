@@ -35,7 +35,6 @@
     {
         hubConnection = new HubConnectionBuilder()   
             .WithUrl("https://microsoft-chat.azurewebsites.net/chat")
-
             .Build();
 
         hubConnection.On<string, string>(nameof(Broadcast), (name, message) =>
@@ -48,7 +47,7 @@
         await hubConnection.StartAsync();
     }
 
-    private async Task Broadcast()
+    private async void Broadcast()
     {
         await hubConnection?.SendAsync(nameof(Broadcast), name, message);
         message = null; 
