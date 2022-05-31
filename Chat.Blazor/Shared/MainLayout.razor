@@ -18,8 +18,10 @@
                 <MudText Typo="Typo.h6">Chat.Blazor</MudText>
             </MudDrawerHeader>
             <NavMenu />
-            <MudContainer Class="my-0 pt-0">
+            <MudContainer>
+                <br/>
                 <MudButton 
+                    FullWidth="true"
                     Variant="Variant.Filled"
                     OnClick="LoginLogout"
                     Color="Color.Primary">Logout</MudButton>
@@ -39,6 +41,7 @@ else
         <MudTextField @bind-Value="Password" Label="Password" Variant="Variant.Outlined"></MudTextField>
         <br />
         <MudButton 
+               FullWidth="true"
                Variant="Variant.Filled"
                OnClick="LoginLogout"
                Color="Color.Primary">Login</MudButton>
