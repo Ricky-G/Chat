@@ -7,7 +7,8 @@
 {
     <MudCard>
         <MudCardContent>
-            <MudText Typo="Typo.body2">@message</MudText>
+            <MudText Typo="Typo.body1" Color="Color.Primary">@message.name</MudText>
+            <MudText Typo="Typo.body2">@message.message</MudText>
         </MudCardContent>
     </MudCard>
     <br />
@@ -23,7 +24,7 @@
 
 @code {
     private HubConnection? hubConnection;
-    private ObservableCollection<string> messages = new ObservableCollection<string>();
+    private ObservableCollection<Message> messages = new ObservableCollection<Message>();
     private string? name;
     private string? message;
 
@@ -35,9 +36,7 @@
 
         hubConnection.On<string, string>(nameof(Broadcast), (name, message) =>
         {
-
-            var encodedMsg = $"{name} {message}";
-            messages.Add(encodedMsg);
+            messages.Add(new Message(name, message));
             StateHasChanged();
         });
 
@@ -54,4 +53,6 @@
     {
         await hubConnection.DisposeAsync();
     }
+
+    public record Message(string name, string message);
 }
