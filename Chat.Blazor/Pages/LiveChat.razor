@@ -21,7 +21,7 @@
            Color="Color.Primary">Send</MudButton>
 @code {
     private HubConnection? hubConnection;
-    private ObservableCollection<Message> messages = new ObservableCollection<Message>();
+    private ObservableCollection<Message> messages = new ();
     private string? name;
     private string? message;
 
