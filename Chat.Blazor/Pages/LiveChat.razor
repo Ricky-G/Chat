@@ -1,41 +1,57 @@
 ﻿@page "/chat"
-@using Chat.Core;
-@using System.ComponentModel
-@implements IDisposable;
-@inject ChatViewModel chatViewModel;
+@implements IAsyncDisposable
+@using Microsoft.AspNetCore.SignalR.Client
+@using System.Collections.ObjectModel
 
-
-@foreach (var message in chatViewModel.Messages)
+@foreach (var message in messages)
 {
     <MudCard>
         <MudCardContent>
-            <MudText Typo="Typo.body2">@message</MudText>  
+            <MudText Typo="Typo.body2">@message</MudText>
         </MudCardContent>
     </MudCard>
     <br />
 }
 
-
-<MudTextField @bind-Value="chatViewModel.Name" Label="Name" Variant="Variant.Outlined"></MudTextField>
-<MudTextField @bind-Value="chatViewModel.Message" Label="Message" Variant="Variant.Outlined"></MudTextField>
+<MudTextField @bind-Value="name" Label="Name" Variant="Variant.Outlined"></MudTextField>
+<MudTextField @bind-Value="message" Label="Message" Variant="Variant.Outlined"></MudTextField>
 <br />
- <MudButton Variant="Variant.Filled" 
-            EndIcon="@Icons.Material.Filled.Send" 
-            OnClick="chatViewModel.Broadcast"
-            Color="Color.Primary">Send</MudButton>
+<MudButton Variant="Variant.Filled"
+           EndIcon="@Icons.Material.Filled.Send"
+           OnClick="Broadcast"
+           Color="Color.Primary">Send</MudButton>
 
-@code{
-    protected override Task OnInitializedAsync()
+@code {
+    private HubConnection? hubConnection;
+    private ObservableCollection<string> messages = new ObservableCollection<string>();
+    private string? name;
+    private string? message;
+
+    protected override async Task OnInitializedAsync()
     {
-        chatViewModel.PropertyChanged += Notify;
-        return base.OnInitializedAsync();
+        hubConnection = new HubConnectionBuilder()
+            .WithUrl("https://microsoft-chat.azurewebsites.net/chat")
+            .Build();
+
+        hubConnection.On<string, string>(nameof(Broadcast), (name, message) =>
+        {
+
+            var encodedMsg = $"{name} {message}";
+            messages.Add(encodedMsg);
+            StateHasChanged();
+        });
+
+        await hubConnection.StartAsync();
     }
 
-    private void Notify(object? s, PropertyChangedEventArgs args)
-        => StateHasChanged();
-
-    public void Dispose()
+    private async void Broadcast()
     {
-        chatViewModel.PropertyChanged -= Notify;
+        await hubConnection.SendAsync(nameof(Broadcast), name, message);
+        message = null;
+    }
+
+    public async ValueTask DisposeAsync()
+    {
+        await hubConnection.DisposeAsync();
     }
 }

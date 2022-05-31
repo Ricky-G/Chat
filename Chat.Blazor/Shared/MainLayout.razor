@@ -35,7 +35,8 @@
 else
 {
     <MudContainer MaxWidth="MaxWidth.Large" Class="my-2 pt-4">
-        <MudTextField @bind-Value="name" Label="Name" Variant="Variant.Outlined"></MudTextField>
+        <MudTextField @bind-Value="Username" Label="Username" Variant="Variant.Outlined"></MudTextField>
+        <MudTextField @bind-Value="Password" Label="Password" Variant="Variant.Outlined"></MudTextField>
         <br />
         <MudButton 
                Variant="Variant.Filled"
@@ -47,12 +48,16 @@ else
 @code {
     bool _isLoggedIn;
     bool _drawerOpen = true;
-    string name;
+
+    public string Username { get; set; }
+    public string Password { get; set; }
 
     void DrawerToggle()
         => _drawerOpen = !_drawerOpen;
     
-    void LoginLogout()
-        =>_isLoggedIn = !_isLoggedIn;
+    void LoginLogout(){
+       _isLoggedIn = !_isLoggedIn;
+       
+    }
 
 }
