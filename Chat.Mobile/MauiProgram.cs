@@ -1,5 +1,5 @@
 ﻿global using Chat.Model;
-global using Chat.Mobile.ViewModel;
+global using Chat.ViewModel;
 global using Microsoft.ApplicationInsights;
 global using Microsoft.ApplicationInsights.Extensibility;
 global using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.QuickPulse;

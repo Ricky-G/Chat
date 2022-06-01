@@ -1,5 +1,7 @@
 ﻿
-namespace Chat.Mobile.ViewModel;
+using Chat.Mobile;
+
+namespace Chat.ViewModel;
 
 public partial class ProfileViewModel : BaseViewModel
 {

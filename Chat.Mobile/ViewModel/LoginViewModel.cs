@@ -1,5 +1,5 @@
 ﻿
-namespace Chat.Mobile.ViewModel;
+namespace Chat.ViewModel;
 
 public partial class LoginViewModel : BaseViewModel
 {
