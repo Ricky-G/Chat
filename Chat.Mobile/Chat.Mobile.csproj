@@ -49,45 +49,49 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <None Remove="appsettings.json" />
-	  <None Remove="Resources\Fonts\junegull.ttf" />
-	  <None Remove="Resources\Images\apple.svg" />
-	  <None Remove="Resources\Images\bananas.svg" />
-	  <None Remove="Resources\Images\cart.svg" />
-	  <None Remove="Resources\Images\cola.svg" />
-	  <None Remove="Resources\Images\fork.svg" />
-	  <None Remove="Resources\Images\guava.svg" />
-	  <None Remove="Resources\Images\home.svg" />
-	  <None Remove="Resources\Images\logo.svg" />
-	  <None Remove="Resources\Images\magnify.svg" />
-	  <None Remove="Resources\Images\orange.svg" />
-	  <None Remove="Resources\Images\person.svg" />
-	  <None Remove="Resources\Images\watermelon.svg" />
+		<None Remove="appsettings.json" />
+		<None Remove="Resources\Fonts\junegull.ttf" />
+		<None Remove="Resources\Images\apple.svg" />
+		<None Remove="Resources\Images\bananas.svg" />
+		<None Remove="Resources\Images\cart.svg" />
+		<None Remove="Resources\Images\cola.svg" />
+		<None Remove="Resources\Images\fork.svg" />
+		<None Remove="Resources\Images\guava.svg" />
+		<None Remove="Resources\Images\home.svg" />
+		<None Remove="Resources\Images\logo.svg" />
+		<None Remove="Resources\Images\magnify.svg" />
+		<None Remove="Resources\Images\orange.svg" />
+		<None Remove="Resources\Images\person.svg" />
+		<None Remove="Resources\Images\watermelon.svg" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <EmbeddedResource Include="appsettings.json" />
+		<EmbeddedResource Include="appsettings.json" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <PackageReference Include="CommunityToolkit.Maui" Version="1.0.0" />
-	  <PackageReference Include="CommunityToolkit.Mvvm" Version="7.1.2" />
-	  <PackageReference Include="Microsoft.ApplicationInsights.PerfCounterCollector" Version="2.20.0" />
+		<PackageReference Include="CommunityToolkit.Maui" Version="1.0.0" />
+		<PackageReference Include="CommunityToolkit.Mvvm" Version="7.1.2" />
+		<PackageReference Include="Microsoft.ApplicationInsights.PerfCounterCollector" Version="2.20.0" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="6.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="6.0.0" />
+		<PackageReference Include="System.Diagnostics.PerformanceCounter" Version="7.0.0-preview.4.22229.4" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="View\HomeMoviesPage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="View\LoginPage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="View\ProfilePage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="View\Root.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
+		<MauiXaml Update="View\HomeMoviesPage.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="View\LoginPage.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="View\ProfilePage.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="View\Root.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
 	</ItemGroup>
 
 </Project>
