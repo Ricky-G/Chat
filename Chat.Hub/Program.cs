@@ -5,6 +5,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 var app = builder.Build();
     app.MapHub<Chat>(nameof(Chat));
+    app.MapGet("/", ()=> "Hello Index");
     app.Run();
 
 public class Chat : Hub
