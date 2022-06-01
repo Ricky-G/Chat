@@ -26,14 +26,14 @@ public static class MauiProgram
             });
 
         var a = typeof(App).GetTypeInfo().Assembly;
-        var stream = a.GetManifestResourceStream($"{a.GetName().Name}.appsettings.json");
+        var s = a.GetManifestResourceStream($"{a.GetName().Name}.appsettings.json");
 
-        var config = new ConfigurationBuilder().AddJsonStream(stream).Build();
-        TelemetrySettings telemetryAppSettings = config.GetRequiredSection("Settings").Get<TelemetrySettings>();
+        var config = new ConfigurationBuilder().AddJsonStream(s).Build();
+        TelemetrySettings tmstgs = config.GetRequiredSection("Settings").Get<TelemetrySettings>();
 
         builder.Configuration.AddConfiguration(config);
 
-        RegisterTypes(builder.Services, telemetryAppSettings);
+        RegisterTypes(builder.Services, tmstgs);
 
         return builder.Build();
     }
@@ -55,24 +55,24 @@ public static class MauiProgram
 
     private static TelemetryClient GetTelemetryClient(TelemetrySettings settings)
     {
-        TelemetryConfiguration config = TelemetryConfiguration.CreateDefault();
-        config.ConnectionString = settings.AppInsights;
-        QuickPulseTelemetryProcessor quickPulseProcessor = null;
-        config.DefaultTelemetrySink.TelemetryProcessorChainBuilder
+        TelemetryConfiguration cfg = TelemetryConfiguration.CreateDefault();
+        cfg.ConnectionString = settings.AppInsights;
+        QuickPulseTelemetryProcessor qp = null;
+        cfg.DefaultTelemetrySink.TelemetryProcessorChainBuilder
             .Use((next) =>
             {
-                quickPulseProcessor = new QuickPulseTelemetryProcessor(next);
-                return quickPulseProcessor;
+                qp = new QuickPulseTelemetryProcessor(next);
+                return qp;
             })
             .Build();
 
-        var quickPulseModule = new QuickPulseTelemetryModule
+        var qpm = new QuickPulseTelemetryModule
         {
             AuthenticationApiKey = settings.QuickPulse
         };
-        quickPulseModule.Initialize(config);
-        quickPulseModule.RegisterTelemetryProcessor(quickPulseProcessor);
-        TelemetryClient client = new(config);
+        qpm.Initialize(cfg);
+        qpm.RegisterTelemetryProcessor(qp);
+        TelemetryClient client = new(cfg);
         return client;
     }
 }
