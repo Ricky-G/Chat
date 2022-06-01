@@ -49,6 +49,22 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\Fonts\junegull.ttf" />
+	  <None Remove="Resources\Images\apple.svg" />
+	  <None Remove="Resources\Images\bananas.svg" />
+	  <None Remove="Resources\Images\cart.svg" />
+	  <None Remove="Resources\Images\cola.svg" />
+	  <None Remove="Resources\Images\fork.svg" />
+	  <None Remove="Resources\Images\guava.svg" />
+	  <None Remove="Resources\Images\home.svg" />
+	  <None Remove="Resources\Images\logo.svg" />
+	  <None Remove="Resources\Images\magnify.svg" />
+	  <None Remove="Resources\Images\orange.svg" />
+	  <None Remove="Resources\Images\person.svg" />
+	  <None Remove="Resources\Images\watermelon.svg" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <Folder Include="ViewModel\" />
 	  <Folder Include="View\" />
 	</ItemGroup>
