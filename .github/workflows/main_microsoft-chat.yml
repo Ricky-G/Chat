@@ -1,9 +1,13 @@
-name: Build and deploy Chat Hub
+# Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
+# More GitHub Actions for Azure: https://github.com/Azure/actions
+
+name: Build and deploy ASP.Net Core app to Azure Web App - microsoft-chat
 
 on:
   push:
     branches:
       - main
+  workflow_dispatch:
 
 jobs:
   build:
@@ -14,7 +18,7 @@ jobs:
 
       - name: Build with dotnet
         run: |
-          cd ./Chat.Hub
+          cd Chat.Hub
           dotnet build -c Release
           dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
 
@@ -43,5 +47,5 @@ jobs:
         with:
           app-name: 'microsoft-chat'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_C555339E8D4B47F7BB3E4818E1E5957B }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_0E652DCF6B0C4F52AECBFFD1AE3333F2 }}
           package: .
