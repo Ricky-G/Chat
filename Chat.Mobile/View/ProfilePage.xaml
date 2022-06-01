@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Chat.Mobile.View.ProfilePage"
+             Title="ProfilePage">
+    <Shell.TitleView>
+        <StackLayout 
+            Orientation="Horizontal"
+            HeightRequest="50">
+            <Label 
+                FontFamily="JuneGull"
+                FontSize="Large"
+                TextColor="{StaticResource Primary}"
+                VerticalOptions="CenterAndExpand"
+                Text="Profile"  />
+        </StackLayout>
+    </Shell.TitleView>
+    <StackLayout
+        VerticalOptions="FillAndExpand"
+        Margin="20,0,20,0">
+        <Label 
+            FontFamily="JuneGull"
+            FontSize="Large"
+            TextColor="Black"
+            Text="Hi Guava Fruit !"  />
+        <Image        
+            Margin="0,50,0,0"
+            HeightRequest="200"
+            WidthRequest="200"
+            HorizontalOptions="Center"
+            Source="guava.png"/>
+        <Label 
+            Margin="0,60,0,5"
+            FontFamily="JuneGull"
+            FontSize="Large"
+            TextColor="Black"
+            Text="My Support Key"  />
+        <Label 
+            FontSize="Small"
+            TextColor="Black"
+            Text="{Binding SupportKey}"  />
+        <Button
+            Margin="0,0,0,0"
+            VerticalOptions="EndAndExpand"
+            FontFamily="JuneGull"
+            FontSize="Large"
+            Text="Monitor"
+            Command="{Binding StartMonitorCommand}"
+            />
+        <Button
+            Margin="0,10,0,20"
+            VerticalOptions="End"
+            FontFamily="JuneGull"
+            FontSize="Large"
+            Text="LogOut"
+            Command="{Binding LogOutCommand}"
+            />
+    </StackLayout>
+</ContentPage>

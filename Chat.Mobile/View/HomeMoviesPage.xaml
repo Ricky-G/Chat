@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodel="clr-namespace:Chat.Mobile.ViewModel"
+             x:Class="Chat.Mobile.View.HomeMoviesPage"
+             Title="HomeMoviesPage">
+    <Shell.TitleView>
+        <StackLayout 
+            Orientation="Horizontal"
+            HeightRequest="30">
+            <Label 
+                FontFamily="JuneGull"
+                FontSize="Large"
+                TextColor="{StaticResource Primary}"
+                VerticalOptions="CenterAndExpand"
+                Text="Home"  />
+        </StackLayout>
+    </Shell.TitleView>
+    <StackLayout>
+        <CollectionView 
+            VerticalOptions="FillAndExpand"
+            VerticalScrollBarVisibility="Always"
+            Margin="2,0,2,0"
+            ItemsSource="{Binding Movies}"
+            ItemsLayout="VerticalGrid, 2">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout
+                        Margin="2,0,2,0"
+                        Padding="0,2,0,2">
+                        <Image
+                            
+                            HeightRequest="200"
+                            WidthRequest="200"
+                            Aspect="AspectFill"
+                            Source="{Binding Poster}"/>
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </StackLayout>
+</ContentPage>

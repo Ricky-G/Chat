@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Chat.Mobile.View.LoginPage"
+             Title="LoginPage">
+    <Shell.TitleView>
+        <StackLayout 
+            Orientation="Horizontal"
+            HeightRequest="50">
+            <Label 
+                FontFamily="JuneGull"
+                FontSize="Large"
+                TextColor="{StaticResource Primary}"
+                VerticalOptions="CenterAndExpand"
+                Text="Login"  />
+        </StackLayout>
+    </Shell.TitleView>
+    <StackLayout
+        Margin="20,10,20,20">
+        <Label 
+            FontFamily="JuneGull"
+            FontSize="Large"
+            Text="Welcome to .NET MAUI!"
+            VerticalOptions="Center" 
+            Margin="20,50,20,0"
+            HorizontalOptions="Center" />
+        <Entry
+            FontFamily="JuneGull"
+            FontSize="Large"
+            Margin="20,20,20,0"
+            TextColor="{StaticResource Primary}"
+            PlaceholderColor="DarkGray"
+            Placeholder="Type Username.." 
+            Text="{Binding Username}"/>
+        <Button
+            Margin="0,0,0,20"
+            VerticalOptions="EndAndExpand"
+            FontFamily="JuneGull"
+            FontSize="Large"
+            Text="Login"
+            Command="{Binding LoginCommand}"
+            />
+    </StackLayout>
+</ContentPage>

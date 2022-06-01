@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Shell   xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:views="clr-namespace:Chat"
+             x:Class="Chat.Root"
+             Routing.Route="Root"
+             Title="Root">
+    
+    <TabBar
+        Route="Tabs">
+        <Tab
+            Title="Home"
+            Icon="home.png">
+            <ShellContent 
+                ContentTemplate="{DataTemplate views:HomeMoviesPage}"/>
+        </Tab>
+        <Tab 
+            Title="Profile"
+            Icon="person.png">
+            <ShellContent 
+                ContentTemplate="{DataTemplate views:ProfilePage}" />
+        </Tab>
+    </TabBar>
+
+    <TabBar
+        Shell.TabBarIsVisible="False"
+        Route="Login">
+        <Tab
+            Title="Home"
+            Icon="home.png">
+            <ShellContent 
+                ContentTemplate="{DataTemplate views:LoginPage}"/>
+        </Tab>
+    </TabBar>
+</Shell>

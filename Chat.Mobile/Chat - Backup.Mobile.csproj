@@ -49,7 +49,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <None Remove="appsettings.json" />
 	  <None Remove="Resources\Fonts\junegull.ttf" />
 	  <None Remove="Resources\Images\apple.svg" />
 	  <None Remove="Resources\Images\bananas.svg" />
@@ -66,12 +65,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <EmbeddedResource Include="appsettings.json" />
-	</ItemGroup>
-
-	<ItemGroup>
 	  <PackageReference Include="CommunityToolkit.Maui" Version="1.0.0" />
-	  <PackageReference Include="CommunityToolkit.Mvvm" Version="7.1.2" />
 	  <PackageReference Include="Microsoft.ApplicationInsights.PerfCounterCollector" Version="2.20.0" />
 	</ItemGroup>
 
