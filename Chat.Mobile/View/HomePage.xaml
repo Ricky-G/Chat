@@ -3,9 +3,16 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Chat.Mobile.View.HomePage"
              Title="HomePage">
-    <StackLayout
-        Padding="10">
+    <Grid
+        Margin="20,10,20,10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+        </Grid.RowDefinitions>
         <CollectionView  
+            Grid.Row="0"
             ItemsSource="{Binding Messages}">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
@@ -32,14 +39,17 @@
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
-        <Entry 
+        <Entry    
+            Grid.Row="1"
             Placeholder="Message"
             Text="{Binding Message}"/>
         <Entry
+            Grid.Row="2"
             Placeholder="Name"
             Text="{Binding Name}"/>
         <Button
+            Grid.Row="3"
             Command="{Binding BroadcastCommand}"
             Text="Send"/>
-    </StackLayout>
+    </Grid>
 </ContentPage>
