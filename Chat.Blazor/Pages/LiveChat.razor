@@ -2,7 +2,7 @@
 @implements IAsyncDisposable
 @using Microsoft.AspNetCore.SignalR.Client
 @using System.Collections.ObjectModel
-<div id="another_unique_identifier" class="ma-0" style="height:300px;overflow: auto;">
+<div style="height:300px;overflow: auto;">
     @foreach (var message in messages)
     {
         <MudCard>
@@ -15,14 +15,15 @@
     }
 </div>
 
-
-<MudTextField @bind-Value="name" Label="Name" Variant="Variant.Outlined"></MudTextField>
-<MudTextField @bind-Value="message" Label="Message" Variant="Variant.Outlined"></MudTextField>
-<br />
-<MudButton Variant="Variant.Filled"
-           FullWidth="true"
-           OnClick="Broadcast"
-           Color="Color.Primary">Send</MudButton>
+<div style="height:auto;overflow: auto;">
+    <MudTextField @bind-Value="name" Label="Name" Variant="Variant.Outlined"></MudTextField>
+    <MudTextField @bind-Value="message" Label="Message" Variant="Variant.Outlined"></MudTextField>
+    <br />
+    <MudButton Variant="Variant.Filled"
+               FullWidth="true"
+               OnClick="Broadcast"
+               Color="Color.Primary">Send</MudButton>
+</div>
 @code {
     private HubConnection? hubConnection;
     private ObservableCollection<Message> messages = new();
