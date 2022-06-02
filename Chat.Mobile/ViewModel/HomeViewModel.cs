@@ -26,7 +26,7 @@ public partial class HomeViewModel : BaseViewModel
 
         hubConnection.On<string, string>(nameof(Broadcast), (n, m) =>
         {
-            temp.Add(new MessageModel(n, m));
+            temp.Insert(0, new MessageModel(n, m));
             Messages = null;
             Messages = temp;
         });

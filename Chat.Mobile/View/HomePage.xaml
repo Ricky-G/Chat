@@ -21,10 +21,11 @@
                             CornerRadius="20"
                             HasShadow="True"
                             BorderColor="LightGray"
+                            IsClippedToBounds="True"
+                            Padding="20"
                             Margin="5">
                             <StackLayout
-                                BackgroundColor="Yellow"
-                                Padding="10">
+                                Padding="0">
                             <Label
                                 FontSize="Large"
                                 TextColor="{StaticResource Primary}"
