@@ -10,9 +10,9 @@ public partial class HomeViewModel : BaseViewModel
     public List<MessageModel> messages = new();
     private List<MessageModel> temp = new();
     [ObservableProperty]
-    private string? name;
+    private string name;
     [ObservableProperty]
-    private string? message;
+    private string message;
     public HomeViewModel()
     {
         LoadAsync();
@@ -37,7 +37,7 @@ public partial class HomeViewModel : BaseViewModel
     [ICommand]
     private async void Broadcast()
     {
-        await hubConnection.SendAsync(nameof(Broadcast), name, message);
+        await hubConnection.SendAsync(nameof(Broadcast), Name, Message);
         Message = null;
     }
 
@@ -46,5 +46,5 @@ public partial class HomeViewModel : BaseViewModel
         await hubConnection.DisposeAsync();
     }
 
-    public record MessageModel(string N, string B);
+    public record MessageModel(string Name, string Message);
 }

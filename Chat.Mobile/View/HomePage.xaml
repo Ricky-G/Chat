@@ -3,7 +3,35 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Chat.Mobile.View.HomePage"
              Title="HomePage">
-    <StackLayout>
+    <StackLayout
+        Padding="10">
+        <CollectionView  
+            ItemsSource="{Binding Messages}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout>
+                        <Frame
+                        CornerRadius="20"
+                        HasShadow="True"
+                        BorderColor="LightGray"
+                        Margin="5">
+                            <StackLayout
+                            BackgroundColor="Yellow"
+                            Padding="10">
+                                <Label
+                                FontSize="Large"
+                            TextColor="{StaticResource Primary}"
+                            Text="{Binding Name}"/>
+                                <Label
+                                FontSize="Large"
+                            TextColor="Black"
+                            Text="{Binding Message}"/>
+                            </StackLayout>
+                        </Frame>
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
         <Entry 
             Placeholder="Message"
             Text="{Binding Message}"/>
@@ -13,22 +41,5 @@
         <Button
             Command="{Binding BroadcastCommand}"
             Text="Send"/>
-        <Label Text="Welcome to .NET MAUI!"
-                VerticalOptions="Center" 
-                HorizontalOptions="Center" />
-        <CollectionView  
-            ItemsSource="{Binding Messages}">
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <StackLayout
-                        BackgroundColor="Green">
-                    <Label
-                        TextColor="Black"
-                        Text="{Binding B}"/>
-                    </StackLayout>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
-
     </StackLayout>
 </ContentPage>
