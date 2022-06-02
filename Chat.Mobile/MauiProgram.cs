@@ -51,6 +51,9 @@ public static class MauiProgram
 
         s.AddSingleton<ProfileViewModel>();
         s.AddSingleton<ProfilePage>();
+
+        s.AddSingleton<HomeViewModel>();
+        s.AddSingleton<HomePage>();
     }
 
     private static TelemetryClient GetTelemetryClient(TelemetrySettings settings)

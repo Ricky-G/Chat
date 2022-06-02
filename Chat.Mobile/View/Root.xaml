@@ -8,11 +8,18 @@
     
     <TabBar
         Route="Tabs">
-        <Tab
+        <!--Tab
             Title="Home"
             Icon="home.png">
             <ShellContent 
                 ContentTemplate="{DataTemplate views:HomeMoviesPage}"/>
+        </Tab-->
+        <Tab
+            Title="Chat"
+            Icon="home.png">
+            <ShellContent
+                ContentTemplate="{DataTemplate views:HomePage}"/>
+
         </Tab>
         <Tab 
             Title="Profile"
