@@ -11,21 +11,21 @@
                 <DataTemplate>
                     <StackLayout>
                         <Frame
-                        CornerRadius="20"
-                        HasShadow="True"
-                        BorderColor="LightGray"
-                        Margin="5">
+                            CornerRadius="20"
+                            HasShadow="True"
+                            BorderColor="LightGray"
+                            Margin="5">
                             <StackLayout
-                            BackgroundColor="Yellow"
-                            Padding="10">
-                                <Label
+                                BackgroundColor="Yellow"
+                                Padding="10">
+                            <Label
                                 FontSize="Large"
-                            TextColor="{StaticResource Primary}"
-                            Text="{Binding Name}"/>
-                                <Label
+                                TextColor="{StaticResource Primary}"
+                                Text="{Binding Name}"/>
+                            <Label
                                 FontSize="Large"
-                            TextColor="Black"
-                            Text="{Binding Message}"/>
+                                TextColor="Black"
+                                Text="{Binding Message}"/>
                             </StackLayout>
                         </Frame>
                     </StackLayout>
