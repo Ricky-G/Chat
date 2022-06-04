@@ -17,7 +17,7 @@ public static class Globals
 {
     public static TelemetryClient GetTelemetryClient()
     {
-        var settings = GetSettings();
+        var settings = Settings();
         TelemetryConfiguration cfg = TelemetryConfiguration.CreateDefault();
         cfg.ConnectionString = settings.AppInsights;
         QuickPulseTelemetryProcessor qp = null;
@@ -39,13 +39,13 @@ public static class Globals
         return client;
     }
 
-    private static TelemetrySettings GetSettings()
+    private static TelemetrySettings Settings()
     {
         var a = typeof(Globals).GetTypeInfo().Assembly;
         var s = a.GetManifestResourceStream($"{a.GetName().Name}.appsettings.json");
 
         var config = new ConfigurationBuilder().AddJsonStream(s).Build();
-        TelemetrySettings tmstgs = config.GetRequiredSection("Settings").Get<TelemetrySettings>();
-        return tmstgs;
+        TelemetrySettings settings = config.GetRequiredSection(nameof(Settings)).Get<TelemetrySettings>();
+        return settings;
     }
 }

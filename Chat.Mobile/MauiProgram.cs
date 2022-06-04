@@ -23,8 +23,6 @@ public static class MauiProgram
                 fonts.AddFont("junegull.ttf", "JuneGull");
             });
 
-     //   builder.Configuration.AddConfiguration(config);
-
         RegisterTypes(builder.Services);
 
         return builder.Build();
