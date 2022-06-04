@@ -1,13 +1,11 @@
-﻿global using Chat.Model;
-global using Chat.ViewModel;
+﻿global using Chat.Core.Model;
+global using Chat.Core.ViewModel;
 global using Microsoft.ApplicationInsights;
 global using Microsoft.ApplicationInsights.Extensibility;
 global using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.QuickPulse;
 global using Microsoft.Extensions.Configuration;
 global using CommunityToolkit.Maui;
 global using System.Reflection;
-global using CommunityToolkit.Mvvm.ComponentModel;
-global using CommunityToolkit.Mvvm.Input;
 global using Chat.Mobile.View;
 
 namespace Chat.Mobile;
@@ -25,22 +23,16 @@ public static class MauiProgram
                 fonts.AddFont("junegull.ttf", "JuneGull");
             });
 
-        var a = typeof(App).GetTypeInfo().Assembly;
-        var s = a.GetManifestResourceStream($"{a.GetName().Name}.appsettings.json");
+     //   builder.Configuration.AddConfiguration(config);
 
-        var config = new ConfigurationBuilder().AddJsonStream(s).Build();
-        TelemetrySettings tmstgs = config.GetRequiredSection("Settings").Get<TelemetrySettings>();
-
-        builder.Configuration.AddConfiguration(config);
-
-        RegisterTypes(builder.Services, tmstgs);
+        RegisterTypes(builder.Services);
 
         return builder.Build();
     }
 
-    private static void RegisterTypes(IServiceCollection s, TelemetrySettings telemetryAppSettings)
+    private static void RegisterTypes(IServiceCollection s)
     {
-        s.AddSingleton(GetTelemetryClient(telemetryAppSettings));
+        s.AddSingleton(Chat.Core.Globals.GetTelemetryClient());
         s.AddSingleton<MovieService>();
 
         s.AddSingleton<LoginViewModel>();
@@ -56,32 +48,5 @@ public static class MauiProgram
         s.AddSingleton<HomePage>();
     }
 
-    private static TelemetryClient GetTelemetryClient(TelemetrySettings settings)
-    {
-        TelemetryConfiguration cfg = TelemetryConfiguration.CreateDefault();
-        cfg.ConnectionString = settings.AppInsights;
-        QuickPulseTelemetryProcessor qp = null;
-        cfg.DefaultTelemetrySink.TelemetryProcessorChainBuilder
-            .Use((next) =>
-            {
-                qp = new QuickPulseTelemetryProcessor(next);
-                return qp;
-            })
-            .Build();
-
-        var qpm = new QuickPulseTelemetryModule
-        {
-            AuthenticationApiKey = settings.QuickPulse
-        };
-        qpm.Initialize(cfg);
-        qpm.RegisterTelemetryProcessor(qp);
-        TelemetryClient client = new(cfg);
-        return client;
-    }
 }
 
-public class TelemetrySettings
-{
-    public string AppInsights { get; set; }
-    public string QuickPulse { get; set; }
-}

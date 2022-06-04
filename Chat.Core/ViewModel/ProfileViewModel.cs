@@ -1,12 +1,9 @@
 ﻿
-using Chat.Mobile;
 
-namespace Chat.ViewModel;
+namespace Chat.Core.ViewModel;
 
 public partial class ProfileViewModel : BaseViewModel
 {
-    public string SupportKey => App.Telemetry.Context.User.Id;
-
     private bool _runThread;
     private TelemetryClient _telemetry;
 

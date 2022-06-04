@@ -1,6 +1,6 @@
 ﻿
 
-namespace Chat.ViewModel;
+namespace Chat.Core.ViewModel;
 
 public partial class HomeMoviesViewModel : BaseViewModel    
 {

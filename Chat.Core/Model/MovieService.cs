@@ -1,7 +1,7 @@
 ﻿
 using System.Text.Json;
 
-namespace Chat.Model;
+namespace Chat.Core.Model;
 
 public class MovieService
 {

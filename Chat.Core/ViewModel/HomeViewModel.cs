@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.SignalR.Client;
-using System.Collections.ObjectModel;
 
-namespace Chat.ViewModel;
+namespace Chat.Core.ViewModel;
 
 public partial class HomeViewModel : BaseViewModel  
 {
