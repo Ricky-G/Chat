@@ -38,6 +38,7 @@ public static class Globals
         qpm.RegisterTelemetryProcessor(qp);
         TelemetryClient client = new(cfg);
 
+   /*     
         client.Context.Device.Model ??= DeviceInfo.Model;
         client.Context.Device.OperatingSystem ??= DeviceInfo.Platform.ToString();
         client.Context.Device.Language ??= CultureInfo.CurrentUICulture.TwoLetterISOLanguageName;
@@ -45,7 +46,7 @@ public static class Globals
         
         string uniqueID = Guid.NewGuid().ToString();
         client.Context.User.AccountId ??= uniqueID;
-        client.Context.User.Id ??= uniqueID;
+        client.Context.User.Id ??= uniqueID;*/
 
         return client;
     }

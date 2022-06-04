@@ -6,8 +6,7 @@ namespace Chat.Core.ViewModel;
 public partial class HomeViewModel : BaseViewModel  
 {
     private HubConnection? hubConnection;
-    [ObservableProperty]
-    public ObservableCollection<Message> messages = new();
+    public ObservableCollection<Message> Messages = new();
     [ObservableProperty]
     private string name;
     [ObservableProperty]
@@ -26,6 +25,7 @@ public partial class HomeViewModel : BaseViewModel
         hubConnection.On<string, string>(nameof(Broadcast), (n,b) =>
         {
             Messages.Insert(0, new Message(n, b));
+    
         });
 
         await hubConnection.StartAsync();
