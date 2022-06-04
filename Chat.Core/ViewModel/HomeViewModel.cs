@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.SignalR.Client;
+using System.Collections.ObjectModel;
 
 namespace Chat.Core.ViewModel;
 
@@ -6,8 +7,7 @@ public partial class HomeViewModel : BaseViewModel
 {
     private HubConnection? hubConnection;
     [ObservableProperty]
-    public List<Message> messages = new();
-    private List<Message> temp = new();
+    public ObservableCollection<Message> messages = new();
     [ObservableProperty]
     private string name;
     [ObservableProperty]
@@ -25,9 +25,7 @@ public partial class HomeViewModel : BaseViewModel
 
         hubConnection.On<string, string>(nameof(Broadcast), (n,b) =>
         {
-            temp.Insert(0, new Message(n, b));
-            Messages = null;
-            Messages = temp;
+            Messages.Insert(0, new Message(n, b));
         });
 
         await hubConnection.StartAsync();
