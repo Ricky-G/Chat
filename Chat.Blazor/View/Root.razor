@@ -44,11 +44,19 @@
 }
 else
 {
+
     <MudContainer MaxWidth="MaxWidth.Large" Class="my-2 pt-4">
-        <MudTextField @bind-Value="Username" Label="Username" Variant="Variant.Outlined"></MudTextField>
-        <MudTextField @bind-Value="Password" Label="Password" Variant="Variant.Outlined"></MudTextField>
+            <MudTextField  @bind-Value="Password" 
+                    Label="Username" Variant="Variant.Outlined" 
+                    Adornment="Adornment.End" />
+            <MudTextField  @bind-Value="Password" 
+                            Label="Password" Variant="Variant.Outlined" 
+                            InputType="@PasswordInput" Adornment="Adornment.End"
+                            AdornmentIcon="@PasswordInputIcon"  
+                            AdornmentAriaLabel="Show Password" />
         <br />
         <MudButton 
+              
                FullWidth="true"
                Variant="Variant.Filled"
                OnClick="LoginLogout"
@@ -60,14 +68,20 @@ else
     bool _isLoggedIn;
     bool _drawerOpen = true;
 
-    public string Username { get; set; }
-    public string Password { get; set; }
-
     void DrawerToggle()
         => _drawerOpen = !_drawerOpen;
     
     void LoginLogout(){
        _isLoggedIn = !_isLoggedIn;     
     }
+
+    public double? Amount { get; set; }
+    public int? Weight { get; set; }
+    public string Password { get; set;}
+
+    bool isShow;
+    InputType PasswordInput = InputType.Password;
+    string PasswordInputIcon = Icons.Material.Filled.VisibilityOff;
+
 
 }
