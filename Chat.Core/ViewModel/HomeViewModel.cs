@@ -6,8 +6,8 @@ public partial class HomeViewModel : BaseViewModel
 {
     private HubConnection? hubConnection;
     [ObservableProperty]
-    public List<MessageModel> messages = new();
-    private List<MessageModel> temp = new();
+    public List<Message> messages = new();
+    private List<Message> temp = new();
     [ObservableProperty]
     private string name;
     [ObservableProperty]
@@ -23,9 +23,9 @@ public partial class HomeViewModel : BaseViewModel
             .WithUrl("https://microsoft-chat.azurewebsites.net/chat")
             .Build();
 
-        hubConnection.On<string, string>(nameof(Broadcast), (n, m) =>
+        hubConnection.On<string, string>(nameof(Broadcast), (n,b) =>
         {
-            temp.Insert(0, new MessageModel(n, m));
+            temp.Insert(0, new Message(n, b));
             Messages = null;
             Messages = temp;
         });
@@ -44,6 +44,4 @@ public partial class HomeViewModel : BaseViewModel
     {
         await hubConnection.DisposeAsync();
     }
-
-    public record MessageModel(string Name, string Message);
 }
