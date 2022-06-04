@@ -7,7 +7,6 @@
              Title="Root">
 
     <TabBar
-        IsVisible="False"
         Route="Tabs">
         <Tab
             Title="Chat"
