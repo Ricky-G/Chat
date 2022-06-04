@@ -8,7 +8,6 @@
             Orientation="Horizontal"
             HeightRequest="50">
             <Label 
-                FontFamily="JuneGull"
                 FontSize="Large"
                 TextColor="{StaticResource Primary}"
                 VerticalOptions="CenterAndExpand"
@@ -24,7 +23,6 @@
             Margin="20,50,20,0"
             HorizontalOptions="Center" />
         <Entry
-            FontFamily="JuneGull"
             FontSize="Large"
             Margin="20,20,20,0"
             TextColor="{StaticResource Primary}"
@@ -34,7 +32,6 @@
         <Button
             Margin="0,0,0,20"
             VerticalOptions="EndAndExpand"
-            FontFamily="JuneGull"
             FontSize="Large"
             Text="Login"
             Command="{Binding LoginCommand}"

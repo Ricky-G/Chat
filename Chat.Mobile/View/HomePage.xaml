@@ -18,20 +18,18 @@
                 <DataTemplate>
                     <StackLayout>
                         <Frame
-                            CornerRadius="20"
-                            HasShadow="True"
+                            CornerRadius="5"
+                            HasShadow="False"
                             BorderColor="LightGray"
                             IsClippedToBounds="True"
-                            Padding="20"
+                            Padding="10"
                             Margin="5">
                             <StackLayout
                                 Padding="0">
                             <Label
-                                FontSize="Large"
                                 TextColor="{StaticResource Primary}"
                                 Text="{Binding Name}"/>
                             <Label
-                                FontSize="Large"
                                 TextColor="Black"
                                 Text="{Binding Body}"/>
                             </StackLayout>

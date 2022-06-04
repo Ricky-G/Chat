@@ -8,7 +8,6 @@
             Orientation="Horizontal"
             HeightRequest="50">
             <Label 
-                FontFamily="JuneGull"
                 FontSize="Large"
                 TextColor="{StaticResource Primary}"
                 VerticalOptions="CenterAndExpand"
@@ -19,7 +18,6 @@
         VerticalOptions="FillAndExpand"
         Margin="20,0,20,0">
         <Label 
-            FontFamily="JuneGull"
             FontSize="Large"
             TextColor="Black"
             Text="Hi Guava Fruit !"  />
@@ -31,7 +29,6 @@
             Source="guava.png"/>
         <Label 
             Margin="0,60,0,5"
-            FontFamily="JuneGull"
             FontSize="Large"
             TextColor="Black"
             Text="My Support Key"  />
@@ -42,7 +39,6 @@
         <Button
             Margin="0,0,0,0"
             VerticalOptions="EndAndExpand"
-            FontFamily="JuneGull"
             FontSize="Large"
             Text="Monitor"
             Command="{Binding StartMonitorCommand}"
@@ -50,7 +46,6 @@
         <Button
             Margin="0,10,0,20"
             VerticalOptions="End"
-            FontFamily="JuneGull"
             FontSize="Large"
             Text="LogOut"
             Command="{Binding LogOutCommand}"
