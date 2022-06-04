@@ -33,7 +33,7 @@
                             <Label
                                 FontSize="Large"
                                 TextColor="Black"
-                                Text="{Binding Message}"/>
+                                Text="{Binding Body}"/>
                             </StackLayout>
                         </Frame>
                     </StackLayout>
