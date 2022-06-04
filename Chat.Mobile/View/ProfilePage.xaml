@@ -17,25 +17,6 @@
     <StackLayout
         VerticalOptions="FillAndExpand"
         Margin="10">
-        <Label 
-            FontSize="Large"
-            TextColor="Black"
-            Text="Hi Guava Fruit !"  />
-        <Image        
-            Margin="0,50,0,0"
-            HeightRequest="200"
-            WidthRequest="200"
-            HorizontalOptions="Center"
-            Source="guava.png"/>
-        <Label 
-            Margin="0,60,0,5"
-            FontSize="Large"
-            TextColor="Black"
-            Text="My Support Key"  />
-        <Label 
-            FontSize="Small"
-            TextColor="Black"
-            Text="{Binding SupportKey}"  />
         <Button
             Margin="0,0,0,10"
             VerticalOptions="EndAndExpand"

@@ -31,15 +31,8 @@ public partial class ProfileViewModel : BaseViewModel
 
         _runThread = false;
 
-        // Track Requests
-        // This sample runs indefinitely. Replace with actual application logic.
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < 20; i++)
         {
-            // Send dependency and request telemetry.
-            // These will be shown in Live Metrics stream.
-            // CPU/Memory Performance counter is also shown
-            // automatically without any additional steps.
-
             _telemetry.TrackDependency(
                 "Bad Dependency",
                 "target",
