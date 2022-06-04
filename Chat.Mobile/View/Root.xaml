@@ -21,6 +21,13 @@
                 ContentTemplate="{DataTemplate views:HomePage}"/>
 
         </Tab>
+        <Tab
+            Title="Fruit"
+            Icon="home.png">
+            <ShellContent
+                ContentTemplate="{DataTemplate views:FruitPage}"/>
+
+        </Tab>
         <Tab 
             Title="Profile"
             Icon="person.png">

@@ -79,6 +79,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<MauiXaml Update="View\FruitPage.xaml">
+		  <Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
 		<MauiXaml Update="View\HomeMoviesPage.xaml">
 			<Generator>MSBuild:Compile</Generator>
 		</MauiXaml>

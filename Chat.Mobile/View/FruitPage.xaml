@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Chat.Mobile.View.FruitPage"
+             Title="FruitPage">
+    <StackLayout>
+        <CollectionView 
+                x:Name="collectionView"
+                Margin="10,10,10,0"
+                VerticalOptions="FillAndExpand"
+                ItemsSource="{Binding Fruits}"
+                ItemsLayout="VerticalGrid, 2"    
+                SelectionMode="Single">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout>
+                        <Image  
+                                x:Name="fruit"
+                                HeightRequest="100"
+                                WidthRequest="100"
+                                AutomationId="Fruit"
+                                Source="{Binding Source}"/>
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        <Button    
+                Margin="5"
+                AutomationId="Add"
+                Text="Add"
+                Command="{Binding AddCommand}"/>
+        <Button 
+                Margin="5,0,5,5"
+                AutomationId="Remove"
+                Text="Remove"
+                Command="{Binding RemoveCommand}"/>
+    </StackLayout>
+</ContentPage>

@@ -44,6 +44,10 @@ public static class MauiProgram
 
         s.AddSingleton<HomeViewModel>();
         s.AddSingleton<HomePage>();
+
+        s.AddSingleton<FruitService>();
+        s.AddSingleton<FruitViewModel>();
+        s.AddSingleton<FruitPage>();
     }
 
 }

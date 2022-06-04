@@ -1,9 +1,6 @@
 ﻿
+namespace Chat.Core.ViewModel;
 
-
-namespace Chat.Core.ViewModel
+public abstract class BaseViewModel : ObservableObject
 {
-    public abstract class BaseViewModel : ObservableObject
-    {
-    }
 }
