@@ -10,6 +10,7 @@ global using Microsoft.ApplicationInsights.Extensibility;
 global using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.QuickPulse;
 global using System.Reflection;
 global using Microsoft.Extensions.Configuration;
+using System.Globalization;
 
 namespace Chat.Core;
 
@@ -36,6 +37,16 @@ public static class Globals
         qpm.Initialize(cfg);
         qpm.RegisterTelemetryProcessor(qp);
         TelemetryClient client = new(cfg);
+
+        client.Context.Device.Model ??= DeviceInfo.Model;
+        client.Context.Device.OperatingSystem ??= DeviceInfo.Platform.ToString();
+        client.Context.Device.Language ??= CultureInfo.CurrentUICulture.TwoLetterISOLanguageName;
+        client.Context.Device.ScreenResolution ??= DeviceDisplay.MainDisplayInfo.ToString();
+        
+        string uniqueID = Guid.NewGuid().ToString();
+        client.Context.User.AccountId ??= uniqueID;
+        client.Context.User.Id ??= uniqueID;
+
         return client;
     }
 

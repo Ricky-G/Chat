@@ -17,6 +17,43 @@
     <StackLayout
         VerticalOptions="FillAndExpand"
         Margin="10">
+        <Label
+            FontAttributes="Bold"
+            TextColor="Black"
+            Text="Telemetry.Context.Device.Model"/>
+        <Label
+            TextColor="Black"
+            Text="{Binding Telemetry.Context.Device.Model}"/>
+        <Label
+            FontAttributes="Bold"
+            TextColor="Black"
+            Text="Telemetry.Context.Device.OperatingSystem"/>
+        <Label
+            TextColor="Black"
+            Text="{Binding Telemetry.Context.Device.OperatingSystem}"/>
+        <Label
+
+            FontAttributes="Bold"
+            TextColor="Black"
+            Text="Telemetry.Context.Device.Languag}"/>
+        <Label
+            TextColor="Black"
+            Text="{Binding Telemetry.Context.Device.Language}"/>
+        <Label
+            FontAttributes="Bold"
+            TextColor="Black"
+            Text="Telemetry.Context.Device.ScreenResolution"/>
+        <Label
+            TextColor="Black"
+            Text="{Binding Telemetry.Context.Device.ScreenResolution}"/>
+        <Label
+            FontSize="Medium"
+            FontAttributes="Bold"
+            TextColor="Black"
+            Text="Telemetry.Context.User.AccountId"/>
+        <Label
+            TextColor="Black"
+            Text="{Binding Telemetry.Context.User.AccountId}"/>
         <Button
             Margin="0,0,0,10"
             VerticalOptions="EndAndExpand"

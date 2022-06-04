@@ -4,19 +4,31 @@ namespace Chat.Core.ViewModel;
 
 public partial class ProfileViewModel : BaseViewModel
 {
+    [ObservableProperty]
+    private TelemetryClient telemetry;
     private bool _runThread;
-    private TelemetryClient _telemetry;
-
     public ProfileViewModel(TelemetryClient telemetry)
     {
-        _telemetry = telemetry;
+        Telemetry = telemetry;
+
+        /*
+         
+                 client.Context.Device.Model ??= DeviceInfo.Model;
+        client.Context.Device.OperatingSystem ??= DeviceInfo.Platform.ToString();
+        client.Context.Device.Language ??= CultureInfo.CurrentUICulture.TwoLetterISOLanguageName;
+        client.Context.Device.ScreenResolution ??= DeviceDisplay.MainDisplayInfo.ToString();
+        
+        string uniqueID = Guid.NewGuid().ToString();
+        client.Context.User.AccountId ??= uniqueID;
+        client.Context.User.Id ??= uniqueID;
+         
+         
+         */
     }
 
     [ICommand]
     public async void LogOut()
-    {
-        await Shell.Current.GoToAsync($"//Login");
-    }
+        => await Shell.Current.GoToAsync($"//Login");
 
     [ICommand]
     private async void StartMonitor()
@@ -33,7 +45,7 @@ public partial class ProfileViewModel : BaseViewModel
 
         for (int i = 0; i < 20; i++)
         {
-            _telemetry.TrackDependency(
+            Telemetry.TrackDependency(
                 "Bad Dependency",
                 "target",
                 "data",
@@ -41,7 +53,7 @@ public partial class ProfileViewModel : BaseViewModel
                 TimeSpan.FromMilliseconds(50 * i),
                 true);
 
-            _telemetry.TrackDependency(
+            Telemetry.TrackDependency(
                 "Good Dependency",
                 "target",
                 "data",
@@ -49,13 +61,13 @@ public partial class ProfileViewModel : BaseViewModel
                 TimeSpan.FromMilliseconds(3 * i),
                 true);
 
-            _telemetry.TrackRequest("Bad Request",
+            Telemetry.TrackRequest("Bad Request",
                 DateTimeOffset.Now,
                 TimeSpan.FromMilliseconds(50 * i),
                 "200",
                 true);
 
-            _telemetry.TrackRequest("Bad Request",
+            Telemetry.TrackRequest("Bad Request",
                 DateTimeOffset.Now,
                 TimeSpan.FromMilliseconds(3 * i),
                 "200",
@@ -70,7 +82,7 @@ public partial class ProfileViewModel : BaseViewModel
         }
         catch (Exception e)
         {
-            _telemetry.TrackException(e);
+            Telemetry.TrackException(e);
         }
     }
     private void KillCore()
