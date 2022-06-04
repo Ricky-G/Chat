@@ -5,15 +5,10 @@
              x:Class="Chat.Root"
              Routing.Route="Root"
              Title="Root">
-    
+
     <TabBar
+        IsVisible="False"
         Route="Tabs">
-        <!--Tab
-            Title="Home"
-            Icon="home.png">
-            <ShellContent 
-                ContentTemplate="{DataTemplate views:HomeMoviesPage}"/>
-        </Tab-->
         <Tab
             Title="Chat"
             Icon="home.png">
@@ -36,14 +31,8 @@
         </Tab>
     </TabBar>
 
-    <TabBar
-        Shell.TabBarIsVisible="False"
-        Route="Login">
-        <Tab
-            Title="Home"
-            Icon="home.png">
-            <ShellContent 
-                ContentTemplate="{DataTemplate views:LoginPage}"/>
-        </Tab>
-    </TabBar>
+    <ShellContent 
+        Shell.NavBarIsVisible="False"
+        Route="Login"
+        ContentTemplate="{DataTemplate views:LoginPage}"/>
 </Shell>
