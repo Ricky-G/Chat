@@ -34,7 +34,7 @@ public partial class HomeViewModel : BaseViewModel
     }
 
     [ICommand]
-    private async void Broadcast()
+    public async void Broadcast()
     {
         await hubConnection.SendAsync(nameof(Broadcast), Name, Message);
         Message = null;

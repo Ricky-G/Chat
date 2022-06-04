@@ -13,6 +13,10 @@
 		<PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="6.0.5" />
 		<PackageReference Include="MudBlazor" Version="6.0.10" />
 	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\Chat.Core\Chat.Core.csproj" />
+	</ItemGroup>
 	
 	<ItemGroup>
 		<ServiceWorker Include="wwwroot\service-worker.js" PublishedContent="wwwroot\service-worker.published.js" />

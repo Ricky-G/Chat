@@ -1,0 +1,24 @@
+﻿@using Chat.Core.ViewModel
+@using System.ComponentModel
+@implements IDisposable
+
+@code {
+    private BaseViewModel _vm;
+
+    public void SetViewModel(BaseViewModel vm)
+    {
+        _vm = vm;
+        _vm.PropertyChanged += ViewModelPropertyChanged;
+    }
+
+    public void Dispose()
+    {
+        _vm.PropertyChanged -= ViewModelPropertyChanged;
+    }
+
+    public async void ViewModelPropertyChanged(object? sender, PropertyChangedEventArgs e)
+    {
+        await Task.Delay(400);
+        await InvokeAsync(StateHasChanged);  
+    }
+}
