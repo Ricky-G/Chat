@@ -9,7 +9,7 @@
                 Margin="10,10,10,0"
                 VerticalOptions="FillAndExpand"
                 ItemsSource="{Binding Fruits}"
-                ItemsLayout="VerticalGrid, 2"    
+                ItemsLayout="VerticalGrid, 4"    
                 SelectionMode="Single">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
