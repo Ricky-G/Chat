@@ -30,7 +30,7 @@ public static class MauiProgram
 
     private static void RegisterTypes(IServiceCollection s)
     {
-        s.AddSingleton(Chat.Core.Globals.GetTelemetryClient());
+        s.AddSingleton(Core.Globals.GetTelemetryClient());
         s.AddSingleton<MovieService>();
 
         s.AddSingleton<LoginViewModel>();

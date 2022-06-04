@@ -9,7 +9,7 @@
     <TabBar
         Route="Tabs">
         <Tab
-            Title="Chat"
+            Title="Home"
             Icon="home.png">
             <ShellContent
                 ContentTemplate="{DataTemplate views:HomePage}"/>

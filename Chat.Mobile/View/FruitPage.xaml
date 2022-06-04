@@ -1,8 +1,18 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Chat.Mobile.View.FruitPage"
-             Title="FruitPage">
+             x:Class="Chat.Mobile.View.FruitPage">
+    <Shell.TitleView>
+        <StackLayout 
+            Orientation="Horizontal"
+            HeightRequest="50">
+            <Label 
+                FontSize="Large"
+                VerticalOptions="CenterAndExpand"
+                Text="Fruit" 
+                TextColor="White"/>
+        </StackLayout>
+    </Shell.TitleView>
     <StackLayout>
         <CollectionView 
                 x:Name="collectionView"
@@ -25,12 +35,12 @@
             </CollectionView.ItemTemplate>
         </CollectionView>
         <Button    
-                Margin="5"
+                Margin="10"
                 AutomationId="Add"
                 Text="Add"
                 Command="{Binding AddCommand}"/>
         <Button 
-                Margin="5,0,5,5"
+                Margin="10,0,10,10"
                 AutomationId="Remove"
                 Text="Remove"
                 Command="{Binding RemoveCommand}"/>
