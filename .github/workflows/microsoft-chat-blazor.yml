@@ -3,6 +3,9 @@ name: Chat.Blazor
 
 on:
   push:
+    paths-ignore:
+      - 'Chat.Hub/**'
+      - 'Chat.Mobile/**'
     branches:
       - main
       
