@@ -11,22 +11,22 @@ on:
       - main
       
 jobs:
-  integration-test:
+  test-integration:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Test
+      - name: test-integration
         run: |
           cd Chat.Core.Test
           dotnet workload restore 
           dotnet test
   
-  build:
+  build-android:
     runs-on: windows-latest
-    needs: integration-test
+    needs: test-integration
     steps:
       - uses: actions/checkout@v2
-      - name: Build
+      - name: build-android
         run: |
           cd Chat.Mobile
           mkdir ./myapp
@@ -42,9 +42,9 @@ jobs:
           name: android-app
           path: ${{env.DOTNET_ROOT}}/myapp
           
-  deploy:
+  deploy-android:
     runs-on: windows-latest
-    needs: build
+    needs: build-android
     environment:
       name: 'Production'
      # url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
