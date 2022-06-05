@@ -11,6 +11,17 @@ on:
       - main
       
 jobs:
+  integration-test:
+    runs-on: linux-latest
+    
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Test
+        run: |
+          cd Chat.Core.Test
+          dotnet test
+  
   build:
     runs-on: windows-latest
 
