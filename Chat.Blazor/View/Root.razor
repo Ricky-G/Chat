@@ -1,14 +1,14 @@
 ﻿@inherits LayoutComponentBase
 @inject IJSRuntime JSRuntime
 
-<MudThemeProvider />
+<MudThemeProvider Theme="_currentTheme" />
 <MudDialogProvider />
 <MudSnackbarProvider />
 
 @if (_isLoggedIn)
 {
     <MudLayout>
-        <MudAppBar Elevation="0">
+        <MudAppBar Elevation="0" Color="Color.Primary">
             <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@((e) => DrawerToggle())" />
             <MudSpacer />
      
@@ -89,5 +89,15 @@ else
     InputType PasswordInput = InputType.Password;
     string PasswordInputIcon = Icons.Material.Filled.VisibilityOff;
 
+    private MudTheme _currentTheme => 
+       new MudTheme
+       {
+           Palette = new Palette()
+           {
+             //  Surface = "#ff0000",
+               Primary = "#512BD4",
+            //   InfoContrastText = "#0000ff",
+           }
+       };
 
 }
