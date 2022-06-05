@@ -13,10 +13,8 @@ on:
 jobs:
   integration-test:
     runs-on: linux-latest
-    
     steps:
       - uses: actions/checkout@v2
-
       - name: Test
         run: |
           cd Chat.Core.Test
@@ -24,10 +22,9 @@ jobs:
   
   build:
     runs-on: windows-latest
-
+    needs: integration-test
     steps:
       - uses: actions/checkout@v2
-
       - name: Build
         run: |
           cd Chat.Mobile
@@ -37,8 +34,7 @@ jobs:
           dotnet build -f net6.0-android -c Release       
           dotnet publish -c Release -o ./myapp
           cd ./myapp
-          ls
-        
+          ls    
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
