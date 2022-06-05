@@ -1,14 +1,14 @@
 
-name: Chat.Hub
+name: Chat.Blazor
 
 on:
   push:
     paths-ignore:
-      - 'Chat.Blazor/**'
+      - 'Chat.Hub/**'
       - 'Chat.Mobile/**'
     branches:
       - main
-
+      
 jobs:
   build:
     runs-on: windows-latest
@@ -16,9 +16,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Build with dotnet
-        run: | 
-          cd Chat.Hub
+      - name: Build
+        run: |
+          cd Chat.Blazor
           dotnet build -c Release
           dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
 
@@ -45,7 +45,7 @@ jobs:
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
         with:
-          app-name: 'microsoft-chat'
+          app-name: 'microsoft-chat-blazor'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_11CAF83022184ECEA10933D368863FAA }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_248169DBE70F4B22AB7EFAE343878F87 }}
           package: .
