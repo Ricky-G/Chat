@@ -6,6 +6,7 @@ on:
     paths-ignore:
       - 'Chat.Blazor/**'
       - 'Chat.Mobile/**'
+      - '**/microsoft-chat-blazor.yml'
     branches:
       - main
 
