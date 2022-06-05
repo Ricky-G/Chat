@@ -20,10 +20,12 @@ jobs:
       - name: Build
         run: |
           cd Chat.Mobile
+          mkdir ./myapp
+          ls
           dotnet workload restore 
-          dotnet build -f net6.0-android -c Release
-          dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
-          cd ${{env.DOTNET_ROOT}}/myapp
+          dotnet build -f net6.0-android -c Release       
+          dotnet publish -c Release -o ./myapp
+          cd ./myapp
           ls
         
       - name: Upload artifact for deployment job
