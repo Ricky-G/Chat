@@ -12,10 +12,10 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 
 		<!-- Display name -->
-		<ApplicationTitle>Chat.Mobile</ApplicationTitle>
+		<ApplicationTitle>Chat</ApplicationTitle>
 
 		<!-- App Identifier -->
-		<ApplicationId>com.companyname.chat.mobile</ApplicationId>
+		<ApplicationId>ms.chat.mobile</ApplicationId>
 		<ApplicationIdGuid>2BD3634F-45A6-4222-9399-B195B0BE533D</ApplicationIdGuid>
 
 		<!-- Versions -->
