@@ -4,8 +4,9 @@ name: Chat.Hub
 on:
   push:
     paths-ignore:
-      - 'Chat.Blazor/**'
       - 'Chat.Mobile/**'
+      - 'Chat.Blazor/**'
+      - '**/microsoft-chat-mobile-android.yml'
       - '**/microsoft-chat-blazor.yml'
     branches:
       - main

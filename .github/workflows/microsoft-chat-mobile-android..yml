@@ -1,0 +1,48 @@
+name: Chat.Mobile.Android
+
+on:
+  push:
+    paths-ignore:
+      - 'Chat.Hub/**'
+      - 'Chat.Blazor/**'
+      - '**/microsoft-chat-hub.yml'
+      - '**/microsoft-chat-blazor.yml'
+    branches:
+      - main
+      
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Build
+        run: |
+          cd Chat.Mobile
+          mkdir ./myapp
+          ls
+          dotnet workload restore 
+          dotnet build -f net6.0-android -c Release       
+          dotnet publish -c Release -o ./myapp
+          cd ./myapp
+          ls
+        
+      - name: Upload artifact for deployment job
+        uses: actions/upload-artifact@v2
+        with:
+          name: android-app
+          path: ${{env.DOTNET_ROOT}}/myapp
+          
+  deploy:
+    runs-on: windows-latest
+    needs: build
+    environment:
+      name: 'Production'
+     # url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
+     
+    steps:
+      - name: Download artifact from build job
+        uses: actions/download-artifact@v2
+        with:
+          name: android-app
