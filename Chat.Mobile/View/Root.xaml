@@ -17,7 +17,7 @@
         </Tab>
         <Tab
             Title="Fruit"
-            Icon="home.png">
+            Icon="magnify.png">
             <ShellContent
                 ContentTemplate="{DataTemplate views:FruitPage}"/>
 
