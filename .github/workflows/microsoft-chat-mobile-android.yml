@@ -18,6 +18,7 @@ jobs:
       - name: Test
         run: |
           cd Chat.Core.Test
+          dotnet build
           dotnet test
   
   build:
