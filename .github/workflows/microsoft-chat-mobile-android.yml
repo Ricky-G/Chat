@@ -21,12 +21,12 @@ jobs:
           dotnet workload restore 
           dotnet test
   
-  build-android:
+  build:
     runs-on: windows-latest
     needs: test-integration
     steps:
       - uses: actions/checkout@v2
-      - name: build-android
+      - name: build
         run: |
           cd Chat.Mobile
           mkdir ./myapp
@@ -44,7 +44,7 @@ jobs:
           
   deploy-android:
     runs-on: windows-latest
-    needs: build-android
+    needs: build
     environment:
       name: 'Production'
      # url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
