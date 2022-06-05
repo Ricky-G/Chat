@@ -15,10 +15,10 @@ public partial class HomeViewModel : BaseViewModel
     private string message;
     public HomeViewModel()
     {
-        LoadAsync();
+        SubscribeChatAsync();
     }
 
-    private async void LoadAsync()
+    private async void SubscribeChatAsync()
     {
         hubConnection = new HubConnectionBuilder()
             .WithUrl("https://microsoft-chat.azurewebsites.net/chat")
