@@ -69,6 +69,23 @@ public partial class ProfileViewModel : BaseViewModel
         {
             Telemetry.TrackException(e);
         }
+        try
+        {
+            int.Parse("invalid");
+        }
+        catch (Exception e)
+        {
+            Telemetry.TrackException(e);
+        }
+        try
+        {
+            Fruit f = new Fruit();
+            string upper = f.Name.ToUpper();
+        }
+        catch (Exception e)
+        {
+            Telemetry.TrackException(e);
+        }
     }
     private void KillCore()
     {
