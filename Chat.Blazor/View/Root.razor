@@ -69,7 +69,7 @@ else
         <MudButton   
                FullWidth="true"
                Variant="Variant.Filled"
-               OnClick="Update"
+               OnClick="DeleteWASM"
                Color="Color.Primary">Delete WASM</MudButton>
     </MudContainer>
 }
@@ -80,7 +80,7 @@ else
 
     void DrawerToggle() => _drawerOpen = !_drawerOpen;
     void LoginLogout() => _isLoggedIn = !_isLoggedIn;  
-    async Task Update() => await JSRuntime.InvokeVoidAsync("DeleteCache");
+    async Task DeleteWASM() => await JSRuntime.InvokeVoidAsync(nameof(DeleteWASM));
     
 
     public string Password { get; set;}
