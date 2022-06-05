@@ -99,4 +99,14 @@
 		</MauiXaml>
 	</ItemGroup>
 
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net6.0-android|AnyCPU'">
+		<AndroidKeyStore>True</AndroidKeyStore>
+		<AndroidSigningStorePass>mobiledevops</AndroidSigningStorePass>
+		<AndroidSigningKeyAlias>mobiledevops</AndroidSigningKeyAlias>
+		<AndroidSigningKeyPass>mobiledevops</AndroidSigningKeyPass>
+		<AndroidSigningKeyStore>mobiledevops.keystore</AndroidSigningKeyStore>
+		<AndroidSigningStorePass>mobiledevops</AndroidSigningStorePass>
+		<EmbedAssembliesIntoApk>true</EmbedAssembliesIntoApk>
+	</PropertyGroup>
+
 </Project>
