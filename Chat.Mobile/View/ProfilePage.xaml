@@ -39,13 +39,13 @@
         <Label
             TextColor="Black"
             Text="{Binding Telemetry.Context.Device.Language}"/>
-        <Label
+        <!--Label
             FontAttributes="Bold"
             TextColor="Black"
             Text="Telemetry.Context.Device.ScreenResolution"/>
         <Label
             TextColor="Black"
-            Text="{Binding Telemetry.Context.Device.ScreenResolution}"/>
+            Text="{Binding Telemetry.Context.Device.ScreenResolution}"/-->
         <Label
             FontSize="Medium"
             FontAttributes="Bold"

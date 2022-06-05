@@ -52,7 +52,6 @@ public partial class ProfileViewModel : BaseViewModel
                 TimeSpan.FromMilliseconds(50 * i),
                 "200",
                 true);
-
             Telemetry.TrackRequest("Bad Request",
                 DateTimeOffset.Now,
                 TimeSpan.FromMilliseconds(3 * i),

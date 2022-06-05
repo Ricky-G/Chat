@@ -8,16 +8,20 @@ public partial class FruitViewModel : BaseViewModel
     public ObservableCollection<Fruit> Fruits { get; set; } = new ObservableCollection<Fruit>();
 
     private readonly FruitService _fruitService;
+    private readonly TelemetryClient _telemetryClient;
 
-    public FruitViewModel(FruitService fruitService)
+    public FruitViewModel(FruitService fruitService, TelemetryClient telemetryClient)
     {
         _fruitService = fruitService;
+        _telemetryClient = telemetryClient;
     }
 
     [ICommand]
     public void Add()
     {
-        Fruits.Insert(0, _fruitService.GetFruit());
+        Fruit fruit = _fruitService.GetFruit();
+        _telemetryClient.TrackEvent(fruit.Name);
+        Fruits.Insert(0, fruit);
     }
 
     [ICommand]
