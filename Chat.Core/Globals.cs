@@ -43,6 +43,8 @@ public static class Globals
         client.Context.Device.OperatingSystem ??= DeviceInfo.Platform.ToString();
         client.Context.Device.Language ??= CultureInfo.CurrentUICulture.TwoLetterISOLanguageName;
         client.Context.Device.ScreenResolution ??= DeviceDisplay.MainDisplayInfo.ToString();
+        client.Context.Device.OemName ??= DeviceInfo.Current.Manufacturer.ToString();
+        client.Context.Device.Type ??= $"{DeviceInfo.Current.DeviceType} {DeviceInfo.Current.Idiom}"; 
         
         string uniqueID = Guid.NewGuid().ToString();
 

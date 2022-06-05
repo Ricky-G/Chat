@@ -35,7 +35,7 @@
 
             FontAttributes="Bold"
             TextColor="Black"
-            Text="Telemetry.Context.Device.Languag}"/>
+            Text="Telemetry.Context.Device.Language"/>
         <Label
             TextColor="Black"
             Text="{Binding Telemetry.Context.Device.Language}"/>
@@ -54,6 +54,30 @@
         <Label
             TextColor="Black"
             Text="{Binding Telemetry.Context.User.AccountId}"/>
+        <Label
+            FontSize="Medium"
+            FontAttributes="Bold"
+            TextColor="Black"
+            Text="Telemetry.Context.User.Id"/>
+        <Label
+            TextColor="Black"
+            Text="{Binding Telemetry.Context.User.Id}"/>
+        <Label
+            FontSize="Medium"
+            FontAttributes="Bold"
+            TextColor="Black"
+            Text="Telemetry.Context.Device.Type"/>
+        <Label
+            TextColor="Black"
+            Text="{Binding Telemetry.Context.Device.Type}"/>
+        <Label
+            FontSize="Medium"
+            FontAttributes="Bold"
+            TextColor="Black"
+            Text="Telemetry.Context.Device.OemName"/>
+        <Label
+            TextColor="Black"
+            Text="{Binding Telemetry.Context.Device.OemName}"/>
         <Button
             Margin="0,0,0,10"
             VerticalOptions="EndAndExpand"
