@@ -55,7 +55,6 @@ public static class Globals
         context.Device.Type ??= $"{DeviceInfo.Current.DeviceType} {DeviceInfo.Current.Idiom}";
         context.Device.NetworkType ??= Connectivity.Current.NetworkAccess.ToString();
 
-
         string uniqueID = Guid.NewGuid().ToString();
 
         context.User.AccountId ??= uniqueID;
