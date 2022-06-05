@@ -35,7 +35,14 @@ jobs:
           dotnet build -f net6.0-android -c Release       
           dotnet publish -c Release -o ./myapp
           cd ./myapp
-          ls    
+          ls  
+      - name: Azure PowerShell Action
+        uses: Azure/powershell@v1
+        with:
+          inlineScript: |
+            cd ./myapp
+            ls
+            
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
