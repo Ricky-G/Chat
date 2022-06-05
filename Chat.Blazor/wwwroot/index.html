@@ -8,8 +8,45 @@
     <base href="/" />
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
     <link href="_content/MudBlazor/MudBlazor.min.css" rel="stylesheet" />
-        <link href="manifest.json" rel="manifest" />
-        <link rel="apple-touch-icon" sizes="512x512" href="icon-512.png" />
+    <link href="manifest.json" rel="manifest" />
+    <link rel="apple-touch-icon" sizes="512x512" href="icon-512.png" />
+
+
+    <script>
+        window.DeleteCache = async () => {
+            if ('serviceWorker' in navigator) {
+                caches.keys().then(function (cacheNames) {
+                    cacheNames.forEach(function (cacheName) {
+                        caches.delete(cacheName);
+
+                    });
+                });
+            }
+
+            self.addEventListener('activate', function (event) {
+                event.waitUntil(
+                    caches.keys().then(function (cacheNames) {
+                        return Promise.all(
+                            cacheNames.filter(function (cacheName) {
+                                // Return true if you want to remove this cache,
+                                // but remember that caches are shared across
+                                // the whole origin
+
+                                return true;
+                            }).map(function (cacheName) {
+                                return caches.delete(cacheName);
+                            })
+                        );
+                    })
+                );
+            });
+            await new Promise((resolve, reject) => setTimeout(resolve, 2000));
+            location.reload();
+        }
+
+    </script>
+
+
 </head>
 
 <body>
@@ -22,7 +59,7 @@
     </div>
     <script src="_framework/blazor.webassembly.js"></script>
     <script src="_content/MudBlazor/MudBlazor.min.js"></script>
-        <script>navigator.serviceWorker.register('service-worker.js');</script>
+    <script>navigator.serviceWorker.register('service-worker.js');</script>
 </body>
 
 </html>

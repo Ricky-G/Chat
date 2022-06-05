@@ -1,4 +1,5 @@
 ﻿@inherits LayoutComponentBase
+@inject IJSRuntime JSRuntime
 
 <MudThemeProvider />
 <MudDialogProvider />
@@ -58,12 +59,18 @@ else
                             AdornmentIcon="@PasswordInputIcon"  
                             AdornmentAriaLabel="Show Password" />
         <br />
-        <MudButton 
-              
+        <MudButton   
                FullWidth="true"
                Variant="Variant.Filled"
                OnClick="LoginLogout"
                Color="Color.Primary">Login</MudButton>
+        <br />
+        <br />
+        <MudButton   
+               FullWidth="true"
+               Variant="Variant.Filled"
+               OnClick="Update"
+               Color="Color.Primary">Delete WASM</MudButton>
     </MudContainer>
 }
 
@@ -71,15 +78,11 @@ else
     bool _isLoggedIn;
     bool _drawerOpen = true;
 
-    void DrawerToggle()
-        => _drawerOpen = !_drawerOpen;
+    void DrawerToggle() => _drawerOpen = !_drawerOpen;
+    void LoginLogout() => _isLoggedIn = !_isLoggedIn;  
+    async Task Update() => await JSRuntime.InvokeVoidAsync("DeleteCache");
     
-    void LoginLogout(){
-       _isLoggedIn = !_isLoggedIn;     
-    }
 
-    public double? Amount { get; set; }
-    public int? Weight { get; set; }
     public string Password { get; set;}
 
     bool isShow;
