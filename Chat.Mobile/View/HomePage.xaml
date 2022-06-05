@@ -17,8 +17,7 @@
         Margin="10">
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
-            <RowDefinition Height="50" />
-            <RowDefinition Height="50" />
+            <RowDefinition Height="70" />
             <RowDefinition Height="50" />
         </Grid.RowDefinitions>
         <CollectionView  
@@ -35,11 +34,13 @@
                             Padding="10"
                             Margin="5">
                             <StackLayout
+                                Orientation="Horizontal"
+                                Spacing="10"
                                 Padding="0">
-                            <Label
+                                <Label
                                 TextColor="{StaticResource Primary}"
                                 Text="{Binding Name}"/>
-                            <Label
+                                <Label
                                 TextColor="Black"
                                 Text="{Binding Body}"/>
                             </StackLayout>
@@ -48,16 +49,22 @@
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
-        <Entry    
-            Grid.Row="1"
-            Placeholder="Message"
-            Text="{Binding Message}"/>
-        <Entry
-            Grid.Row="2"
-            Placeholder="Name"
-            Text="{Binding Name}"/>
+        <StackLayout
+            Orientation="Horizontal"
+            Grid.Row="1">
+            <Entry
+                HorizontalOptions="FillAndExpand"
+                Margin="5"
+                Placeholder="Name"
+                Text="{Binding Name}"/>
+            <Entry
+                HorizontalOptions="FillAndExpand"
+                Margin="0,5,5,5"
+                Placeholder="Message"
+                Text="{Binding Message}"/>
+        </StackLayout>
         <Button
-            Grid.Row="3"
+            Grid.Row="2"
             Command="{Binding BroadcastCommand}"
             Text="Send"/>
     </Grid>
