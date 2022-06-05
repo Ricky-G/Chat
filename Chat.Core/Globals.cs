@@ -10,7 +10,7 @@ global using Microsoft.ApplicationInsights.Extensibility;
 global using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.QuickPulse;
 global using System.Reflection;
 global using Microsoft.Extensions.Configuration;
-using System.Globalization;
+global using System.Globalization;
 
 namespace Chat.Core;
 
@@ -45,6 +45,7 @@ public static class Globals
         client.Context.Device.ScreenResolution ??= DeviceDisplay.MainDisplayInfo.ToString();
         
         string uniqueID = Guid.NewGuid().ToString();
+
         client.Context.User.AccountId ??= uniqueID;
         client.Context.User.Id ??= uniqueID;
 
