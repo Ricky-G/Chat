@@ -15,9 +15,17 @@
         </StackLayout>
     </Shell.TitleView>
     <StackLayout>
+        <Entry
+            Margin="10,40,10,10"
+            Placeholder="Username"
+            />
+        <Entry
+            Margin="10,5,10,0"
+            Placeholder="Password"
+            IsPassword="True"
+            />
         <Button
             Margin="10"
-            VerticalOptions="EndAndExpand"
             Text="Login"
             Command="{Binding LoginCommand}"
             />
