@@ -1,0 +1,16 @@
+﻿@page "/profile"
+@using Chat.Core.ViewModel
+@inject ProfileViewModel ViewModel;
+@using System.Collections.ObjectModel
+@inherits Base
+
+
+<div style="height:800px;overflow:auto;">
+
+    <MudButton Variant="Variant.Filled"
+               FullWidth="true"
+               OnClick="ViewModel.StartMonitor"
+               Color="Color.Primary">Monitor</MudButton>
+</div>
+
+@code{ protected override void OnInitialized() => SetViewModel(ViewModel); }

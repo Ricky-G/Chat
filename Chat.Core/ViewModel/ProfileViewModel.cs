@@ -9,21 +9,7 @@ public partial class ProfileViewModel : BaseViewModel
     private bool _runThread;
     public ProfileViewModel(TelemetryClient telemetry)
     {
-        Telemetry = telemetry;
-
-        /*
-         
-                 client.Context.Device.Model ??= DeviceInfo.Model;
-        client.Context.Device.OperatingSystem ??= DeviceInfo.Platform.ToString();
-        client.Context.Device.Language ??= CultureInfo.CurrentUICulture.TwoLetterISOLanguageName;
-        client.Context.Device.ScreenResolution ??= DeviceDisplay.MainDisplayInfo.ToString();
-        
-        string uniqueID = Guid.NewGuid().ToString();
-        client.Context.User.AccountId ??= uniqueID;
-        client.Context.User.Id ??= uniqueID;
-         
-         
-         */
+        Telemetry = telemetry; 
     }
 
     [ICommand]
@@ -31,7 +17,7 @@ public partial class ProfileViewModel : BaseViewModel
         => await Shell.Current.GoToAsync($"//Login");
 
     [ICommand]
-    private async void StartMonitor()
+    public async void StartMonitor()
     {
         _runThread = true;
 
