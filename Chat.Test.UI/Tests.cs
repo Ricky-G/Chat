@@ -40,16 +40,20 @@ namespace Chat.UITest
             app.Tap(ui => ui.Marked("Add"));
             app.Tap(ui => ui.Marked("Add"));
             app.Tap(ui => ui.Marked("Add"));
+            await Task.Delay(2000);
             app.Screenshot("Should be 4 fruits");
 
             app.Tap(ui => ui.Marked("Remove"));
             app.Tap(ui => ui.Marked("Remove"));
+            await Task.Delay(2000);
             app.Screenshot("Should be 2 fruits");
 
             app.Tap(ui => ui.Marked("Profile"));
             app.Tap(ui => ui.Marked("Monitor"));
+            app.Tap(ui => ui.Marked("Monitor"));
+            app.Tap(ui => ui.Marked("Monitor"));
 
-            await Task.Delay(3000);
+            await Task.Delay(6000);
             app.Screenshot("CPU High");
             await Task.Delay(3000);
 
