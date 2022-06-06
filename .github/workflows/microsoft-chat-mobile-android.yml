@@ -23,7 +23,7 @@ jobs:
           dotnet workload restore 
           dotnet build -f net6.0-android -c Debug
           cd ..
-          cd Chat.Mobile/bin/Debug/net6.0-android/
+          cd Chat.Mobile/bin/Debug/net6.0-android
           ls
           
       - name: Upload Android artifact
