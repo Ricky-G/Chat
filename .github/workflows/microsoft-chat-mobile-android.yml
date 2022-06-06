@@ -29,7 +29,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: android-app
-          path: cd Chat.Mobile/bin/Release/net6.0-android/
+          path: Chat.Mobile/bin/Release/net6.0-android/
 
 
   test:
@@ -51,5 +51,14 @@ jobs:
       - name: List path
         run: ls
       
-      
+      - name: Add msbuild to PATH
+        uses: microsoft/setup-msbuild@v1.1
+
+      - name: Build app for release
+        run: msbuild Chat.Test.UI/Chat.Test.UI.csproj -t:rebuild -verbosity:diag -property:Configuration=Release
   
+      - run: npm install -g appcenter-cli
+        name: "Install App Center"
+
+      - run: appcenter test run uitest --app 'AliFarahnakPFE/Chat.Android' --devices '4724249b' --app-path 'android-app/ms.chat.mobile-Signed.apk' --test-series "master" --build-dir 'Chat.Test.UI/Chat.Mobile/bin/Release/net6.0-android' --uitest-tools-dir 'Chat.Test.UI/Chat.Mobile/bin/Release/net6.0-android' --token 'dffe5931ea91c6d6b23c33ea737414d79bbb338b'
+        name: "Run UI Test App Center"
