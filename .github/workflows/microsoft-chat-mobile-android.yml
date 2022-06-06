@@ -11,21 +11,11 @@ on:
       - main
       
 jobs:
-  test-integration:
-    runs-on: windows-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: test-integration
-        run: |
-          cd Chat.Test.Integration
-          dotnet workload restore 
-          dotnet test
-  
   build:
     runs-on: windows-latest
-    needs: test-integration
     steps:
       - uses: actions/checkout@v2
+      
       - name: build
         run: |
           cd Chat.Mobile
@@ -34,3 +24,31 @@ jobs:
           cd ..
           cd Chat.Mobile/bin/Release/net6.0-android/
           ls
+          
+      - name: Upload Android artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: android-app
+          path: cd Chat.Mobile/bin/Release/net6.0-android/
+
+
+  test:
+    runs-on: windows-latest
+    needs: build
+    steps:
+      - uses: actions/checkout@v2
+      - name: test-integration
+        run: |
+          cd Chat.Test.Integration
+          dotnet workload restore 
+          dotnet test
+          
+      - name: Download Android artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: android-app
+          
+      - name: List path
+        run: ls
+          
+  
