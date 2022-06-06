@@ -17,12 +17,12 @@
     <StackLayout>
         <Entry
             AutomationId="Username"
-            Margin="10,40,10,10"
+            Margin="10,40,10,0"
             Placeholder="Username"
             />
         <Entry
             AutomationId="Password"
-            Margin="10,5,10,0"
+            Margin="10,0,10,0"
             Placeholder="Password"
             IsPassword="True"
             />

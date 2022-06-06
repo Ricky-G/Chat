@@ -16,12 +16,30 @@
     <Grid
         Margin="10">
         <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
             <RowDefinition Height="70" />
             <RowDefinition Height="50" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
+        <StackLayout
+            Orientation="Horizontal"
+            Grid.Row="0">
+            <Entry
+                HorizontalOptions="FillAndExpand"
+                Margin="5"
+                Placeholder="Name"
+                Text="{Binding Name}"/>
+            <Entry
+                HorizontalOptions="FillAndExpand"
+                Margin="0,5,5,5"
+                Placeholder="Message"
+                Text="{Binding Message}"/>
+        </StackLayout>
+        <Button
+            Grid.Row="1"
+            Command="{Binding BroadcastCommand}"
+            Text="Send"/>
         <CollectionView  
-            Grid.Row="0"
+            Grid.Row="2"
             ItemsSource="{Binding Messages}">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
@@ -49,23 +67,5 @@
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
-        <StackLayout
-            Orientation="Horizontal"
-            Grid.Row="1">
-            <Entry
-                HorizontalOptions="FillAndExpand"
-                Margin="5"
-                Placeholder="Name"
-                Text="{Binding Name}"/>
-            <Entry
-                HorizontalOptions="FillAndExpand"
-                Margin="0,5,5,5"
-                Placeholder="Message"
-                Text="{Binding Message}"/>
-        </StackLayout>
-        <Button
-            Grid.Row="2"
-            Command="{Binding BroadcastCommand}"
-            Text="Send"/>
     </Grid>
 </ContentPage>
