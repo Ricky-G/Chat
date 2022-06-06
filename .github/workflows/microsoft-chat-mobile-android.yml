@@ -17,7 +17,7 @@ jobs:
       - uses: actions/checkout@v2
     
       - name: Restore NuGet Packages
-        run: nuget restore **/Chat.Test.UI.csproj
+        run: nuget restore 'Chat.Test.UI/Chat.Test.UI.csproj'
       
       - name: Add msbuild to PATH
         uses: microsoft/setup-msbuild@v1.1
