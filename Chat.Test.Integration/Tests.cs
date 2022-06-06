@@ -1,3 +1,6 @@
+global using NUnit.Framework;
+global using Chat.Core.Model;
+
 namespace Chat.Test;
 
 public class Tests

@@ -8,12 +8,12 @@ using Assert = NUnit.Framework.Assert;
 namespace Chat.UITest
 {
     [TestFixture(Platform.Android)]
-    public class UITest
+    public class Tests
     {
         IApp app;
         Platform platform;
 
-        public UITest(Platform platform)
+        public Tests(Platform platform)
         {
             this.platform = platform;
         }
