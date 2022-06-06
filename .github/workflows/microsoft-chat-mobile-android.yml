@@ -15,6 +15,16 @@ jobs:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v2
+    
+      - name: Restore NuGet Packages
+        run: nuget restore **/Chat.Test.UI.csproj
+      
+      - name: Add msbuild to PATH
+        uses: microsoft/setup-msbuild@v1.1
+
+      - name: Build app for release
+        run: msbuild **/Chat.Test.UI.csproj -t:rebuild -verbosity:diag -property:Configuration=Release
+  
       
       - name: build
         run: |
