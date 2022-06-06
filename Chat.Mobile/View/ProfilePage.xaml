@@ -79,6 +79,7 @@
             TextColor="Black"
             Text="{Binding Telemetry.Context.Device.OemName}"/>
         <Button
+            AutomationId="Monitor"
             Margin="0,0,0,10"
             VerticalOptions="EndAndExpand"
             FontSize="Large"

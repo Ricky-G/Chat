@@ -9,7 +9,6 @@
     <TabBar
         Route="Tabs">
         <Tab
-            AutomationId="home"
             Title="Home"
             Icon="home.png">
             <ShellContent
@@ -17,15 +16,14 @@
 
         </Tab>
         <Tab
-            AutomationId="fruit"
             Title="Fruit"
             Icon="magnify.png">
             <ShellContent
+                AutomationId="fruit"
                 ContentTemplate="{DataTemplate views:FruitPage}"/>
 
         </Tab>
         <Tab 
-            AutomationId="profile"
             Title="Profile"
             Icon="person.png">
             <ShellContent 

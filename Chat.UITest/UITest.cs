@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using System.Linq;
+using System.Threading.Tasks;
 using Xamarin.UITest;
 using Xamarin.UITest.Queries;
 using Assert = NUnit.Framework.Assert;
@@ -24,18 +25,36 @@ namespace Chat.UITest
         }
 
         [Test]
-        public void LoginTest()
+        public async Task Test()
         {
 #if DEBUG
            app.Repl();
 #endif
-        //    app.EnterText(ui => ui.Marked("username"), "admin");
-        //    app.EnterText(ui => ui.Marked("password"), "abcd1234");
-     //       app.Screenshot("LoginPage");
-            app.Tap(c => c.Marked("Login"));
-            AppResult[] homeElements = app.WaitForElement(c => c.Marked("Home"));
-            app.Screenshot("CollectionPage");
-            Assert.IsTrue(homeElements.Any());
+            app.EnterText(ui => ui.Marked("Username"), "admin");
+            app.EnterText(ui => ui.Marked("Password"), "abcd1234");
+            app.Tap(ui => ui.Marked("Login"));
+
+            app.Tap(ui => ui.Marked("Fruit"));
+
+            app.Tap(ui => ui.Marked("Add"));
+            app.Tap(ui => ui.Marked("Add"));
+            app.Tap(ui => ui.Marked("Add"));
+            app.Tap(ui => ui.Marked("Add"));
+            app.Screenshot("Should be 4 fruits");
+
+            app.Tap(ui => ui.Marked("Remove"));
+            app.Tap(ui => ui.Marked("Remove"));
+            app.Screenshot("Should be 2 fruits");
+
+            app.Tap(ui => ui.Marked("Profile"));
+            app.Tap(ui => ui.Marked("Monitor"));
+
+            await Task.Delay(3000);
+            app.Screenshot("CPU High");
+            await Task.Delay(3000);
+
+            AppResult[] monitorElements = app.WaitForElement(c => c.Marked("Monitor"));
+            Assert.IsTrue(monitorElements.Any());
         }
     }
 
