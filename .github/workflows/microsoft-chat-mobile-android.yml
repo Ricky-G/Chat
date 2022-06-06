@@ -11,13 +11,13 @@ on:
       - main
       
 jobs:
-  build:
+  Build:
     runs-on: windows-latest
     steps:
-      - name: code checkout
+      - name: Code Checkout
         uses: actions/checkout@v2
     
-      - name: build
+      - name: Build
         run: |
           cd Chat.Mobile
           dotnet workload restore 
@@ -26,42 +26,42 @@ jobs:
           cd Chat.Mobile/bin/Release/net6.0-android/
           ls
           
-      - name: upload android artifact
+      - name: Upload android artifact
         uses: actions/upload-artifact@v2
         with:
           name: android-app
           path: Chat.Mobile/bin/Release/net6.0-android/
 
 
-  test:
+  Test:
     runs-on: windows-latest
-    needs: build
+    needs: Build
     steps:
-      - name: code checkout
+      - name: Code checkout
         uses: actions/checkout@v2
     
-      - name: test integration
+      - name: Test integration
         run: |
           cd Chat.Test.Integration
           dotnet workload restore 
           dotnet test
           
-      - name: download android artifact
+      - name: Download android artifact
         uses: actions/download-artifact@v2
         with:
           name: android-app
           
-      - name: restore nuget (needed for legacy dotnet)
+      - name: Restore nuget (needed for legacy dotnet)
         run: nuget restore 'Chat.sln'
       
-      - name: add msbuild to PATH
+      - name: Add msbuild to PATH
         uses: microsoft/setup-msbuild@v1.1
 
-      - name: build uitest
+      - name: Build uitest
         run: msbuild 'Chat.Test.UI/Chat.Test.UI.csproj' -t:rebuild -verbosity:diag -property:Configuration=Release
   
       - run: npm install -g appcenter-cli
-        name: "install app center cli"
+        name: Install app center cli
 
       - run: appcenter test run uitest --app 'AliFarahnakPFE/Chat.Android' --devices '4724249b' --app-path 'ms.chat.mobile-Signed.apk' --test-series "master" --build-dir 'Chat.Test.UI/Chat.Mobile/bin/Release/net6.0-android' --uitest-tools-dir 'Chat.Test.UI/Chat.Mobile/bin/Release/net6.0-android' --token 'dffe5931ea91c6d6b23c33ea737414d79bbb338b'
-        name: "run ui test"
+        name: Run ui test
