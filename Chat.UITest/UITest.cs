@@ -27,15 +27,15 @@ namespace Chat.UITest
         public void LoginTest()
         {
 #if DEBUG
-            app.Repl();
+           app.Repl();
 #endif
-            app.EnterText(ui => ui.Marked("username"), "admin");
-            app.EnterText(ui => ui.Marked("password"), "abcd1234");
-            app.Screenshot("LoginPage");
-            app.Tap(c => c.Marked("LoginButton"));
-            AppResult[] results = app.WaitForElement(c => c.Marked("LogoutButton"));
+        //    app.EnterText(ui => ui.Marked("username"), "admin");
+        //    app.EnterText(ui => ui.Marked("password"), "abcd1234");
+     //       app.Screenshot("LoginPage");
+            app.Tap(c => c.Marked("Login"));
+            AppResult[] homeElements = app.WaitForElement(c => c.Marked("Home"));
             app.Screenshot("CollectionPage");
-            Assert.IsTrue(results.Any());
+            Assert.IsTrue(homeElements.Any());
         }
     }
 
@@ -46,10 +46,9 @@ namespace Chat.UITest
             if (platform == Platform.Android)
             {
                 return ConfigureApp
-                   .Android
-                   .InstalledApp("ms.chat.mobile")
-                   .Debug()
-                   .StartApp();
+                    .Android
+                    .InstalledApp("ms.chat.mobile")
+                    .StartApp();
             }
 
                 return ConfigureApp

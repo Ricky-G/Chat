@@ -16,15 +16,18 @@
     </Shell.TitleView>
     <StackLayout>
         <Entry
+            AutomationId="username"
             Margin="10,40,10,10"
             Placeholder="Username"
             />
         <Entry
+            AutomationId="password"
             Margin="10,5,10,0"
             Placeholder="Password"
             IsPassword="True"
             />
         <Button
+            AutomationId="login"
             Margin="10"
             Text="Login"
             Command="{Binding LoginCommand}"
