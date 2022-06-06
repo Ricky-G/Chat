@@ -29,8 +29,8 @@ jobs:
       - name: build
         run: |
           cd Chat.Mobile
-          ls
           dotnet workload restore 
-          dotnet build -f net6.0-android -c Release -o ./myapp       
-          cd ./myapp
-          ls  
+          dotnet build -f net6.0-android -c Release
+          cd ..
+          cd Chat.Mobile/bin/Release/net6.0-android/
+          ls
