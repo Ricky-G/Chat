@@ -48,8 +48,10 @@ jobs:
         with:
           name: android-app
           
-      - name: List path
-        run: ls
+      - name: List path and Restore Nugets
+        run: |
+          ls
+          dotnet restore
       
       - name: Add msbuild to PATH
         uses: microsoft/setup-msbuild@v1.1
@@ -60,5 +62,5 @@ jobs:
       - run: npm install -g appcenter-cli
         name: "Install App Center"
 
-      - run: appcenter test run uitest --app 'AliFarahnakPFE/Chat.Android' --devices '4724249b' --app-path 'android-app/ms.chat.mobile-Signed.apk' --test-series "master" --build-dir 'Chat.Test.UI/Chat.Mobile/bin/Release/net6.0-android' --uitest-tools-dir 'Chat.Test.UI/Chat.Mobile/bin/Release/net6.0-android' --token 'dffe5931ea91c6d6b23c33ea737414d79bbb338b'
+      - run: appcenter test run uitest --app 'AliFarahnakPFE/Chat.Android' --devices '4724249b' --app-path 'ms.chat.mobile-Signed.apk' --test-series "master" --build-dir 'Chat.Test.UI/Chat.Mobile/bin/Release/net6.0-android' --uitest-tools-dir 'Chat.Test.UI/Chat.Mobile/bin/Release/net6.0-android' --token 'dffe5931ea91c6d6b23c33ea737414d79bbb338b'
         name: "Run UI Test App Center"
