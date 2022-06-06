@@ -11,12 +11,13 @@ on:
       - main
       
 jobs:
-  build:
+  Build:
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v2
-      
-      - name: build
+      - name: Code Checkout
+        uses: actions/checkout@v2
+    
+      - name: Build
         run: |
           cd Chat.Mobile
           dotnet workload restore 
@@ -32,12 +33,14 @@ jobs:
           path: Chat.Mobile/bin/Release/net6.0-android/
 
 
-  test:
+  Test:
     runs-on: windows-latest
-    needs: build
+    needs: Build
     steps:
-      - uses: actions/checkout@v2
-      - name: test-integration
+      - name: Code checkout
+        uses: actions/checkout@v2
+    
+      - name: Test integration
         run: |
           cd Chat.Test.Integration
           dotnet workload restore 
@@ -48,19 +51,17 @@ jobs:
         with:
           name: android-app
           
-      - name: List path and Restore Nugets
-        run: |
-          ls
-          dotnet restore
+      - name: Restore MuGet (needed for legacy dotnet)
+        run: nuget restore 'Chat.sln'
       
       - name: Add msbuild to PATH
         uses: microsoft/setup-msbuild@v1.1
 
-      - name: Build app for release
-        run: msbuild Chat.Test.UI/Chat.Test.UI.csproj -t:rebuild -verbosity:diag -property:Configuration=Release
+      - name: Build UI Test
+        run: msbuild 'Chat.Test.UI/Chat.Test.UI.csproj' -t:rebuild -verbosity:diag -property:Configuration=Release
   
       - run: npm install -g appcenter-cli
-        name: "Install App Center"
+        name: Install App Center CLI
 
-      - run: appcenter test run uitest --app 'AliFarahnakPFE/Chat.Android' --devices '4724249b' --app-path 'ms.chat.mobile-Signed.apk' --test-series "master" --build-dir 'Chat.Test.UI/Chat.Mobile/bin/Release/net6.0-android' --uitest-tools-dir 'Chat.Test.UI/Chat.Mobile/bin/Release/net6.0-android' --token 'dffe5931ea91c6d6b23c33ea737414d79bbb338b'
-        name: "Run UI Test App Center"
+      - run: appcenter test run uitest --app 'AliFarahnakPFE/Chat.Android' --devices '4724249b' --app-path 'ms.chat.mobile-Signed.apk' --test-series "master" --build-dir 'D:\a\Chat\Chat\Chat.Test.UI\bin\Release\' --uitest-tools-dir 'D:\a\Chat\Chat\Chat.Test.UI\bin\Release\' --token 'dffe5931ea91c6d6b23c33ea737414d79bbb338b'
+        name: Run UI test
