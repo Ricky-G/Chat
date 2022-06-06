@@ -31,4 +31,6 @@ jobs:
           cd Chat.Mobile
           dotnet workload restore 
           dotnet build -f net6.0-android -c Release
-          find . -maxdepth 4 -type f -name "*.apk"
+          cd ..
+          cd Chat.Mobile/bin/Release/net6.0-android/
+          ls
