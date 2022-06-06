@@ -14,18 +14,9 @@ jobs:
   build:
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: code checkout
+        uses: actions/checkout@v2
     
-      - name: Restore NuGet Packages
-        run: nuget restore 'Chat.sln'
-      
-      - name: Add msbuild to PATH
-        uses: microsoft/setup-msbuild@v1.1
-
-      - name: Build app for release
-        run: msbuild 'Chat.Test.UI/Chat.Test.UI.csproj' -t:rebuild -verbosity:diag -property:Configuration=Release
-  
-      
       - name: build
         run: |
           cd Chat.Mobile
@@ -35,7 +26,7 @@ jobs:
           cd Chat.Mobile/bin/Release/net6.0-android/
           ls
           
-      - name: Upload Android artifact
+      - name: upload android artifact
         uses: actions/upload-artifact@v2
         with:
           name: android-app
@@ -46,31 +37,31 @@ jobs:
     runs-on: windows-latest
     needs: build
     steps:
-      - uses: actions/checkout@v2
-      - name: test-integration
+      - name: code checkout
+        uses: actions/checkout@v2
+    
+      - name: test integration
         run: |
           cd Chat.Test.Integration
           dotnet workload restore 
           dotnet test
           
-      - name: Download Android artifact
+      - name: download android artifact
         uses: actions/download-artifact@v2
         with:
           name: android-app
           
-      - name: List path and Restore Nugets
-        run: |
-          ls
-          dotnet restore
+      - name: restore nuget (needed for legacy dotnet)
+        run: nuget restore 'Chat.sln'
       
-      - name: Add msbuild to PATH
+      - name: add msbuild to PATH
         uses: microsoft/setup-msbuild@v1.1
 
-      - name: Build app for release
-        run: msbuild Chat.Test.UI/Chat.Test.UI.csproj -t:rebuild -verbosity:diag -property:Configuration=Release
+      - name: build uitest
+        run: msbuild 'Chat.Test.UI/Chat.Test.UI.csproj' -t:rebuild -verbosity:diag -property:Configuration=Release
   
       - run: npm install -g appcenter-cli
-        name: "Install App Center"
+        name: "install app center cli"
 
       - run: appcenter test run uitest --app 'AliFarahnakPFE/Chat.Android' --devices '4724249b' --app-path 'ms.chat.mobile-Signed.apk' --test-series "master" --build-dir 'Chat.Test.UI/Chat.Mobile/bin/Release/net6.0-android' --uitest-tools-dir 'Chat.Test.UI/Chat.Mobile/bin/Release/net6.0-android' --token 'dffe5931ea91c6d6b23c33ea737414d79bbb338b'
-        name: "Run UI Test App Center"
+        name: "run ui test"
