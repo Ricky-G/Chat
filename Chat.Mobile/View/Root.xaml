@@ -19,7 +19,6 @@
             Title="Fruit"
             Icon="magnify.png">
             <ShellContent
-                AutomationId="fruit"
                 ContentTemplate="{DataTemplate views:FruitPage}"/>
 
         </Tab>
