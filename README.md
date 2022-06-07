@@ -1,4 +1,4 @@
-# Chat EcoSystem Status
+# Mobile DevOps - Unified Chat Solution
 This repository is to demonstrate code sharing between <b>Android, iOS, WinUI3, macOS, Linux, Tizen and Web Blazor</b>. <br>
 Furthermore <b>Mobile DevOps</b> is implemented with best practice with the use of App Center, Application Insights and Google Play.
 
