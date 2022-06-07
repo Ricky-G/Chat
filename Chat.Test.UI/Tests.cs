@@ -53,7 +53,7 @@ namespace Chat.UITest
             app.Tap(ui => ui.Marked("Monitor"));
 
             await Task.Delay(6000);
-            app.Screenshot("CPU High");
+            app.Screenshot("Leak");
             await Task.Delay(30000);
 
             AppResult[] monitorElements = app.WaitForElement(c => c.Marked("Monitor"));
