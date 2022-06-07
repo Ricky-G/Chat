@@ -6,8 +6,10 @@ on:
     paths-ignore:
       - 'Chat.Mobile/**'
       - 'Chat.Blazor/**'
+      - 'Chat.Test.**'
       - '**/microsoft-chat-mobile-android.yml'
       - '**/microsoft-chat-blazor.yml'
+      - 'README.md'
     branches:
       - main
 

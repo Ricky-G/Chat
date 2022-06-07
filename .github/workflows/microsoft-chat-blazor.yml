@@ -6,8 +6,10 @@ on:
     paths-ignore:
       - 'Chat.Mobile/**'
       - 'Chat.Hub/**'
+      - 'Chat.Test.**'
       - '**/microsoft-chat-mobile-android.yml'
       - '**/microsoft-chat-hub.yml'
+      - 'README.md'
     branches:
       - main
       
