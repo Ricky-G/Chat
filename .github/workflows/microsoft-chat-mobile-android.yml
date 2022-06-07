@@ -32,21 +32,27 @@ jobs:
         with:
           name: android-app
           path: Chat.Mobile/bin/Debug/net6.0-android/
-
-
-  Test:
+  
+  TestIntegration:
     runs-on: windows-latest
     needs: Build
     steps:
       - name: Code checkout
         uses: actions/checkout@v2
     
-      - name: Test integration
+      - name: Test Integration
         run: |
           cd Chat.Test.Integration
           dotnet workload restore 
           dotnet test
-          
+
+  TestUI:
+    runs-on: windows-latest
+    needs: TestIntegration
+    steps:
+      - name: Code checkout
+        uses: actions/checkout@v2
+
       - name: Download Android artifact
         uses: actions/download-artifact@v2
         with:
@@ -65,18 +71,18 @@ jobs:
         name: Install App Center CLI
 
       - run: appcenter test run uitest --app 'AliRezaFarahnak/Chat.Android' --devices '9e4629a9' --app-path 'ms.chat.mobile.apk' --test-series "master" --build-dir 'D:\a\Chat\Chat\Chat.Test.UI\bin\Debug\' --uitest-tools-dir 'D:\a\Chat\Chat\Chat.Test.UI\bin\Debug\' --token 'dffe5931ea91c6d6b23c33ea737414d79bbb338b'
-        name: Run UI test
+        name: Test UI
         
-  DistributeInternal:
+  Internal:
     runs-on: windows-latest
-    needs: Test
+    needs: TestUI
     steps:
       - name: Code checkout
         uses: actions/checkout@v2
    
   GooglePlay:
     runs-on: windows-latest
-    needs: DistributeInternal
+    needs: Internal
     steps:
       - name: Code Checkout
         uses: actions/checkout@v2
