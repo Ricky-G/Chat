@@ -98,6 +98,6 @@ jobs:
       - run: npm install -g appcenter-cli
         name: Install App Center CLI
       
-      - run: appcenter distribute stores publish --file 'Chat.Mobile/bin/Release/net6.0-android/ms.chat.mobile-Signed.aab' --store Production --app 'AliRezaFarahnak/Chat.Android' --release-notes 'New Features..' --token 'dffe5931ea91c6d6b23c33ea737414d79bbb338b
+      - run: appcenter distribute stores publish --file 'Chat.Mobile/bin/Release/net6.0-android/ms.chat.mobile-Signed.aab' --store Production --app 'AliRezaFarahnak/Chat.Android' --release-notes 'New Features..' --token 'dffe5931ea91c6d6b23c33ea737414d79bbb338b'
         name: Publish to Google Play
         
