@@ -55,7 +55,7 @@ namespace Chat.UITest
 
             await Task.Delay(6000);
             app.Screenshot("CPU High");
-            await Task.Delay(3000);
+            await Task.Delay(30000);
 
             AppResult[] monitorElements = app.WaitForElement(c => c.Marked("Monitor"));
             Assert.IsTrue(monitorElements.Any());
