@@ -18,9 +18,9 @@ public static class MauiProgram
             .UseMauiApp<App>().UseMauiCommunityToolkit()
             .ConfigureFonts(fonts =>
             {
-                fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
+                fonts.AddFont("OpenSans-Regular.ttf", "Default");
                 fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
-                fonts.AddFont("junegull.ttf", "JuneGull");
+              //  fonts.AddFont("junegull.ttf", "Default");
             });
 
         RegisterTypes(builder.Services);
