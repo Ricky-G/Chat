@@ -40,8 +40,4 @@ jobs:
       - name: Build IPA
         run: |
           cd Chat.Mobile
-          dotnet workload restore 
-          dotnet build -f net6.0-iOS -c Release
-          cd ..
-          cd Chat.Mobile/bin/Release/net6.0-iOS
-          ls
+          dotnet workload restore
