@@ -49,5 +49,5 @@ jobs:
           dotnet workload restore 
           dotnet build -f net6.0-ios -c Release
           cd ..
-          cd bin/Release/net6.0-ios
+          cd Chat.Mobile/bin/Release/net6.0-ios/iossimulator-x64
           ls
