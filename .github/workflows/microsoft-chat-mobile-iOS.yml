@@ -19,9 +19,3 @@ jobs:
           cd Chat.Mobile
           security import AppleDistribution.p12 -P ${{ secrets.P12_PASSWORD }} -A
           open MSChatProd.mobileprovision
-          ls
-          dotnet workload restore 
-          dotnet build -f net6.0-ios -c Release
-          cd ..
-          cd Chat.Mobile/bin/Release/net6.0-ios/ios-arm64
-          ls
