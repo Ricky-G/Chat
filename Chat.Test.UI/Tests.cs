@@ -25,11 +25,19 @@ namespace Chat.UITest
         }
 
         [Test]
-        public async Task Test()
+        public async Task LoginTest()
         {
-#if DEBUG
-           app.Repl();
-#endif
+            app.EnterText(ui => ui.Marked("Username"), "admin");
+            app.EnterText(ui => ui.Marked("Password"), "abcd1234");
+            app.Tap(ui => ui.Marked("Login"));
+
+            AppResult[] homeElements = app.WaitForElement(c => c.Marked("Home"));
+            Assert.IsTrue(homeElements.Any());
+        }
+
+        [Test]
+        public async Task FruitTest()
+        {
             app.EnterText(ui => ui.Marked("Username"), "admin");
             app.EnterText(ui => ui.Marked("Password"), "abcd1234");
             app.Tap(ui => ui.Marked("Login"));
@@ -47,6 +55,20 @@ namespace Chat.UITest
             app.Tap(ui => ui.Marked("Remove"));
             await Task.Delay(2000);
             app.Screenshot("Should be 2 fruits");
+
+            AppResult[] fruitElements = app.WaitForElement(c => c.Marked("Fruit"));
+            Assert.IsTrue(fruitElements.Any());
+        }
+
+        [Test]
+        public async Task LeakTest()
+        {
+#if DEBUG
+           app.Repl();
+#endif
+            app.EnterText(ui => ui.Marked("Username"), "admin");
+            app.EnterText(ui => ui.Marked("Password"), "abcd1234");
+            app.Tap(ui => ui.Marked("Login"));
 
             app.Tap(ui => ui.Marked("Profile"));
             app.Tap(ui => ui.Marked("Monitor"));
