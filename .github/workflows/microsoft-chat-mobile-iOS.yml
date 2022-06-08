@@ -6,9 +6,6 @@ jobs:
     runs-on: macos-12
 
     steps:
-      - run: cd ~/Library/MobileDevice/Provisioning\ Profiles && ls
-      
-      - run: security find-certificate -p -c "Apple Worldwide Developer Relations Certification Authority" | openssl x509 -text -noout
       
       - name: P12 Install
         uses: Apple-Actions/import-codesign-certs@v1
