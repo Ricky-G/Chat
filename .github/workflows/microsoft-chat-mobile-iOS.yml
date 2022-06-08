@@ -8,10 +8,13 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-        
+     
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v2
+        with:
+          dotnet-version: 6.0.x
+          
       - name: P12 Install
-        # You may pin to the exact commit or the version.
-        # uses: Apple-Actions/import-codesign-certs@253ddeeac23f2bdad1646faac5c8c2832e800071
         uses: Apple-Actions/import-codesign-certs@v1
         with:
           p12-filepath: 'Chat.Mobile/AppleDistribution.p12'
@@ -21,11 +24,6 @@ jobs:
         uses: akiojin/install-provisioning-profile-github-action@v1.0
         with:
           path: 'Chat.Mobile/MSChatProd.mobileprovision'
-
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v2
-        with:
-          dotnet-version: 6.0.x
           
       - name: Build IPA
         run: |
