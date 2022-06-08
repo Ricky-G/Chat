@@ -1,0 +1,12 @@
+
+
+trigger:
+- main
+
+pool:
+  vmImage: 'macos-12'
+
+steps:
+- script: |
+    cd Chat.Mobile
+    ls
