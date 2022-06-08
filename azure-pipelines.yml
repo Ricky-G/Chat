@@ -8,7 +8,7 @@ steps:
 - task: NuGetToolInstaller@1
 - task: MSBuild@1
   inputs:
-    solution: '**/*Test.UI.csproj'
+    solution: '**/*.sln'
     configuration: 'Release'
     msbuildArguments: /t:restore
 
