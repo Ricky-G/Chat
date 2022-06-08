@@ -33,7 +33,7 @@ jobs:
           name: android-app
           path: Chat.Mobile/bin/Debug/net6.0-android/
   
-  TestIntegration:
+  Integration:
     runs-on: windows-latest
     needs: Build
     steps:
@@ -46,9 +46,9 @@ jobs:
           dotnet workload restore 
           dotnet test
 
-  TestUI:
+  UI:
     runs-on: windows-latest
-    needs: TestIntegration
+    needs: Integration
     steps:
       - name: Code checkout
         uses: actions/checkout@v2
@@ -75,7 +75,7 @@ jobs:
         
   Internal:
     runs-on: windows-latest
-    needs: TestUI
+    needs: UI
     steps:
       - name: Code checkout
         uses: actions/checkout@v2
