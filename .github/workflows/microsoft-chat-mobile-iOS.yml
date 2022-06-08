@@ -1,33 +1,28 @@
-name: Chat.Mobile.iOS
-on: push
+trigger:
+- main
 
-jobs:
-  build_with_signing:
-    runs-on: macos-12
+pool:
+  vmImage: macos-12
 
-    steps:
-      - name: Code Checkout
-        uses: actions/checkout@v2
-        
-      - uses: bradyjoslin/xamarinios-signedbuild-action@v1
-        with:
-          csproj_path: Chat.Mobile/Chat.Mobile.csproj
-          mobileprovision: ${{ secrets.MOBILEPROVISION }}
-          cert_p12: ${{ secrets.CERT_P12 }}
-          p12_pass: ${{ secrets.P12_PASS }}
-          
-      - run: cd ~/Library/MobileDevice/Provisioning\ Profiles && ls
-      
-      - name: Setup .NET     
-        uses: actions/setup-dotnet@v2
-        with:
-          dotnet-version: 6.0.x
-          
-      - name: Build IPA
-        run: |
-          cd Chat.Mobile
-          dotnet workload restore 
-          dotnet build -f net6.0-ios -c Release
-          cd ..
-          cd Chat.Mobile/bin/Release/net6.0-ios/ios-arm64
-          ls
+steps:
+- task: InstallAppleCertificate@2
+  inputs:
+    certSecureFile: 'priv.p12'
+    certPwd: '$(p12pass)'
+    keychain: 'temp'
+- task: InstallAppleProvisioningProfile@1
+  inputs:
+    provisioningProfileLocation: 'secureFiles'
+    provProfileSecureFile: 'MSChatProd.mobileprovision'
+- task: UseDotNet@2
+  inputs:
+    packageType: 'sdk'
+    version: '6.x'
+
+- script: |
+    cd Chat.Mobile
+    dotnet workload restore 
+    dotnet build -f net6.0-ios -c Release
+    cd ..
+    cd Chat.Mobile/bin/Release/net6.0-ios/ios-arm64
+    ls
