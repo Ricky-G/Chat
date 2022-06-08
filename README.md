@@ -2,7 +2,7 @@
 This repository is to demonstrate code sharing between <b>Android, iOS, WinUI3, macOS, Linux, Tizen and Web Blazor</b>. <br>
 Furthermore <b>Mobile DevOps</b> is implemented with the use of App Center, Application Insights and Google Play.
 
-Link for Web App: https://microsoft-chat-blazor.azurewebsites.net/
+Link for Web App: https://microsoft-chat-blazor.azurewebsites.net/ <br>
 Link for Native App: https://play.google.com/store/apps/details?id=ms.chat.mobile
 
 [![Chat.Hub](https://github.com/MSFT-alfarahn/Chat/actions/workflows/microsoft-chat-hub.yml/badge.svg)](https://github.com/MSFT-alfarahn/Chat/actions/workflows/microsoft-chat-hub.yml)
