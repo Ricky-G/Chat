@@ -56,7 +56,7 @@
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net6.0-ios|AnyCPU'">
 		<BuildIpa>True</BuildIpa>
 		<MtouchLink>None</MtouchLink>
-		<PublishTrimmed>False</PublishTrimmed>
+		<PublishTrimmed>True</PublishTrimmed>
 	</PropertyGroup>
 
 	<ItemGroup>
