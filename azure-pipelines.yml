@@ -7,6 +7,21 @@ pool:
   vmImage: 'macos-12'
 
 steps:
+- task: InstallAppleCertificate@2
+  inputs:
+    certSecureFile: 'AppleDistribution.p12'
+    certPwd: '$(p12pass)'
+    keychain: 'temp'
+- task: InstallAppleProvisioningProfile@1
+  inputs:
+    provisioningProfileLocation: 'secureFiles'
+    provProfileSecureFile: 'MSChatProd.mobileprovision'
+    
 - script: |
     cd Chat.Mobile
+    ls
+    dotnet workload restore 
+    dotnet build -f net6.0-ios -c Release
+    cd ..
+    cd Chat.Mobile/bin/Release/net6.0-ios/ios-arm64
     ls
