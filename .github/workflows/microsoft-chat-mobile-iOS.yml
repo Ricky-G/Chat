@@ -8,6 +8,14 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+        
+      - name: Install certificate
+        uses: mobileactions/install-ios-certificate@v1
+        with:
+          encoded-certificate: ${{ secrets.BUILD_CERTIFICATE_BASE64 }}
+          certificate-password: 1234
+          keychain: 'temp'
+          
       - name: Install the Apple certificate and provisioning profile
         env:
           BUILD_CERTIFICATE_BASE64: ${{ secrets.BUILD_CERTIFICATE_BASE64 }}
