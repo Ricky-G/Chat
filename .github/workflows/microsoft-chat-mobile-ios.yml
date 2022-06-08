@@ -1,0 +1,36 @@
+name: Chat.Mobile.iOS
+
+on:
+  push:
+    branches:
+      - main
+      
+jobs:
+  Build:
+    runs-on: windows-latest
+    steps:
+      - run: echo hello
+  
+  Integration:
+    runs-on: windows-latest
+    needs: Build
+    steps:
+      - run: echo hello
+  UI:
+    runs-on: windows-latest
+    needs: Integration
+    steps:
+      - run: echo hello
+      
+  Internal:
+    runs-on: windows-latest
+    needs: UI
+    steps:
+      - run: echo hello
+        
+  GooglePlay:
+    runs-on: windows-latest
+    needs: Internal
+    steps:
+      - run: echo hello
+        
