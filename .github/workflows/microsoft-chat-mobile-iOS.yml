@@ -37,6 +37,8 @@ jobs:
           # apply provisioning profile
           mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
           cp $PP_PATH ~/Library/MobileDevice/Provisioning\ Profiles
+          
+      - run: cd ~/Library/MobileDevice/Provisioning\ Profiles && ls
       
       - name: Setup .NET     
         uses: actions/setup-dotnet@v2
@@ -51,4 +53,3 @@ jobs:
           cd ..
           cd Chat.Mobile/bin/Release/net6.0-ios/ios-arm64
           ls
-
