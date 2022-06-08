@@ -29,7 +29,7 @@
 		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
 		<AndroidSigningKeyStore>mobiledevops.keystore</AndroidSigningKeyStore>
-		<CodesignKey>Apple Distribution: Ali Reza Farahnak (RLQQ9D9P3A)</CodesignKey>
+		<CodesignKey>iPhone Distribution</CodesignKey>
 		<ProvisioningType>manual</ProvisioningType>
 		<CodesignProvision>MSChatProd</CodesignProvision>
 	</PropertyGroup>
@@ -64,6 +64,11 @@
 		<ProvisioningType>manual</ProvisioningType>
 		<CodesignProvision>MSChatProd</CodesignProvision>
 		<ArchiveOnBuild>true</ArchiveOnBuild>
+	</PropertyGroup>
+
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net6.0-ios|AnyCPU'">
+	  <MtouchLink>None</MtouchLink>
 	</PropertyGroup>
 
 
