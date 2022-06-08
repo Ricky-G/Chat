@@ -13,6 +13,7 @@ jobs:
   
   Integration:
     runs-on: windows-latest
+    needs: Build
     steps:
       - run: echo hello
   UI:
