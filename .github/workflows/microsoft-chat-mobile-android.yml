@@ -70,7 +70,7 @@ jobs:
       - run: npm install -g appcenter-cli
         name: Install App Center CLI
 
-      - run: appcenter test run uitest --app 'AliRezaFarahnak/Chat.Android' --devices '95382d1f' --app-path 'ms.chat.mobile.apk' --test-series "master" --build-dir 'D:\a\Chat\Chat\Chat.Test.UI\bin\Debug\' --uitest-tools-dir 'D:\a\Chat\Chat\Chat.Test.UI\bin\Debug\' --token 'dffe5931ea91c6d6b23c33ea737414d79bbb338b'
+      - run: appcenter test run uitest --app 'AliRezaFarahnak/Chat.Android' --devices '01776447' --app-path 'ms.chat.mobile.apk' --test-series "master" --build-dir 'D:\a\Chat\Chat\Chat.Test.UI\bin\Debug\' --uitest-tools-dir 'D:\a\Chat\Chat\Chat.Test.UI\bin\Debug\' --token ${{ secrets.APPCENTER_TOKEN }}
         name: Test UI
         
   Internal:
@@ -98,6 +98,6 @@ jobs:
       - run: npm install -g appcenter-cli
         name: Install App Center CLI
       
-      - run: appcenter distribute stores publish --file 'Chat.Mobile/bin/Release/net6.0-android/ms.chat.mobile-Signed.aab' --store Production --app 'AliRezaFarahnak/Chat.Android' --release-notes 'New Features..' --token 'dffe5931ea91c6d6b23c33ea737414d79bbb338b'
+      - run: appcenter distribute stores publish --file 'Chat.Mobile/bin/Release/net6.0-android/ms.chat.mobile-Signed.aab' --store Production --app 'AliRezaFarahnak/Chat.Android' --release-notes 'New Features..' --token ${{ secrets.APPCENTER_TOKEN }}
         name: Publish to Google Play
         
