@@ -1,0 +1,19 @@
+trigger:
+- main
+
+pool:
+  vmImage: macos-12
+
+steps:
+- task: UseDotNet@2
+  inputs:
+    packageType: 'sdk'
+    version: '6.x'
+
+- script: |
+    cd Chat.Mobile
+    dotnet workload restore 
+    dotnet build -f net6.0-ios -c Release
+    cd ..
+    cd Chat.Mobile/bin/Release/net6.0-ios/ios-arm64
+    ls
