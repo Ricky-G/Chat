@@ -14,8 +14,8 @@ steps:
 
 - task: MSBuild@1
   inputs:
-    solution: '**/*UITest.csproj'
-    configuration: '$(buildConfiguration)'
+    solution: '**/*Test.UI.csproj'
+    configuration: 'Release'
     msbuildArguments: '/p:OutputPath="$(OUT)"'
 
 - script: ls $(OUT)
@@ -46,4 +46,4 @@ steps:
     cd ..
     cd $(OUT)
     ls
-    appcenter test run uitest --app "AliRezaFarahnak/Chat.iOS" --devices ce5227fa --app-path '$(OUT)/ms.chat.mobile.ipa' --test-series "master" --locale "en_US" --build-dir '$(OUT)' --uitest-tools-dir '$(OUT)' --token $(appcentertoken)
+    appcenter test run uitest --app "AliRezaFarahnak/Chat.iOS" --devices ce5227fa --app-path '$(OUT)ms.chat.mobile.ipa' --test-series "master" --locale "en_US" --build-dir '$(OUT)' --uitest-tools-dir '$(OUT)' --token $(appcentertoken)
