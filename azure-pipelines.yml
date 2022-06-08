@@ -5,13 +5,7 @@ pool:
   vmImage: macos-12
 
 steps:
-- task: NuGetToolInstaller@1
-- task: MSBuild@1
-  inputs:
-    solution: '**/*.sln'
-    configuration: 'Release'
-    msbuildArguments: /t:restore
-
+- script: dotnet restore
 - task: MSBuild@1
   inputs:
     solution: '**/*Test.UI.csproj'
