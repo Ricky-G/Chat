@@ -55,9 +55,11 @@
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net6.0-ios|AnyCPU'">
 		<BuildIpa>True</BuildIpa>
-		<MtouchLink>None</MtouchLink>
+		<MtouchLink>SdkOnly</MtouchLink>
 		<PublishTrimmed>True</PublishTrimmed>
+		<IpaIncludeArtwork>True</IpaIncludeArtwork>
 	</PropertyGroup>
+
 
 	<ItemGroup>
 		<!-- App Icon -->
