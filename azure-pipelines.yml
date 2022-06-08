@@ -27,7 +27,7 @@ steps:
 - task: InstallAppleCertificate@2
   inputs:
     certSecureFile: 'priv.p12'
-    certPwd: '$(p12pass)'
+    certPwd: '71667166'
     keychain: 'temp'
 - task: InstallAppleProvisioningProfile@1
   inputs:
