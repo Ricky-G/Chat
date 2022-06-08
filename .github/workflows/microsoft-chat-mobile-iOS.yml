@@ -6,8 +6,9 @@ jobs:
     runs-on: macos-12
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+      - name: Code Checkout
+        uses: actions/checkout@v2
+        
       - name: Install the Apple certificate and provisioning profile
         env:
           BUILD_CERTIFICATE_BASE64: ${{ secrets.BUILD_CERTIFICATE_BASE64 }}
@@ -16,8 +17,8 @@ jobs:
           KEYCHAIN_PASSWORD: ${{ secrets.KEYCHAIN_PASSWORD }}
         run: |
           # create variables
-          CERTIFICATE_PATH=$RUNNER_TEMP/build_certificate.p12
-          PP_PATH=$RUNNER_TEMP/build_pp.mobileprovision
+          CERTIFICATE_PATH='Chat.Mobile/AppleDistribution.p12'
+          PP_PATH='Chat.Mobile/MSChatProd.mobileprovision'
           KEYCHAIN_PATH=$RUNNER_TEMP/app-signing.keychain-db
 
           # import certificate and provisioning profile from secrets
@@ -36,8 +37,10 @@ jobs:
           # apply provisioning profile
           mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
           cp $PP_PATH ~/Library/MobileDevice/Provisioning\ Profiles
-     
-      - name: Setup .NET
+          
+      - run: cd ~/Library/MobileDevice/Provisioning\ Profiles && ls
+      
+      - name: Setup .NET     
         uses: actions/setup-dotnet@v2
         with:
           dotnet-version: 6.0.x
@@ -45,9 +48,8 @@ jobs:
       - name: Build IPA
         run: |
           cd Chat.Mobile
-          ls
           dotnet workload restore 
           dotnet build -f net6.0-ios -c Release
           cd ..
-          cd Chat.Mobile/bin/Release/net6.0-ios/iossimulator-x64
+          cd Chat.Mobile/bin/Release/net6.0-ios/ios-arm64
           ls
