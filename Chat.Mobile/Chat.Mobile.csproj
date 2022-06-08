@@ -30,7 +30,7 @@
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
 		<AndroidSigningKeyStore>mobiledevops.keystore</AndroidSigningKeyStore>
 		<CodesignKey>iPhone Distribution</CodesignKey>
-		<ProvisioningType>manual</ProvisioningType>
+		<ProvisioningType>automatic</ProvisioningType>
 		<CodesignProvision>MSChatProd</CodesignProvision>
 	</PropertyGroup>
 
@@ -60,9 +60,6 @@
 		<MtouchLink>SdkOnly</MtouchLink>
 		<PublishTrimmed>True</PublishTrimmed>
 		<IpaIncludeArtwork>True</IpaIncludeArtwork> 
-		<CodesignKey>Apple Distribution: Ali Reza Farahnak (RLQQ9D9P3A)</CodesignKey>
-		<ProvisioningType>manual</ProvisioningType>
-		<CodesignProvision>MSChatProd</CodesignProvision>
 		<ArchiveOnBuild>true</ArchiveOnBuild>
 	</PropertyGroup>
 
