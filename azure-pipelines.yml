@@ -9,7 +9,7 @@ pool:
 steps:
 - task: InstallAppleCertificate@2
   inputs:
-    certSecureFile: 'AppleDistribution.p12'
+    certSecureFile: 'priv.p12'
     certPwd: $(p12pass)
     keychain: 'temp'
 - task: InstallAppleProvisioningProfile@1
