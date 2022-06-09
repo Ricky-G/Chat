@@ -14,3 +14,4 @@ Link for Native App: https://play.google.com/store/apps/details?id=ms.chat.mobil
 ![Slide2](https://user-images.githubusercontent.com/52029052/172820120-8e083df7-a6f7-491e-ad06-6fa1be4d4cce.PNG)
 ![Slide3](https://user-images.githubusercontent.com/52029052/172820121-0e91ece4-9aba-46dc-99e4-943ac5cefe39.PNG)
 ![Slide4](https://user-images.githubusercontent.com/52029052/172820123-d19e42b4-ef54-4e7d-bb5f-e843ed37b30c.PNG)
+![MVVM-1366x768](https://user-images.githubusercontent.com/52029052/172826192-9da62e78-21d0-45af-b72b-6e304575cd5d.png)
