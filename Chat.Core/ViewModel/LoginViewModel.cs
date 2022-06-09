@@ -21,12 +21,12 @@ public partial class LoginViewModel : BaseViewModel
         Preferences.Set("Exception", "");
         Exception = "";
         await Shell.Current.GoToAsync("//Tabs/Home");
-        await Task.Delay(1500);
+      /*  await Task.Delay(1500);
         await Shell.Current.GoToAsync("//Tabs/Fruit");
         await Task.Delay(1500);
         await Shell.Current.GoToAsync("//Tabs/Profile");
         await Task.Delay(1500);
-        await Shell.Current.GoToAsync("//Tabs/Home");
+        await Shell.Current.GoToAsync("//Tabs/Home");*/
     }
 
 }
