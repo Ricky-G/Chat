@@ -44,5 +44,8 @@ Link for Native App: https://play.google.com/store/apps/details?id=ms.chat.mobil
     
 12. GitHub Project Priorities
 
-![Slide1](https://user-images.githubusercontent.com/52029052/172452052-1a21030c-c8e4-40cf-9e73-22dc251e6ded.PNG)
-![Slide2](https://user-images.githubusercontent.com/52029052/172452062-93a6ddb1-2b6e-404d-8f0e-eb24a109e778.PNG)
+![Slide1](https://user-images.githubusercontent.com/52029052/172811333-44eb5756-1115-43a8-8b4e-12afdbcae9f0.PNG)
+![Slide2](https://user-images.githubusercontent.com/52029052/172811343-4e91c4ab-ea36-422a-8da7-86d183927de2.PNG)
+![Slide3](https://user-images.githubusercontent.com/52029052/172811350-d2d86a5c-a0aa-4e75-8e3d-7310164dc0fd.PNG)
+![Slide4](https://user-images.githubusercontent.com/52029052/172811352-239fbf14-3443-49ec-b5ed-3b6a31a9ce29.PNG)
+
