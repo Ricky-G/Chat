@@ -1,6 +1,8 @@
 ﻿
 namespace Chat.Core.ViewModel;
 
-public abstract class BaseViewModel : ObservableObject
+public partial class BaseViewModel : ObservableObject
 {
+    [ObservableProperty]
+    bool isBusy;
 }

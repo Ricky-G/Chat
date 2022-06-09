@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Chat.Mobile.View.HomeMoviesPage"
-             Title="HomeMoviesPage">
+             x:Class="Chat.Mobile.View.MoviesPage"
+             Title="MoviesPage">
     <Shell.TitleView>
         <StackLayout 
+            HorizontalOptions="FillAndExpand"
             Orientation="Horizontal"
-            HeightRequest="30">
+            HeightRequest="50">
             <Label 
                 FontSize="Large"
-                TextColor="{StaticResource Primary}"
                 VerticalOptions="CenterAndExpand"
-                Text="Home"  />
+                Text="Movies" 
+                Margin="20,0,0,0"
+                TextColor="White"/>
         </StackLayout>
     </Shell.TitleView>
     <StackLayout>

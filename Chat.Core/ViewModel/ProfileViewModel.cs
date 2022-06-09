@@ -4,12 +4,10 @@ namespace Chat.Core.ViewModel;
 
 public partial class ProfileViewModel : BaseViewModel
 {
-    [ObservableProperty]
-    private TelemetryClient telemetry;
+    public TelemetryClient Telemetry => Globals.TelemetryInstance;
     private bool _runThread;
-    public ProfileViewModel(TelemetryClient telemetry)
+    public ProfileViewModel()
     {
-        Telemetry = telemetry; 
     }
 
     [ICommand]

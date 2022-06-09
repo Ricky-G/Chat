@@ -18,9 +18,9 @@ public static class MauiProgram
             .UseMauiApp<App>().UseMauiCommunityToolkit()
             .ConfigureFonts(fonts =>
             {
-                fonts.AddFont("OpenSans-Regular.ttf", "Default");
+             //   fonts.AddFont("OpenSans-Regular.ttf", "Default");
                 fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
-              //  fonts.AddFont("junegull.ttf", "Default");
+                fonts.AddFont("junegull.ttf", "Default");
             });
 
         RegisterTypes(builder.Services);
@@ -30,14 +30,15 @@ public static class MauiProgram
 
     private static void RegisterTypes(IServiceCollection s)
     {
+        s.AddSingleton(s.BuildServiceProvider());
         s.AddSingleton(Core.Globals.GetTelemetryClient());
         s.AddSingleton<MovieService>();
 
         s.AddSingleton<LoginViewModel>();
         s.AddSingleton<LoginPage>();
 
-        s.AddSingleton<HomeMoviesViewModel>();
-        s.AddSingleton<HomeMoviesPage>();
+        s.AddSingleton<MoviesViewModel>();
+        s.AddSingleton<MoviesPage>();
 
         s.AddSingleton<ProfileViewModel>();
         s.AddSingleton<ProfilePage>();
@@ -48,6 +49,9 @@ public static class MauiProgram
         s.AddSingleton<FruitService>();
         s.AddSingleton<FruitViewModel>();
         s.AddSingleton<FruitPage>();
+
+        s.AddSingleton<DrawViewModel>();
+        s.AddSingleton<DrawPage>();
     }
 
 }

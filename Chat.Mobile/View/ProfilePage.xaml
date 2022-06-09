@@ -11,6 +11,7 @@
                 FontSize="Large"
                 VerticalOptions="CenterAndExpand"
                 Text="Profile" 
+                Margin="20,0,0,0"
                 TextColor="White"/>
         </StackLayout>
     </Shell.TitleView>
@@ -23,6 +24,7 @@
             Text="Telemetry.Context.Device.Model"/>
         <Label
             TextColor="Black"
+            FontFamily="OpenSansSemibold"
             Text="{Binding Telemetry.Context.Device.Model}"/>
         <Label
             FontAttributes="Bold"
@@ -30,6 +32,7 @@
             Text="Telemetry.Context.Device.OperatingSystem"/>
         <Label
             TextColor="Black"
+            FontFamily="OpenSansSemibold"
             Text="{Binding Telemetry.Context.Device.OperatingSystem}"/>
         <Label
 
@@ -38,6 +41,7 @@
             Text="Telemetry.Context.Device.Language"/>
         <Label
             TextColor="Black"
+            FontFamily="OpenSansSemibold"
             Text="{Binding Telemetry.Context.Device.Language}"/>
         <!--Label
             FontAttributes="Bold"
@@ -53,6 +57,7 @@
             Text="Telemetry.Context.User.AccountId"/>
         <Label
             TextColor="Black"
+             FontFamily="OpenSansSemibold"
             Text="{Binding Telemetry.Context.User.AccountId}"/>
         <Label
             FontSize="Medium"
@@ -61,6 +66,7 @@
             Text="Telemetry.Context.User.Id"/>
         <Label
             TextColor="Black"
+             FontFamily="OpenSansSemibold"
             Text="{Binding Telemetry.Context.User.Id}"/>
         <Label
             FontSize="Medium"
@@ -69,6 +75,7 @@
             Text="Telemetry.Context.Device.Type"/>
         <Label
             TextColor="Black"
+            FontFamily="OpenSansSemibold"
             Text="{Binding Telemetry.Context.Device.Type}"/>
         <Label
             FontSize="Medium"
@@ -77,6 +84,7 @@
             Text="Telemetry.Context.Device.OemName"/>
         <Label
             TextColor="Black"
+            FontFamily="OpenSansSemibold"
             Text="{Binding Telemetry.Context.Device.OemName}"/>
         <Button
             AutomationId="Monitor"

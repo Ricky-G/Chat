@@ -17,6 +17,8 @@ namespace Chat.Core;
 
 public static class Globals
 {
+    public static TelemetryClient TelemetryInstance;
+
     public static TelemetryClient GetTelemetryClient()
     {
         var settings = Settings();
@@ -41,7 +43,8 @@ public static class Globals
 
         SetDeviceProperties(client.Context);
 
-        return client;
+        TelemetryInstance = client;
+        return TelemetryInstance;
     }
 
     private static void SetDeviceProperties(TelemetryContext context)

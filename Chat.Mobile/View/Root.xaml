@@ -25,6 +25,13 @@
 
         </Tab>
         <Tab 
+            Route="Movies"
+            Title="Movies"
+            Icon="fork.png">
+            <ShellContent 
+                ContentTemplate="{DataTemplate views:MoviesPage}" />
+        </Tab>
+        <Tab 
             Route="Profile"
             Title="Profile"
             Icon="person.png">

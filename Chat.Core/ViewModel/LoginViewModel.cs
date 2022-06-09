@@ -16,7 +16,7 @@ public partial class LoginViewModel : BaseViewModel
     }
 
     [ICommand]
-    private async void Login(TelemetryClient telemetry)
+    private async void Login()
     {
         Preferences.Set("Exception", "");
         Exception = "";

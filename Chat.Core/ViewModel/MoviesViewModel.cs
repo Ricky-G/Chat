@@ -2,14 +2,14 @@
 
 namespace Chat.Core.ViewModel;
 
-public partial class HomeMoviesViewModel : BaseViewModel    
+public partial class MoviesViewModel : BaseViewModel    
 {
     [ObservableProperty]
     private List<Search> movies;
 
     private MovieService _movieService;
 
-    public HomeMoviesViewModel(MovieService movieService)
+    public MoviesViewModel(MovieService movieService)
     {
         _movieService = movieService;
         LoadMoviesAsync();
@@ -17,11 +17,18 @@ public partial class HomeMoviesViewModel : BaseViewModel
 
     private async void LoadMoviesAsync()
     {
-        var tempMovies = await _movieService.GetMoviesAsync();
-            tempMovies.AddRange(await _movieService.GetMoviesAsync(2));
-            tempMovies.AddRange(await _movieService.GetMoviesAsync(3));
-            tempMovies.AddRange(await _movieService.GetMoviesAsync(4));
+        try
+        {
+            var tempMovies = await _movieService.GetMoviesAsync().ConfigureAwait(false);
+            /* tempMovies.AddRange(await _movieService.GetMoviesAsync(2));
+             tempMovies.AddRange(await _movieService.GetMoviesAsync(3));
+             tempMovies.AddRange(await _movieService.GetMoviesAsync(4));*/
 
-        Movies = tempMovies;
+            Movies = tempMovies;
+        }
+        catch(Exception e)
+        {
+
+        }
     }
 }

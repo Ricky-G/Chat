@@ -4,9 +4,11 @@
              x:Class="Chat.Mobile.View.HomePage">
     <Shell.TitleView>
         <StackLayout 
+            HorizontalOptions="FillAndExpand"
             Orientation="Horizontal"
             HeightRequest="50">
             <Label 
+                Margin="20,0,0,0"
                 FontSize="Large"
                 VerticalOptions="CenterAndExpand"
                 Text="Home" 

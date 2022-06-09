@@ -94,6 +94,7 @@
 		<None Remove="Resources\Images\home.svg" />
 		<None Remove="Resources\Images\logo.svg" />
 		<None Remove="Resources\Images\magnify.svg" />
+		<None Remove="Resources\Images\microsoft.svg" />
 		<None Remove="Resources\Images\orange.svg" />
 		<None Remove="Resources\Images\person.svg" />
 		<None Remove="Resources\Images\watermelon.svg" />
@@ -116,10 +117,19 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="View\MoviesPage.xaml.cs">
+	    <DependentUpon>MoviesPage.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+		<MauiXaml Update="View\DrawPage.xaml">
+		  <Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
 		<MauiXaml Update="View\FruitPage.xaml">
 		  <Generator>MSBuild:Compile</Generator>
 		</MauiXaml>
-		<MauiXaml Update="View\HomeMoviesPage.xaml">
+		<MauiXaml Update="View\MoviesPage.xaml">
 			<Generator>MSBuild:Compile</Generator>
 		</MauiXaml>
 		<MauiXaml Update="View\HomePage.xaml">
