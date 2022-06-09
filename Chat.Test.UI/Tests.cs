@@ -81,6 +81,14 @@ namespace Chat.UITest
             AppResult[] monitorElements = app.WaitForElement(c => c.Marked("Monitor"));
             Assert.IsTrue(monitorElements.Any());
         }
+
+        [Test]
+        public void BackdoorTest()
+        {
+            app.Invoke(nameof(BackdoorTest));
+            AppResult[] results = app.WaitForElement(c => c.Marked("Profile"));
+            Assert.IsTrue(results.Any());
+        }
     }
 
     public class AppInitializer
