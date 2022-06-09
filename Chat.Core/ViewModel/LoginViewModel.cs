@@ -6,7 +6,7 @@ public partial class LoginViewModel : BaseViewModel
     [ICommand]
     private async void Login()
     {
-       await Shell.Current.GoToAsync("//Tabs");
+       await Shell.Current.GoToAsync("//Tabs/Home");
     }
 
 }

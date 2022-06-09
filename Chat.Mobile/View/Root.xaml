@@ -9,6 +9,7 @@
     <TabBar
         Route="Tabs">
         <Tab
+            Route="Home"
             Title="Home"
             Icon="home.png">
             <ShellContent
@@ -16,6 +17,7 @@
 
         </Tab>
         <Tab
+            Route="Fruit"
             Title="Fruit"
             Icon="magnify.png">
             <ShellContent
@@ -23,6 +25,7 @@
 
         </Tab>
         <Tab 
+            Route="Profile"
             Title="Profile"
             Icon="person.png">
             <ShellContent 
