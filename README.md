@@ -10,7 +10,7 @@ Link for Native App: https://play.google.com/store/apps/details?id=ms.chat.mobil
 [![Chat.Mobile.Android](https://github.com/MSFT-alfarahn/Chat/actions/workflows/microsoft-chat-mobile-android.yml/badge.svg)](https://github.com/MSFT-alfarahn/Chat/actions/workflows/microsoft-chat-mobile-android.yml)
 [![Chat.Mobile.iOS](https://github.com/MSFT-alfarahn/Chat/actions/workflows/microsoft-chat-mobile-ios.yml/badge.svg)](https://github.com/MSFT-alfarahn/Chat/actions/workflows/microsoft-chat-mobile-ios.yml)
 
-![Slide1](https://user-images.githubusercontent.com/52029052/172813328-877f06b8-4cf6-42e8-b032-7a440ae3b2ec.PNG)
-![Slide2](https://user-images.githubusercontent.com/52029052/172813345-6a0d6983-9aeb-4288-bae3-04eee5b8c10a.PNG)
-![Slide3](https://user-images.githubusercontent.com/52029052/172813346-b9ca0ed8-ef3a-40c9-ab63-776d0657b9a9.PNG)
-![Slide4](https://user-images.githubusercontent.com/52029052/172813348-2bc90df9-03f1-4a00-8f25-fef102f98040.PNG)
+![Slide1](https://user-images.githubusercontent.com/52029052/172813892-cc69e8f6-7058-427f-8bbf-39155183b4ab.PNG)
+![Slide2](https://user-images.githubusercontent.com/52029052/172813902-26ceee5c-d57b-4c6a-a454-b079c07effb8.PNG)
+![Slide3](https://user-images.githubusercontent.com/52029052/172813905-c7878453-dcea-4f69-bc38-d8794f1a1a2a.PNG)
+![Slide4](https://user-images.githubusercontent.com/52029052/172813907-0caf9be1-e7aa-4469-9356-dc29c41c0145.PNG)
