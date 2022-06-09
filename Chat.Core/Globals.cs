@@ -40,7 +40,6 @@ public static class Globals
         TelemetryClient client = new(cfg);
 
         SetDeviceProperties(client.Context);
-        RegisterUnhandledExceptions();
 
         return client;
     }
@@ -57,21 +56,34 @@ public static class Globals
 
         string uniqueID = Guid.NewGuid().ToString();
 
+        RegisterUnhandledExceptions();
+
         context.User.AccountId ??= uniqueID;
         context.User.Id ??= uniqueID;
     }
 
     private static void RegisterUnhandledExceptions()
     {
+        // This is a hack, purpose is only to show it is possible
         AppDomain.CurrentDomain.UnhandledException += (s, e) =>
         {
-            Task.Run(async () =>
-            {
-              /*  System.Diagnostics.Debug.WriteLine("AppDomain.CurrentDomain.UnhandledException: {0}. IsTerminating: {1}", e.ExceptionObject, e.IsTerminating);
-                await Task.Delay(1000).ConfigureAwait(false);
-                Telemetry.TrackException(e.ExceptionObject as Exception);
-                await Task.Delay(4000).ConfigureAwait(false);*/
-            }).Wait();
+            string page = Shell.Current.CurrentPage?.GetType().Name;
+            string viewmodel = Shell.Current.CurrentPage?.BindingContext?.GetType().Name;
+
+            Preferences.Set("Exception", $"{page} {viewmodel} => {(e.ExceptionObject as Exception).Message}");
+        };
+
+        AppDomain.CurrentDomain.FirstChanceException += (sender, args) =>
+        {
+            if (args.Exception.Message.Contains("canceled") || 
+                args.Exception.Message.Contains("supported")||
+                args.Exception.Message.Contains("Failed to perform")||
+                !string.IsNullOrEmpty(Preferences.Get("Exception","")))
+                return;
+
+            string page = Shell.Current.CurrentPage?.GetType().Name;
+            string viewmodel = Shell.Current.CurrentPage?.BindingContext?.GetType().Name;
+            Preferences.Set("Exception", $"{page} {viewmodel} => {args.Exception.Message}");
         };
     }
 

@@ -17,6 +17,12 @@ public partial class ProfileViewModel : BaseViewModel
         => await Shell.Current.GoToAsync($"//Login");
 
     [ICommand]
+    public void Unhandled()
+    => int.Parse("invalid");
+
+
+
+    [ICommand]
     public async void StartMonitor()
     {
         _runThread = true;

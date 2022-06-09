@@ -32,5 +32,8 @@
             Text="Login"
             Command="{Binding LoginCommand}"
             />
+        <Label
+            TextColor="Red"
+            Text="{Binding Exception}"/>
     </StackLayout>
 </ContentPage>
