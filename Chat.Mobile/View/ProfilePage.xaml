@@ -71,7 +71,6 @@
             Command="{Binding UnhandledCommand}"
             />
         <Button
-            Margin="0,0,0,10"
             VerticalOptions="End"
             Text="LogOut"
             Command="{Binding LogOutCommand}"
