@@ -4,13 +4,15 @@
              x:Class="Chat.Mobile.View.FruitPage">
     <Shell.TitleView>
         <StackLayout 
+            Margin="{OnPlatform '0,0,0,0', Android='-30,0,0,0'}"
+            HorizontalOptions="FillAndExpand"
             Orientation="Horizontal"
             HeightRequest="50">
             <Label 
-                FontSize="Large"
+                HorizontalOptions="CenterAndExpand"
+                HorizontalTextAlignment="Center"
                 VerticalOptions="CenterAndExpand"
                 Text="Fruit" 
-                Margin="20,0,0,0"
                 TextColor="White"/>
         </StackLayout>
     </Shell.TitleView>

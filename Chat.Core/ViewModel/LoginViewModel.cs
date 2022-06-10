@@ -16,17 +16,14 @@ public partial class LoginViewModel : BaseViewModel
     }
 
     [ICommand]
-    private async void Login()
+    private async void Login(object s)
     {
+        await (s as Label).RotateTo(360, 500);
+        await (s as Label).RotateTo(0, 500);
+        await Task.Delay(100);
         Preferences.Set("Exception", "");
         Exception = "";
-        await Shell.Current.GoToAsync("//Tabs/Home");
-      /*  await Task.Delay(1500);
-        await Shell.Current.GoToAsync("//Tabs/Fruit");
-        await Task.Delay(1500);
-        await Shell.Current.GoToAsync("//Tabs/Profile");
-        await Task.Delay(1500);
-        await Shell.Current.GoToAsync("//Tabs/Home");*/
+        await Shell.Current.GoToAsync("//Tabs/Home", true);
     }
 
 }

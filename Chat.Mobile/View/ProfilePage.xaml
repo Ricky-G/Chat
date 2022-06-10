@@ -5,13 +5,15 @@
              Title="Profile">
     <Shell.TitleView>
         <StackLayout 
+            Margin="{OnPlatform '0,0,0,0', Android='-30,0,0,0'}"
+            HorizontalOptions="FillAndExpand"
             Orientation="Horizontal"
             HeightRequest="50">
             <Label 
-                FontSize="Large"
+                HorizontalOptions="CenterAndExpand"
+                HorizontalTextAlignment="Center"
                 VerticalOptions="CenterAndExpand"
                 Text="Profile" 
-                Margin="20,0,0,0"
                 TextColor="White"/>
         </StackLayout>
     </Shell.TitleView>
@@ -19,78 +21,44 @@
         VerticalOptions="FillAndExpand"
         Margin="10">
         <Label
-            FontAttributes="Bold"
             TextColor="Black"
-            Text="Telemetry.Context.Device.Model"/>
+            Text="Model"/>
         <Label
-            TextColor="Black"
             FontFamily="OpenSansSemibold"
             Text="{Binding Telemetry.Context.Device.Model}"/>
         <Label
-            FontAttributes="Bold"
             TextColor="Black"
-            Text="Telemetry.Context.Device.OperatingSystem"/>
+            Text="OperatingSystem"/>
         <Label
             TextColor="Black"
             FontFamily="OpenSansSemibold"
             Text="{Binding Telemetry.Context.Device.OperatingSystem}"/>
         <Label
-
-            FontAttributes="Bold"
             TextColor="Black"
-            Text="Telemetry.Context.Device.Language"/>
+            Text="User.Id"/>
         <Label
             TextColor="Black"
+            LineBreakMode="TailTruncation"
             FontFamily="OpenSansSemibold"
-            Text="{Binding Telemetry.Context.Device.Language}"/>
-        <!--Label
-            FontAttributes="Bold"
-            TextColor="Black"
-            Text="Telemetry.Context.Device.ScreenResolution"/>
-        <Label
-            TextColor="Black"
-            Text="{Binding Telemetry.Context.Device.ScreenResolution}"/-->
-        <Label
-            FontSize="Medium"
-            FontAttributes="Bold"
-            TextColor="Black"
-            Text="Telemetry.Context.User.AccountId"/>
-        <Label
-            TextColor="Black"
-             FontFamily="OpenSansSemibold"
-            Text="{Binding Telemetry.Context.User.AccountId}"/>
-        <Label
-            FontSize="Medium"
-            FontAttributes="Bold"
-            TextColor="Black"
-            Text="Telemetry.Context.User.Id"/>
-        <Label
-            TextColor="Black"
-             FontFamily="OpenSansSemibold"
             Text="{Binding Telemetry.Context.User.Id}"/>
         <Label
-            FontSize="Medium"
-            FontAttributes="Bold"
             TextColor="Black"
-            Text="Telemetry.Context.Device.Type"/>
+            Text="Device.Type"/>
         <Label
             TextColor="Black"
             FontFamily="OpenSansSemibold"
             Text="{Binding Telemetry.Context.Device.Type}"/>
         <Label
-            FontSize="Medium"
-            FontAttributes="Bold"
             TextColor="Black"
-            Text="Telemetry.Context.Device.OemName"/>
+            Text="OemName"/>
         <Label
             TextColor="Black"
             FontFamily="OpenSansSemibold"
             Text="{Binding Telemetry.Context.Device.OemName}"/>
         <Button
+            VerticalOptions="EndAndExpand"
             AutomationId="Monitor"
             Margin="0,0,0,10"
-            VerticalOptions="EndAndExpand"
-            FontSize="Large"
             Text="Monitor"
             Command="{Binding StartMonitorCommand}"
             />
@@ -98,14 +66,13 @@
             AutomationId="Unhandled"
             Margin="0,0,0,10"
             VerticalOptions="End"
-            FontSize="Large"
             Text="Unhandled"
             Background="Red"
             Command="{Binding UnhandledCommand}"
             />
         <Button
+            Margin="0,0,0,10"
             VerticalOptions="End"
-            FontSize="Large"
             Text="LogOut"
             Command="{Binding LogOutCommand}"
             />

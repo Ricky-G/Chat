@@ -4,15 +4,17 @@
              xmlns:views="clr-namespace:Chat.Mobile.View"
              x:Class="Chat.Root"
              Routing.Route="Root"
+             Shell.PresentationMode="ModalAnimated"
              Title="Root">
 
     <TabBar
+        Shell.PresentationMode="ModalAnimated"
         Route="Tabs">
         <Tab
             Route="Home"
             Title="Home"
             Icon="home.png">
-            <ShellContent
+            <ShellContent       
                 ContentTemplate="{DataTemplate views:HomePage}"/>
 
         </Tab>
@@ -41,6 +43,7 @@
     </TabBar>
 
     <ShellContent 
+        Shell.PresentationMode="ModalAnimated"
         Shell.NavBarIsVisible="False"
         Route="Login"
         ContentTemplate="{DataTemplate views:LoginPage}"/>

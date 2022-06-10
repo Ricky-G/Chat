@@ -5,31 +5,21 @@
              Title="LoginPage">
     <StackLayout
         BackgroundColor="{StaticResource Primary}">
-        <!--ImageButton
-            AutomationId="Login"
-            Margin="10"
-            Padding="20"
-            HeightRequest="80"
-            Source="microsoft.png"
-            Command="{Binding LoginCommand}"
-            BackgroundColor="White"/-->
         <Label
+            x:Name="logo"
             VerticalOptions="CenterAndExpand"
             HorizontalOptions="CenterAndExpand"
             TextColor="White"
             FontSize="150"
             Text=".NET"/>
-        <!--ActivityIndicator
-            Margin="20"
-            Color="White"
-            IsRunning="True"/-->
         <Button
             VerticalOptions="EndAndExpand"
             Text="Login"
             Margin="20"
             BorderColor="White"
             BorderWidth="1"
-            Command="{Binding LoginCommand}"/>
+            Command="{Binding LoginCommand}"
+            CommandParameter="{x:Reference logo}"/>
     </StackLayout>
 </ContentPage>
 

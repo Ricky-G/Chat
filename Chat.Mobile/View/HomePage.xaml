@@ -4,12 +4,13 @@
              x:Class="Chat.Mobile.View.HomePage">
     <Shell.TitleView>
         <StackLayout 
+            Margin="{OnPlatform '0,0,0,0', Android='-30,0,0,0'}"
             HorizontalOptions="FillAndExpand"
             Orientation="Horizontal"
             HeightRequest="50">
             <Label 
-                Margin="20,0,0,0"
-                FontSize="Large"
+                HorizontalOptions="CenterAndExpand"
+                HorizontalTextAlignment="Center"
                 VerticalOptions="CenterAndExpand"
                 Text="Home" 
                 TextColor="White"/>
@@ -19,7 +20,6 @@
         Margin="10">
         <Grid.RowDefinitions>
             <RowDefinition Height="70" />
-            <RowDefinition Height="50" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <StackLayout
@@ -29,19 +29,17 @@
                 HorizontalOptions="FillAndExpand"
                 Margin="5"
                 Placeholder="Name"
+                TextColor="{StaticResource Primary}"
                 Text="{Binding Name}"/>
             <Entry
                 HorizontalOptions="FillAndExpand"
                 Margin="0,5,5,5"
                 Placeholder="Message"
-                Text="{Binding Message}"/>
+                Text="{Binding Message}"
+                ReturnCommand="{Binding BroadcastCommand}"/>
         </StackLayout>
-        <Button
-            Grid.Row="1"
-            Command="{Binding BroadcastCommand}"
-            Text="Send"/>
         <CollectionView  
-            Grid.Row="2"
+            Grid.Row="1"
             ItemsSource="{Binding Messages}">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
