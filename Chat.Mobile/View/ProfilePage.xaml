@@ -59,20 +59,18 @@
             AutomationId="Monitor"
             Margin="0,0,0,10"
             Text="Monitor"
-            Command="{Binding StartMonitorCommand}"
-            />
+            Command="{Binding StartMonitorCommand}" />
         <Button
             AutomationId="Unhandled"
             Margin="0,0,0,10"
             VerticalOptions="End"
             Text="Unhandled"
             Background="Red"
-            Command="{Binding UnhandledCommand}"
-            />
+            Command="{Binding UnhandledCommand}" />
         <Button
+            Margin="0,0,0,10"
             VerticalOptions="End"
             Text="LogOut"
-            Command="{Binding LogOutCommand}"
-            />
+            Command="{Binding LogOutCommand}" />
     </StackLayout>
 </ContentPage>

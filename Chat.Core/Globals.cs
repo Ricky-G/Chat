@@ -23,9 +23,9 @@ public static class Globals
 
     public static TelemetryClient GetTelemetryClient()
     {
-        var settings = Settings();
+        TelemetrySettings settings = Settings();
         TelemetryConfiguration cfg = TelemetryConfiguration.CreateDefault();
-        cfg.ConnectionString = settings.AppInsights;
+                               cfg.ConnectionString = settings.AppInsights;
         QuickPulseTelemetryProcessor qp = null;
         cfg.DefaultTelemetrySink.TelemetryProcessorChainBuilder
             .Use((next) =>
@@ -54,7 +54,7 @@ public static class Globals
         context.Device.Model ??= DeviceInfo.Model;
         context.Device.OperatingSystem ??= DeviceInfo.Platform.ToString();
         context.Device.Language ??= CultureInfo.CurrentUICulture.TwoLetterISOLanguageName;
-        // client.Context.Device.ScreenResolution ??= DeviceDisplay.MainDisplayInfo.ToString();
+       // client.Context.Device.ScreenResolution ??= DeviceDisplay.MainDisplayInfo.ToString();
         context.Device.OemName ??= DeviceInfo.Current.Manufacturer.ToString();
         context.Device.Type ??= $"{DeviceInfo.Current.DeviceType} {DeviceInfo.Current.Idiom}";
         context.Device.NetworkType ??= Connectivity.Current.NetworkAccess.ToString();
