@@ -28,7 +28,7 @@ public class Tests
     public async Task MovieServiceTest()
     {
         MovieService movieService = new();
-        List<Search> list = await movieService.GetMoviesAsync();
+        List<Search> list = await movieService.GetMoviesAsync("Will Smith");
 
         Assert.True(list.Count > 0);
     }

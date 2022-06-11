@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Chat.Mobile.View.MoviesPage"
-             Title="MoviesPage">
+             x:Class="Chat.Mobile.View.MoviesPage">
     <Shell.TitleView>
         <AbsoluteLayout
             HorizontalOptions="FillAndExpand">
@@ -17,11 +16,11 @@
         </AbsoluteLayout>
     </Shell.TitleView>
     <StackLayout>
-        <SearchBar
+        <SearchBar 
             AutomationId="search"
             Margin="15,20,15,0"
             CancelButtonColor="{StaticResource Primary}"
-            Placeholder="Search Movies.."
+            Placeholder="Search Movies.."       
             SearchCommand="{Binding SearchMoviesCommand}"
             Text="{Binding Search}" />
         <CollectionView 
@@ -48,11 +47,8 @@
             </CollectionView.ItemTemplate>
         </CollectionView>
         <Slider
-            Background="Transparent"
-            BackgroundColor="Transparent"
             Value="{Binding Page}"
-            Minimum="1"
-            Maximum="4"   
+            Maximum="5"
             DragCompletedCommand="{Binding SearchMoviesCommand}"
             HorizontalOptions="FillAndExpand"/>
     </StackLayout>

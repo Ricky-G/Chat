@@ -38,6 +38,9 @@ namespace Chat.UITest
         [Test]
         public void MovieTest()
         {
+            app.Tap(ui => ui.Marked("Login"));
+            app.Tap(ui => ui.Marked("Movies"));
+            app.EnterText(ui => ui.Marked("Searc"), "Will Smith");
             app.Repl();
 
         }
