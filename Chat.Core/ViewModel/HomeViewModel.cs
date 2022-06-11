@@ -5,7 +5,6 @@ namespace Chat.Core.ViewModel;
 
 public partial class HomeViewModel : BaseViewModel  
 {
-    private HubConnection? hubConnection;
     [ObservableProperty]
     private List<Message> messages = new();
     private List<Message> temp = new();
@@ -13,6 +12,7 @@ public partial class HomeViewModel : BaseViewModel
     private string name;
     [ObservableProperty]
     private string message;
+    private HubConnection hubConnection;
     public HomeViewModel()
     {
         SubscribeChatAsync();

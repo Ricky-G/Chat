@@ -6,22 +6,17 @@ public partial class ProfileViewModel : BaseViewModel
 {
     public TelemetryClient Telemetry => Globals.TelemetryInstance;
     private bool _runThread;
-    public ProfileViewModel()
-    {
-    }
 
     [ICommand]
-    public async void LogOut()
+    private async void LogOut()
         => await Shell.Current.GoToAsync($"//Login");
 
     [ICommand]
-    public void Unhandled()
-    => int.Parse("invalid");
-
-
+    private void Unhandled()
+        => int.Parse("invalid");
 
     [ICommand]
-    public async void StartMonitor()
+    private async void StartMonitor()
     {
         _runThread = true;
 
@@ -65,25 +60,12 @@ public partial class ProfileViewModel : BaseViewModel
             await Task.Delay(100);
         }
 
-        try
-        {
-            int.Parse("invalid");
-        }
-        catch (Exception e)
-        {
-            Telemetry.TrackException(e);
-        }
-        try
-        {
-            int.Parse("invalid");
-        }
-        catch (Exception e)
-        {
-            Telemetry.TrackException(e);
-        }
-        try
-        {
-            Fruit f = new Fruit();
+        try { int.Parse("invalid"); }
+        catch (Exception e) { Telemetry.TrackException(e); }
+        try { int.Parse("invalid"); }
+        catch (Exception e) { Telemetry.TrackException(e); }
+        try {
+            Fruit f = new(null,null);
             string upper = f.Name.ToUpper();
         }
         catch (Exception e)
@@ -93,11 +75,10 @@ public partial class ProfileViewModel : BaseViewModel
     }
     private void KillCore()
     {
-        Random rand = new Random();
         long num = 0;
         while (_runThread)
         {
-            num += rand.Next(100, 1000);
+            num += new Random().Next(100, 1000);
             if (num > 1000000) { num = 0; }
         }
     }

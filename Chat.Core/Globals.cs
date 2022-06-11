@@ -1,4 +1,6 @@
 ﻿
+global using System.Text.Json;
+global using System.Collections.ObjectModel;
 global using Microsoft.ApplicationInsights;
 global using Chat.Core.Model;
 global using CommunityToolkit.Mvvm.ComponentModel;
@@ -11,7 +13,7 @@ global using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.Qu
 global using System.Reflection;
 global using Microsoft.Extensions.Configuration;
 global using System.Globalization;
-using Microsoft.ApplicationInsights.DataContracts;
+global using Microsoft.ApplicationInsights.DataContracts;
 
 namespace Chat.Core;
 

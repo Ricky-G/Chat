@@ -1,6 +1,4 @@
 ﻿
-using System.Collections.ObjectModel;
-
 namespace Chat.Core.ViewModel;
 
 public partial class FruitViewModel : BaseViewModel
