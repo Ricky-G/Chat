@@ -7,36 +7,38 @@
 
 @if (_isLoggedIn)
 {
-    <MudLayout>
+    <MudLayout
+        >
         <MudAppBar Elevation="0" Color="Color.Primary">
             <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@((e) => DrawerToggle())" />
-            <MudSpacer />
-     
+
+            <p style="font-size:40px;color:white;text-align:center; width: 100%">Home</p>
         </MudAppBar>
         <MudDrawer @bind-Open="_drawerOpen" Elevation="1">
             <MudDrawerHeader>
                 <MudText Typo="Typo.h6"></MudText>
             </MudDrawerHeader>
 
-        <MudNavMenu>
-            <!--MudNavLink Href="" Match="NavLinkMatch.All" Icon="@Icons.Material.Filled.Home">Home</MudNavLink-->
-            <!--MudNavLink Href="counter" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Add">Counter</MudNavLink>
-            <MudNavLink Href="fetchdata" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.List">Fetch data</MudNavLink-->
-             <MudNavLink Href="" 
-                         Match="NavLinkMatch.All" 
-                         Icon="@Icons.Material.Filled.Home">Home</MudNavLink>
-            <!--MudNavLink Href="profile" 
-                        Match="NavLinkMatch.Prefix" 
-                        Icon="@Icons.Material.Filled.VerifiedUser">Profile</MudNavLink-->
-        </MudNavMenu>
+            <MudNavMenu>
+                <!--MudNavLink Href="" Match="NavLinkMatch.All" Icon="@Icons.Material.Filled.Home">Home</MudNavLink-->
+                <!--MudNavLink Href="counter" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Add">Counter</MudNavLink>
+                <MudNavLink Href="fetchdata" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.List">Fetch data</MudNavLink-->
+                <MudNavLink Href=""
+                        Match="NavLinkMatch.All"
+                        Style="font-size:40px;"
+                        Icon="@Icons.Material.Filled.Home">Home</MudNavLink>
+                <!--MudNavLink Href="profile"
+                            Match="NavLinkMatch.Prefix"
+                            Icon="@Icons.Material.Filled.VerifiedUser">Profile</MudNavLink-->
+            </MudNavMenu>
 
             <MudContainer>
-                <br/>
-                <MudButton 
-                    FullWidth="true"
-                    Variant="Variant.Filled"
-                    OnClick="LoginLogout"
-                    Color="Color.Primary">Logout</MudButton>
+                <br />
+                <MudButton FullWidth="true"
+                       Variant="Variant.Filled"
+                       OnClick="LoginLogout"
+                       Style="font-size:40px;"
+                       Color="Color.Primary">Logout</MudButton>
             </MudContainer>
         </MudDrawer>
         <MudMainContent>
@@ -49,29 +51,15 @@
 else
 {
 
-    <MudContainer MaxWidth="MaxWidth.Large" Class="my-2 pt-4">
-            <MudTextField  @bind-Value="Password" 
-                    Label="Username" Variant="Variant.Outlined" 
-                    Adornment="Adornment.End" />
-            <MudTextField  @bind-Value="Password" 
-                            Label="Password" Variant="Variant.Outlined" 
-                            InputType="@PasswordInput" Adornment="Adornment.End"
-                            AdornmentIcon="@PasswordInputIcon"  
-                            AdornmentAriaLabel="Show Password" />
-        <br />
-        <MudButton   
-               FullWidth="true"
+    <MudContainer 
+        Style="background-color:#304ffe;height:100vh;"  
+        MaxWidth="MaxWidth.Large" Class="my-2 pt-4">
+        <p style="font-size:200px;color:white;text-align:center">.NET</p>
+        <MudButton FullWidth="true"
                Variant="Variant.Filled"
                OnClick="LoginLogout"
+               Style="font-size:40px;border: 2px solid white;bottom:-400px;"
                Color="Color.Primary">Login</MudButton>
-        <br />
-        <br />
-        <MudButton   
-               Style="font-size:40px;"
-               FullWidth="true"
-               Variant="Variant.Filled"
-               OnClick="DeleteWASM"
-               Color="Color.Primary">Delete WASM</MudButton>
     </MudContainer>
 }
 
@@ -80,25 +68,35 @@ else
     bool _drawerOpen = true;
 
     void DrawerToggle() => _drawerOpen = !_drawerOpen;
-    void LoginLogout() => _isLoggedIn = !_isLoggedIn;  
-    async Task DeleteWASM() => await JSRuntime.InvokeVoidAsync(nameof(DeleteWASM));
-    
+    async void LoginLogout(){ 
+        if(_isLoggedIn)
+         await JSRuntime.InvokeVoidAsync("DeleteWASM");
+        _isLoggedIn = !_isLoggedIn;
+    }
 
-    public string Password { get; set;}
+
+    public string Password { get; set; }
 
     bool isShow;
     InputType PasswordInput = InputType.Password;
     string PasswordInputIcon = Icons.Material.Filled.VisibilityOff;
 
-    private MudTheme _currentTheme => 
+    private MudTheme _currentTheme =>
        new MudTheme
-       {
-           Palette = new Palette()
            {
-             //  Surface = "#ff0000",
-               Primary = "#304ffe",
-            //   InfoContrastText = "#0000ff",
-           }
-       };
+               Palette = new Palette()
+               {
+               //  Surface = "#ff0000",
+                   Primary = "#304ffe",
+               //   InfoContrastText = "#0000ff",
+               },
+               Typography = new Typography()
+               {
+                   Default = new Default()
+                   {
+                       FontFamily = new[] { "junegull" },
+                   }
+               }
+           };
 
 }

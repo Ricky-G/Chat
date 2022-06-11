@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.SignalR.Client;
-using System.Collections.ObjectModel;
 
 namespace Chat.Core.ViewModel;
 
@@ -38,8 +37,8 @@ public partial class HomeViewModel : BaseViewModel
     [ICommand]
     public async void Broadcast()
     {
-        await hubConnection.SendAsync(nameof(Broadcast), Name, Message);
-        Message = null;
+            await hubConnection.SendAsync(nameof(Broadcast), Name, Message);
+            Message = null;
     }
 
     public async ValueTask DisposeAsync()
