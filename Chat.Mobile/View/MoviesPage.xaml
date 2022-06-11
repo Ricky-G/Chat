@@ -17,6 +17,12 @@
         </AbsoluteLayout>
     </Shell.TitleView>
     <StackLayout>
+        <SearchBar
+            x:Name="search"
+            Margin="15"
+            Placeholder="Search Movies.."
+            SearchCommand="{Binding SearchMoviesCommand}"
+            SearchCommandParameter="{Binding Source={x:Reference search}, Path=Text}"/>
         <CollectionView 
             VerticalOptions="FillAndExpand"
             VerticalScrollBarVisibility="Always"

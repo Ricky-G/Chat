@@ -12,23 +12,19 @@ public partial class MoviesViewModel : BaseViewModel
     public MoviesViewModel(MovieService movieService)
     {
         _movieService = movieService;
-        LoadMoviesAsync();
     }
 
-    private async void LoadMoviesAsync()
+    [ICommand]
+    private async void SearchMovies(object s)
     {
         try
         {
-            var tempMovies = await _movieService.GetMoviesAsync().ConfigureAwait(false);
-            /* tempMovies.AddRange(await _movieService.GetMoviesAsync(2));
-             tempMovies.AddRange(await _movieService.GetMoviesAsync(3));
-             tempMovies.AddRange(await _movieService.GetMoviesAsync(4));*/
-
+            var tempMovies = await _movieService.GetMoviesAsync(s as string).ConfigureAwait(false);
             Movies = tempMovies;
         }
         catch(Exception e)
         {
-
+            telemetry.TrackException(e);
         }
     }
 }

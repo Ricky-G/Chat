@@ -18,7 +18,7 @@
     <Grid
         Margin="10">
         <Grid.RowDefinitions>
-            <RowDefinition Height="70" />
+            <RowDefinition Height="50" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <StackLayout
@@ -27,13 +27,13 @@
             <Entry
                 HorizontalOptions="FillAndExpand"
                 Margin="5"
-                Placeholder="Name"
+                Placeholder="Type Name.."
                 TextColor="{StaticResource Primary}"
                 Text="{Binding Name}"/>
             <Entry
                 HorizontalOptions="FillAndExpand"
                 Margin="0,5,5,5"
-                Placeholder="Message"
+                Placeholder="Type Message.."
                 Text="{Binding Message}"
                 ReturnCommand="{Binding BroadcastCommand}"/>
         </StackLayout>
