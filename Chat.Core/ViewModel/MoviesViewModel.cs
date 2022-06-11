@@ -23,8 +23,7 @@ public partial class MoviesViewModel : BaseViewModel
     {
         try
         {
-            var tempMovies = await _movieService.GetMoviesAsync(Search, Page);
-            Movies = tempMovies;
+            Movies = await _movieService.GetMoviesAsync(Search, Page);
         }
         catch(Exception e)
         {
