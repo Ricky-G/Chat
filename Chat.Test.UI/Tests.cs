@@ -36,13 +36,16 @@ namespace Chat.UITest
         }
 
         [Test]
-        public void MovieTest()
+        public async void MovieTest()
         {
             app.Tap(ui => ui.Marked("Login"));
             app.Tap(ui => ui.Marked("Movies"));
-            app.EnterText(ui => ui.Marked("Searc"), "Will Smith");
-            app.Repl();
-
+            app.EnterText(ui => ui.Id("search_src_text"), "Will Smith");
+            app.PressEnter();
+            await Task.Delay(2000);
+          //  app.EnterText(ui => ui.Marked("Search"), "Will Smith");
+          //  app.Repl();
+            Assert.Pass();
         }
 
 
