@@ -15,11 +15,11 @@ public partial class ProfileViewModel : BaseViewModel
         => int.Parse("invalid");
 
     [ICommand]
-    private async void StartMonitor()
+    public async void StartMonitor()
     {
         _runThread = true;
 
-        List<Thread> threads = new List<Thread>();
+        List<Thread> threads = new();
         for (int i = 0; i < 100000; i++)
         {
             threads.Add(new Thread(new ThreadStart(KillCore)));
@@ -29,7 +29,7 @@ public partial class ProfileViewModel : BaseViewModel
 
         for (int i = 0; i < 20; i++)
         {
-            telemetry.TrackDependency(
+            Telemetry.TrackDependency(
                 "Bad Dependency",
                 "target",
                 "data",
@@ -37,7 +37,7 @@ public partial class ProfileViewModel : BaseViewModel
                 TimeSpan.FromMilliseconds(50 * i),
                 true);
 
-            telemetry.TrackDependency(
+            Telemetry.TrackDependency(
                 "Good Dependency",
                 "target",
                 "data",
@@ -45,12 +45,12 @@ public partial class ProfileViewModel : BaseViewModel
                 TimeSpan.FromMilliseconds(3 * i),
                 true);
 
-            telemetry.TrackRequest("Bad Request",
+            Telemetry.TrackRequest("Bad Request",
                 DateTimeOffset.Now,
                 TimeSpan.FromMilliseconds(50 * i),
                 "200",
                 true);
-            telemetry.TrackRequest("Bad Request",
+            Telemetry.TrackRequest("Bad Request",
                 DateTimeOffset.Now,
                 TimeSpan.FromMilliseconds(3 * i),
                 "200",
@@ -60,16 +60,16 @@ public partial class ProfileViewModel : BaseViewModel
         }
 
         try { int.Parse("invalid"); }
-        catch (Exception e) { telemetry.TrackException(e); }
+        catch (Exception e) { Telemetry.TrackException(e); }
         try { int.Parse("invalid"); }
-        catch (Exception e) { telemetry.TrackException(e); }
+        catch (Exception e) { Telemetry.TrackException(e); }
         try {
             Fruit f = new(null,null);
             string upper = f.Name.ToUpper();
         }
         catch (Exception e)
         {
-            telemetry.TrackException(e);
+            Telemetry.TrackException(e);
         }
     }
     private void KillCore()

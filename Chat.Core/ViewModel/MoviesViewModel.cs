@@ -28,7 +28,7 @@ public partial class MoviesViewModel : BaseViewModel
         }
         catch(Exception e)
         {
-            telemetry.TrackException(e);
+            Telemetry.TrackException(e);
         }
     }
 }

@@ -18,13 +18,14 @@
     <Grid
         Margin="10">
         <Grid.RowDefinitions>
-            <RowDefinition Height="50" />
+            <RowDefinition Height="70" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <StackLayout
             Orientation="Horizontal"
             Grid.Row="0">
             <Entry
+                VerticalOptions="CenterAndExpand"
                 HorizontalOptions="FillAndExpand"
                 Margin="5"
                 Placeholder="Type Name.."
@@ -32,6 +33,7 @@
                 Text="{Binding Name}"/>
             <Entry
                 HorizontalOptions="FillAndExpand"
+                VerticalOptions="CenterAndExpand"
                 Margin="0,5,5,5"
                 Placeholder="Type Message.."
                 Text="{Binding Message}"

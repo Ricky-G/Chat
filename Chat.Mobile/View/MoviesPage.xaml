@@ -18,7 +18,7 @@
     </Shell.TitleView>
     <StackLayout>
         <SearchBar
-            Margin="15,15,15,0"
+            Margin="15,20,15,0"
             CancelButtonColor="{StaticResource Primary}"
             Placeholder="Search Movies.."
             SearchCommand="{Binding SearchMoviesCommand}"
@@ -50,7 +50,7 @@
             BackgroundColor="Transparent"
             Value="{Binding Page}"
             Minimum="1"
-            Maximum="4" 
+            Maximum="4"   
             DragCompletedCommand="{Binding SearchMoviesCommand}"
             HorizontalOptions="FillAndExpand"/>
     </StackLayout>
