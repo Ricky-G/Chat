@@ -25,7 +25,7 @@ namespace Chat.UITest
         }
 
         [Test]
-        public async Task LoginTest()
+        public void LoginTest()
         {
             app.EnterText(ui => ui.Marked("Username"), "admin");
             app.EnterText(ui => ui.Marked("Password"), "abcd1234");
@@ -34,6 +34,14 @@ namespace Chat.UITest
             AppResult[] homeElements = app.WaitForElement(c => c.Marked("Home"));
             Assert.IsTrue(homeElements.Any());
         }
+
+        [Test]
+        public void MovieTest()
+        {
+            app.Repl();
+
+        }
+
 
         [Test]
         public async Task FruitTest()
