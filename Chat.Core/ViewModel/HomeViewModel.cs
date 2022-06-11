@@ -2,7 +2,7 @@
 
 namespace Chat.Core.ViewModel;
 
-public partial class HomeViewModel : BaseViewModel  
+public partial class HomeViewModel : BaseViewModel
 {
     [ObservableProperty]
     private List<Message> messages = new();
@@ -23,12 +23,12 @@ public partial class HomeViewModel : BaseViewModel
             .WithUrl("https://microsoft-chat.azurewebsites.net/chat")
             .Build();
 
-        hubConnection.On<string, string>(nameof(Broadcast), (n,b) =>
+        hubConnection.On<string, string>(nameof(Broadcast), (n, b) =>
         {
             temp.Insert(0, new Message(n, b));
             Messages = null;
             Messages = temp;
-    
+
         });
 
         await hubConnection.StartAsync();
@@ -37,8 +37,14 @@ public partial class HomeViewModel : BaseViewModel
     [ICommand]
     public async void Broadcast()
     {
-            await hubConnection.SendAsync(nameof(Broadcast), Name, Message);
-            Message = null;
+        await hubConnection.SendAsync(nameof(Broadcast), Name, Message);
+        Message = null;
+    }
+
+    public void Clear()
+    {
+        temp.Clear();
+        Messages = null;
     }
 
     public async ValueTask DisposeAsync()

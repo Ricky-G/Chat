@@ -7,4 +7,8 @@ public partial class HomePage : ContentPage
 		InitializeComponent();
 		BindingContext = vm;
 	}
+
+    protected override void OnAppearing()
+		=> (BindingContext as HomeViewModel)?.Clear();
+    
 }
