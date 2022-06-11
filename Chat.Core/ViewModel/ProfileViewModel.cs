@@ -4,7 +4,6 @@ namespace Chat.Core.ViewModel;
 
 public partial class ProfileViewModel : BaseViewModel
 {
-    public TelemetryClient Telemetry => Globals.TelemetryInstance;
     private bool _runThread;
 
     [ICommand]
@@ -30,7 +29,7 @@ public partial class ProfileViewModel : BaseViewModel
 
         for (int i = 0; i < 20; i++)
         {
-            Telemetry.TrackDependency(
+            telemetry.TrackDependency(
                 "Bad Dependency",
                 "target",
                 "data",
@@ -38,7 +37,7 @@ public partial class ProfileViewModel : BaseViewModel
                 TimeSpan.FromMilliseconds(50 * i),
                 true);
 
-            Telemetry.TrackDependency(
+            telemetry.TrackDependency(
                 "Good Dependency",
                 "target",
                 "data",
@@ -46,12 +45,12 @@ public partial class ProfileViewModel : BaseViewModel
                 TimeSpan.FromMilliseconds(3 * i),
                 true);
 
-            Telemetry.TrackRequest("Bad Request",
+            telemetry.TrackRequest("Bad Request",
                 DateTimeOffset.Now,
                 TimeSpan.FromMilliseconds(50 * i),
                 "200",
                 true);
-            Telemetry.TrackRequest("Bad Request",
+            telemetry.TrackRequest("Bad Request",
                 DateTimeOffset.Now,
                 TimeSpan.FromMilliseconds(3 * i),
                 "200",
@@ -61,16 +60,16 @@ public partial class ProfileViewModel : BaseViewModel
         }
 
         try { int.Parse("invalid"); }
-        catch (Exception e) { Telemetry.TrackException(e); }
+        catch (Exception e) { telemetry.TrackException(e); }
         try { int.Parse("invalid"); }
-        catch (Exception e) { Telemetry.TrackException(e); }
+        catch (Exception e) { telemetry.TrackException(e); }
         try {
             Fruit f = new(null,null);
             string upper = f.Name.ToUpper();
         }
         catch (Exception e)
         {
-            Telemetry.TrackException(e);
+            telemetry.TrackException(e);
         }
     }
     private void KillCore()

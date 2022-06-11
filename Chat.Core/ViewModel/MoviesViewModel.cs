@@ -6,6 +6,10 @@ public partial class MoviesViewModel : BaseViewModel
 {
     [ObservableProperty]
     private List<Search> movies;
+    [ObservableProperty]
+    private int page;
+    [ObservableProperty]
+    private string search;
 
     private MovieService _movieService;
 
@@ -15,11 +19,11 @@ public partial class MoviesViewModel : BaseViewModel
     }
 
     [ICommand]
-    private async void SearchMovies(object s)
+    private async void SearchMovies()
     {
         try
         {
-            var tempMovies = await _movieService.GetMoviesAsync(s as string).ConfigureAwait(false);
+            var tempMovies = await _movieService.GetMoviesAsync(Search, Page);
             Movies = tempMovies;
         }
         catch(Exception e)
