@@ -9,12 +9,6 @@ jobs:
   Build:
     runs-on: [self-hosted, macOS, x64]
     steps:
-      - run: echo hello
-  
-  Integration:
-    runs-on: windows-latest
-    needs: Build
-    steps:
       - uses: actions/checkout@v2
 
       - name: Build
@@ -26,7 +20,12 @@ jobs:
           cd..
           rm -r /iosout
           ls
-          
+      - run: echo hello
+  
+  Integration:
+    runs-on: windows-latest
+    needs: Build
+    steps:        
       - run: echo hello
   UI:
     runs-on: windows-latest
