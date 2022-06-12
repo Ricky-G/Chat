@@ -15,7 +15,7 @@ jobs:
         run: |
           cd /Users/ali/Desktop/actions-runner/_work/Chat/Chat/Chat.Mobile/
           ls
-          dotnet build -f net6.0-ios -c Release 
+          dotnet build -f net6.0-ios -c Release -o /Users/ali/Desktop/iosapp
           ls
           cd bin
           cd Release
