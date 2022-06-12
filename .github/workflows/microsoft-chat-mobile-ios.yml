@@ -20,6 +20,7 @@ jobs:
 
       - name: Build
         run: |
+          ls
           cd /Chat.Mobile/
           ls
           dotnet build -f net6.0-ios -c Release -o /Users/ali/Desktop/iosapp
