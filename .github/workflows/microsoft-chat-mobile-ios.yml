@@ -2,6 +2,13 @@ name: Chat.Mobile.iOS
 
 on:
   push:
+    paths-ignore:
+      - 'Chat.Hub/**'
+      - 'Chat.Blazor/**'
+      - '**/microsoft-chat-hub.yml'
+      - '**/microsoft-chat-blazor.yml'
+      - '**/microsoft-chat-mobile-android.yml'
+      - 'README.md'
     branches:
       - main
       
