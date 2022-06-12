@@ -60,7 +60,6 @@
 		<PublishTrimmed>True</PublishTrimmed>
 		<IpaIncludeArtwork>True</IpaIncludeArtwork> 
 		<ArchiveOnBuild>true</ArchiveOnBuild>
-	
 	</PropertyGroup>
 
 
