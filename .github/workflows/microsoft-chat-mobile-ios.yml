@@ -13,7 +13,7 @@ jobs:
 
       - name: Build
         run: |
-          cd Chat.Blazor
+          cd Chat.Mobile
           dotnet build -f net6.0-ios -c Release -o /iosout
           cd /iosout
           ls
