@@ -82,7 +82,7 @@ namespace Chat.UITest
         public async Task LeakTest()
         {
 #if DEBUG
-           app.Repl();
+     //      app.Repl();
 #endif
             app.Tap(ui => ui.Marked("Login"));
             await Task.Delay(8000);
