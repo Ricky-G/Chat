@@ -14,11 +14,8 @@ jobs:
       - name: Build
         run: |
           cd Chat.Mobile
-          dotnet build -f net6.0-ios -c Release -o /iosout
-          cd /iosout
-          ls
-          cd..
-          rm -r /iosout
+          dotnet build -f net6.0-ios -c Release
+          cd /bin/Release/net6.0-ios
           ls
       - run: echo hello
   
