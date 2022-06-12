@@ -13,7 +13,7 @@
                       Variant="Variant.Outlined"></MudTextField>
         <MudTextField Label="Message"
                       Style="font-size:40px;"
-                      OnKeyUp="@(e => {if(e.Key == "Enter"){ViewModel.Broadcast();}})"
+                      OnKeyUp="@(e => {if(e.Key == "Enter"|| e.Code == "NumpadEnter"){ViewModel.Broadcast();}})"
                       @bind-Value="ViewModel.Message"
                       Variant="Variant.Outlined"></MudTextField>
     </MudStack>
