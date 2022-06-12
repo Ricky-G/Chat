@@ -37,7 +37,7 @@ jobs:
     runs-on: windows-latest
     needs: build
     environment:
-      name: 'Production'
+      name: 'Production-ChatHub'
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
 
     steps:
