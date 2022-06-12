@@ -13,7 +13,6 @@ jobs:
 
       - name: Build
         run: |
-          cd ${{env.DOTNET_ROOT}}/Chat.Mobile
           ls
           dotnet build -f net6.0-ios -c Release 
           ls
