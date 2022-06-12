@@ -15,9 +15,9 @@ jobs:
         run: |
           ls ${{env.DOTNET_ROOT}}
           cd Chat.Mobile
-          dotnet build -f net6.0-ios -c Release -o  ${{env.DOTNET_ROOT}}/ios
-          cd  ${{env.DOTNET_ROOT}}/ios
+          dotnet build -f net6.0-ios -c Release 
           ls
+          
       - run: echo hello
   
   Integration:
