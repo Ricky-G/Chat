@@ -15,7 +15,7 @@ on:
       
 jobs:
   build:
-    runs-on: [self-hosted, macOS, x64]
+    runs-on: windows-latest
 
     steps:
       - uses: actions/checkout@v2
@@ -23,6 +23,7 @@ jobs:
       - name: Build
         run: |
           cd Chat.Blazor
+          dotnet workload restore
           dotnet build -c Release
           dotnet publish -c Release -o /myapp
           
