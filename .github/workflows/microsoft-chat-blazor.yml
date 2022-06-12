@@ -24,7 +24,7 @@ jobs:
         run: |
           cd Chat.Blazor
           dotnet build -c Release
-          dotnet publish -c Release -o c:/myapp
+          dotnet publish -c Release -o /myapp
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
@@ -55,4 +55,4 @@ jobs:
           package: .
         
       - name: Delete Local 
-        run: rm -r c:/myapp
+        run: rm -r /myapp
