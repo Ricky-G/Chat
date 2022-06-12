@@ -28,7 +28,8 @@ namespace Chat.UITest
         public async Task LoginTest()
         {
             app.Tap(ui => ui.Marked("Login"));
-            await Task.Delay(2000);
+            await Task.Delay(8000);
+
             AppResult[] homeElements = app.WaitForElement(c => c.Marked("Home"));
             Assert.IsTrue(homeElements.Any());
         }
@@ -37,7 +38,8 @@ namespace Chat.UITest
         public async Task MovieTest()
         {
             app.Tap(ui => ui.Marked("Login"));
-            await Task.Delay(2000);
+            await Task.Delay(8000);
+
             app.Tap(ui => ui.Marked("Movies"));
             app.EnterText(ui => ui.Id("search_src_text"), "Will Smith");
             app.PressEnter();
@@ -55,7 +57,9 @@ namespace Chat.UITest
         public async Task FruitTest()
         {
             app.Tap(ui => ui.Marked("Login"));
-            await Task.Delay(2000);
+            await Task.Delay(8000);
+
+
             app.Tap(ui => ui.Marked("Fruit"));
 
             app.Tap(ui => ui.Marked("Add"));
@@ -81,7 +85,8 @@ namespace Chat.UITest
            app.Repl();
 #endif
             app.Tap(ui => ui.Marked("Login"));
-            await Task.Delay(2000);
+            await Task.Delay(8000);
+
             app.Tap(ui => ui.Marked("Profile"));
             app.Tap(ui => ui.Marked("Monitor"));
             app.Tap(ui => ui.Marked("Monitor"));
