@@ -28,8 +28,6 @@
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>
 		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
-		<AndroidSigningKeyStore>mobiledevops.keystore</AndroidSigningKeyStore>
-		<CodesignKey>iPhone Distribution</CodesignKey>
 
 	</PropertyGroup>
 
@@ -42,6 +40,7 @@
 	  <AndroidPackageFormat>aab</AndroidPackageFormat>
 	  <AndroidUseAapt2>True</AndroidUseAapt2>
 	  <AndroidCreatePackagePerAbi>False</AndroidCreatePackagePerAbi>
+	  <AndroidSigningKeyStore>mobiledevops.keystore</AndroidSigningKeyStore>
 	</PropertyGroup>
 
 
@@ -60,6 +59,7 @@
 		<PublishTrimmed>True</PublishTrimmed>
 		<IpaIncludeArtwork>True</IpaIncludeArtwork> 
 		<ArchiveOnBuild>true</ArchiveOnBuild>
+		<CodesignKey>iPhone Distribution</CodesignKey>
 	</PropertyGroup>
 
 
@@ -68,8 +68,8 @@
 		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#304ffe" />
 
 		<!-- Splash Screen -->
-		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#304ffe" BaseSize="0,0" />
-
+	   <MauiSplashScreen Include="Resources\Splash\s.svg" BaseSize="128,128"/>
+		
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />
 		<MauiImage Update="Resources\Images\dotnet_bot.svg" BaseSize="168,208" />
@@ -96,6 +96,7 @@
 		<None Remove="Resources\Images\orange.svg" />
 		<None Remove="Resources\Images\person.svg" />
 		<None Remove="Resources\Images\watermelon.svg" />
+		<None Remove="Resources\Splash\s.svg" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -112,12 +113,6 @@
 
 	<ItemGroup>
 	  <ProjectReference Include="..\Chat.Core\Chat.Core.csproj" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Compile Update="View\MoviesPage.xaml.cs">
-	    <DependentUpon>MoviesPage.xaml</DependentUpon>
-	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
