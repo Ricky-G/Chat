@@ -27,8 +27,6 @@ namespace Chat.UITest
         [Test]
         public void LoginTest()
         {
-            app.EnterText(ui => ui.Marked("Username"), "admin");
-            app.EnterText(ui => ui.Marked("Password"), "abcd1234");
             app.Tap(ui => ui.Marked("Login"));
 
             AppResult[] homeElements = app.WaitForElement(c => c.Marked("Home"));
@@ -36,15 +34,20 @@ namespace Chat.UITest
         }
 
         [Test]
-        public async void MovieTest()
+        public async Task MovieTest()
         {
             app.Tap(ui => ui.Marked("Login"));
             app.Tap(ui => ui.Marked("Movies"));
             app.EnterText(ui => ui.Id("search_src_text"), "Will Smith");
             app.PressEnter();
-            await Task.Delay(2000);
-          //  app.EnterText(ui => ui.Marked("Search"), "Will Smith");
-          //  app.Repl();
+            await Task.Delay(5000);
+            app.Screenshot("Will Smith");
+            app.EnterText(ui => ui.Id("search_src_text"), "Johnny Depp");
+            app.PressEnter();
+            await Task.Delay(5000);
+            app.Screenshot("Johnny Depp");
+            //  app.EnterText(ui => ui.Marked("Search"), "Will Smith");
+            //  app.Repl();
             Assert.Pass();
         }
 
@@ -52,10 +55,7 @@ namespace Chat.UITest
         [Test]
         public async Task FruitTest()
         {
-            app.EnterText(ui => ui.Marked("Username"), "admin");
-            app.EnterText(ui => ui.Marked("Password"), "abcd1234");
             app.Tap(ui => ui.Marked("Login"));
-
             app.Tap(ui => ui.Marked("Fruit"));
 
             app.Tap(ui => ui.Marked("Add"));
@@ -80,8 +80,6 @@ namespace Chat.UITest
 #if DEBUG
            app.Repl();
 #endif
-            app.EnterText(ui => ui.Marked("Username"), "admin");
-            app.EnterText(ui => ui.Marked("Password"), "abcd1234");
             app.Tap(ui => ui.Marked("Login"));
 
             app.Tap(ui => ui.Marked("Profile"));
