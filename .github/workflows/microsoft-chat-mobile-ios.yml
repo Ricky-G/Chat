@@ -17,6 +17,10 @@ jobs:
           cd Chat.Mobile
           dotnet build -f net6.0-ios -c Release 
           ls
+          cd bin
+          ls
+          cd Release
+          ls
           
       - run: echo hello
   
