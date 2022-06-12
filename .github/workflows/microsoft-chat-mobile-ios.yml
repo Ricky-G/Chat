@@ -25,6 +25,7 @@ jobs:
           ls
           cd..
           rm -r /iosout
+          ls
           
       - run: echo hello
   UI:
