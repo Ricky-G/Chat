@@ -53,3 +53,6 @@ jobs:
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_248169DBE70F4B22AB7EFAE343878F87 }}
           package: .
+        
+      - name: Delete Local 
+        run: rm -r ${{env.DOTNET_ROOT}}/myapp
