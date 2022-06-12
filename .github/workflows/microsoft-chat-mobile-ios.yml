@@ -49,6 +49,8 @@ jobs:
         
   AppStore:
     runs-on: windows-latest
+    environment:
+      name: 'Production-iOS'
     needs: Internal
     steps:
       - run: echo hello
