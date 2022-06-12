@@ -7,6 +7,7 @@ on:
       - 'Chat.Mobile/**'
       - 'Chat.Blazor/**'
       - 'Chat.Test.**'
+      - '**/microsoft-chat-mobile-ios.yml'
       - '**/microsoft-chat-mobile-android.yml'
       - '**/microsoft-chat-blazor.yml'
       - 'README.md'
@@ -36,7 +37,7 @@ jobs:
     runs-on: windows-latest
     needs: build
     environment:
-      name: 'Production'
+      name: 'Production-ChatHub'
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
 
     steps:
