@@ -11,21 +11,14 @@
                       FullWidth="false"
                       Style="font-size:40px; color:#304ffe;"
                       Variant="Variant.Outlined"></MudTextField>
-        <!--MudTextField Label="Message"
+        <MudTextField Label="Message"
                       Style="font-size:40px;"
                       OnKeyUp="@(e => {if(e.Key == "Enter"|| e.Code == "NumpadEnter"){ViewModel.Broadcast();}})"
                       @bind-Value="ViewModel.Message"
-                      Variant="Variant.Outlined"></MudTextField-->
-        <MudTextField Label="Test"
-                      Style="font-size:40px;"
-                      OnKeyUp="@(e => test = test = e.Code + " " + e.Key )"
-                      @bind-Value="ViewModel.Message"
                       Variant="Variant.Outlined"></MudTextField>
     </MudStack>
-
 </div>
 <br />
-<p>@test</p>
 <div>
     @foreach (var message in ViewModel.Messages)
     {
@@ -48,6 +41,4 @@
 
 
 
-@code {
-    string test;
-    protected override void OnInitialized() => SetViewModel(ViewModel); }
+@code { protected override void OnInitialized() => SetViewModel(ViewModel); }
