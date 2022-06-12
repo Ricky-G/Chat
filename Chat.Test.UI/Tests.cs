@@ -62,7 +62,7 @@ namespace Chat.UITest
             app.Tap(ui => ui.Marked("Add"));
             app.Tap(ui => ui.Marked("Add"));
             app.Tap(ui => ui.Marked("Add"));
-            await Task.Delay(2000);
+            await Task.Delay(1000);
             app.Screenshot("Should be 4 fruits");
 
             app.Tap(ui => ui.Marked("Remove"));
