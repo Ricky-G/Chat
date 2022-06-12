@@ -24,14 +24,13 @@ jobs:
         run: |
           cd Chat.Blazor
           dotnet build -c Release
-          dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
-
+          dotnet publish -c Release -o /myapp
+          
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
           name: .net-app
           path: ${{env.DOTNET_ROOT}}/myapp
-
   deploy:
     runs-on: [self-hosted, windows, x64]
     needs: build
