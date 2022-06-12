@@ -11,14 +11,9 @@
                       FullWidth="false"
                       Style="font-size:40px; color:#304ffe;"
                       Variant="Variant.Outlined"></MudTextField>
-        <!--MudTextField Label="Message"
+        <MudTextField Label="Message"
                       Style="font-size:40px;"
                       OnKeyUp="@(e => {if(e.Key == "Enter"|| e.Code == "NumpadEnter"){ViewModel.Broadcast();}})"
-                      @bind-Value="ViewModel.Message"
-                      Variant="Variant.Outlined"></MudTextField-->
-        <MudTextField Label="Test"
-                      Style="font-size:40px;"
-                      OnKeyUp="@(e => test = test = e.Code + " " + e.Key + " " + e.Type + " " + e.Location)"
                       @bind-Value="ViewModel.Message"
                       Variant="Variant.Outlined"></MudTextField>
     </MudStack>
