@@ -24,7 +24,7 @@ jobs:
         run: |
           cd Chat.Blazor
           dotnet build -c Release
-          dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
+          dotnet publish -c Release -o /myapp
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
@@ -33,7 +33,7 @@ jobs:
           path: ${{env.DOTNET_ROOT}}/myapp
 
   deploy:
-    runs-on: windows-latest
+    runs-on: [self-hosted, windows, x64]
     needs: build
     environment:
       name: 'Production'
@@ -53,3 +53,6 @@ jobs:
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_248169DBE70F4B22AB7EFAE343878F87 }}
           package: .
+        
+      - name: Delete Local 
+        run: rm -r /myapp
