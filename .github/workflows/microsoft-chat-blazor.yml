@@ -55,4 +55,4 @@ jobs:
           package: .
         
       - name: Delete Local 
-        run: rm -r ${{env.DOTNET_ROOT}}/myapp
+        run: rm -r /myapp
