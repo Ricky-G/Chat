@@ -45,6 +45,7 @@ namespace Chat.UITest
             app.PressEnter();
             await Task.Delay(5000);
             app.Screenshot("Will Smith");
+            app.Tap(ui => ui.Id("search_close_btn"));
             app.EnterText(ui => ui.Id("search_src_text"), "Johnny Depp");
             app.PressEnter();
             await Task.Delay(5000);

@@ -30,7 +30,7 @@
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
 		<ProvisioningType>manual</ProvisioningType>
 		<CodesignKey>iPhone Distribution</CodesignKey>
-
+		<AndroidSigningKeyStore>mobiledevops.keystore</AndroidSigningKeyStore>
 	</PropertyGroup>
 
 
@@ -42,7 +42,6 @@
 	  <AndroidPackageFormat>aab</AndroidPackageFormat>
 	  <AndroidUseAapt2>True</AndroidUseAapt2>
 	  <AndroidCreatePackagePerAbi>False</AndroidCreatePackagePerAbi>
-	  <AndroidSigningKeyStore>mobiledevops.keystore</AndroidSigningKeyStore>
 	  <CodesignKey>iPhone Distribution</CodesignKey>
 	</PropertyGroup>
 
