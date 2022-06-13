@@ -79,7 +79,7 @@ namespace Chat.UITest
             Assert.IsTrue(fruitElements.Any());
         }
 
-        [Test]
+      //  [Test]
         public async Task LeakTest()
         {
 #if DEBUG
