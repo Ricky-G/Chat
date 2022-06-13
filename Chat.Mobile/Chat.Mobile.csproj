@@ -20,7 +20,7 @@
 
 		<!-- Versions -->
 		<ApplicationDisplayVersion>1.0.0</ApplicationDisplayVersion>
-		<ApplicationVersion>8</ApplicationVersion>
+		<ApplicationVersion>9</ApplicationVersion>
 
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">14.2</SupportedOSPlatformVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">14.0</SupportedOSPlatformVersion>
@@ -28,8 +28,6 @@
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>
 		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
-		<ProvisioningType>manual</ProvisioningType>
-		<CodesignKey>iPhone Distribution</CodesignKey>
 		<AndroidSigningKeyStore>mobiledevops.keystore</AndroidSigningKeyStore>
 	</PropertyGroup>
 
@@ -61,6 +59,8 @@
 		<PublishTrimmed>True</PublishTrimmed>
 		<IpaIncludeArtwork>True</IpaIncludeArtwork> 
 		<ArchiveOnBuild>true</ArchiveOnBuild>
+		<ProvisioningType>manual</ProvisioningType>
+		<CodesignKey>iPhone Distribution</CodesignKey>
 	</PropertyGroup>
 
 
