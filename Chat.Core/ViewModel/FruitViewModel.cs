@@ -18,10 +18,7 @@ public partial class FruitViewModel : BaseViewModel
     public void Add()
     {
         Fruit fruit = _fruitService.GetFruit();
-        _telemetryClient.TrackEvent("FavouriteFruit", new Dictionary<string, string>()
-        {
-            {  "Name", fruit.Name }
-        });
+        _telemetryClient.TrackEvent(fruit.Name);
         Fruits.Insert(0, fruit);
     }
 
