@@ -27,6 +27,7 @@ namespace Chat.UITest
         [Test]
         public async Task LoginTest()
         {
+            app.Repl();
             app.Tap(ui => ui.Marked("Login"));
             await Task.Delay(8000);
 

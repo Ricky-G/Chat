@@ -13,6 +13,7 @@
             FontSize="150"
             Text=".NET"/>
         <Button
+            AutomationId="Login"
             VerticalOptions="EndAndExpand"
             Text="Login"
             Margin="20"
