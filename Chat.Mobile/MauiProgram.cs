@@ -7,6 +7,7 @@ global using Microsoft.Extensions.Configuration;
 global using CommunityToolkit.Maui;
 global using System.Reflection;
 global using Chat.Mobile.View;
+using ChatCore;
 
 namespace Chat.Mobile;
 public static class MauiProgram
@@ -31,7 +32,11 @@ public static class MauiProgram
     private static void RegisterTypes(IServiceCollection s)
     {
         s.AddSingleton(s.BuildServiceProvider());
-        s.AddSingleton(Core.Globals.GetTelemetryClient());
+
+        var t = Globals.GetTelemetryClient();
+            t.Context.SetMAUIProperties();
+
+        s.AddSingleton(t);
         s.AddSingleton<MovieService>();
 
         s.AddSingleton<LoginViewModel>();
@@ -53,6 +58,5 @@ public static class MauiProgram
         s.AddSingleton<DrawViewModel>();
         s.AddSingleton<DrawPage>();
     }
-
 }
 
