@@ -24,7 +24,8 @@
                 ItemsSource="{Binding Fruits}"
                 SelectionMode="Single">
             <CollectionView.ItemsLayout>
-                <GridItemsLayout Orientation="Vertical"  Span="{Binding Columns}" />
+                <GridItemsLayout Orientation="Vertical"  
+                                 Span="{Binding Columns}" />
             </CollectionView.ItemsLayout>
             <CollectionView.ItemTemplate>
                 <DataTemplate>

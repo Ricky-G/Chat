@@ -9,6 +9,7 @@ public partial class FruitViewModel : BaseViewModel, IAsyncDisposable
     [ObservableProperty]
     int columns = 4;
     [ObservableProperty]
+    [AlsoNotifyFor(nameof(Fruits))]
     int size = 100;
     private readonly FruitService _fruitService;
     private readonly TelemetryClient _telemetryClient;
@@ -37,6 +38,7 @@ public partial class FruitViewModel : BaseViewModel, IAsyncDisposable
             else if (source == "size")
             {
                 Size = int.Parse(name);
+             
                 return;
             }
 
