@@ -1,17 +1,40 @@
 ﻿
+using Microsoft.AspNetCore.SignalR.Client;
+
 namespace Chat.Core.ViewModel;
 
-public partial class FruitViewModel : BaseViewModel
+public partial class FruitViewModel : BaseViewModel, IAsyncDisposable
 {
     public ObservableCollection<Fruit> Fruits { get; set; } = new ObservableCollection<Fruit>();
 
     private readonly FruitService _fruitService;
     private readonly TelemetryClient _telemetryClient;
+    private HubConnection hub;
 
     public FruitViewModel(FruitService fruitService, TelemetryClient telemetryClient)
     {
         _fruitService = fruitService;
         _telemetryClient = telemetryClient;
+        LoadAsync();
+    }
+
+    private async void LoadAsync()
+    {
+        hub = new HubConnectionBuilder()
+                    .WithUrl("https://microsoft-chat.azurewebsites.net/chat")
+                    .Build();
+
+        hub.On<string, string>("SendFruit", (n, f) =>
+        {
+            Fruit fruit = new (n, f);
+#if !DEBUG
+            _telemetryClient.TrackEvent(fruit.Name);
+#endif
+            Fruits.Insert(0, fruit);
+
+        });
+
+        await hub.StartAsync();
     }
 
     [ICommand]
@@ -28,5 +51,10 @@ public partial class FruitViewModel : BaseViewModel
         if (Fruits.Count == 0)
             return;
         Fruits.RemoveAt(Fruits.Count - 1);
+    }
+
+    public async ValueTask DisposeAsync()
+    {
+        await hub.DisposeAsync();
     }
 }

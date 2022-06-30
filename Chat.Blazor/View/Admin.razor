@@ -1,7 +1,63 @@
 ﻿@page "/admin"
+@implements IAsyncDisposable
+@using Microsoft.AspNetCore.SignalR.Client
 
-<h3>Admin</h3>
+<h1>Admin</h1>
+<MudButton FullWidth="true"
+           Variant="Variant.Filled"
+           OnClick="@(() => SendFruit("", "guava.png"))"
+           Style="font-size:30px;background-color:#4CAF50;color:lightpink">
+    Guava
+</MudButton>
+<br />
+<br />
+<MudButton FullWidth="true"
+           Variant="Variant.Filled"
+           OnClick="@(() => SendFruit("", "bananas.png"))"
+           Style="font-size:30px;background-color:yellow;color:black">
+    Bananas
+</MudButton>
+<br />
+<br />
+<MudButton FullWidth="true"
+           Variant="Variant.Filled"
+           OnClick="@(() => SendFruit("", "watermelon.png"))"
+           Style="font-size:30px;background-color:#ff6057;color:lawngreen">
+    Watermelon
+</MudButton>
+<br />
+<br />
+<MudButton FullWidth="true"
+           Variant="Variant.Filled"
+           OnClick="@(() => SendFruit("", "orange.png"))"
+           Style="font-size:30px;background-color:darkorange;color:black">
+    Orange
+</MudButton>
 
 @code {
+    HubConnection hub;
 
+    protected async override void OnInitialized()
+    {
+        hub = new HubConnectionBuilder()
+        .WithUrl("https://microsoft-chat.azurewebsites.net/chat")
+        .Build();
+
+        hub.On<string, string>("SendFruit", (n, f) =>
+        {
+            Console.WriteLine($"{n} {f}");
+        });
+
+        await hub.StartAsync();
+    }
+
+    private async void SendFruit(string name, string fruit)
+    {  
+        await hub.SendAsync("SendFruit", "fruit", fruit);
+    }
+
+    public async ValueTask DisposeAsync()
+    {
+        await hub.DisposeAsync();
+    }
 }
