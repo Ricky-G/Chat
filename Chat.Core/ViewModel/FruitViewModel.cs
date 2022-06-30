@@ -6,7 +6,10 @@ namespace Chat.Core.ViewModel;
 public partial class FruitViewModel : BaseViewModel, IAsyncDisposable
 {
     public ObservableCollection<Fruit> Fruits { get; set; } = new ObservableCollection<Fruit>();
-
+    [ObservableProperty]
+    int columns = 4;
+    [ObservableProperty]
+    int size = 100;
     private readonly FruitService _fruitService;
     private readonly TelemetryClient _telemetryClient;
     private HubConnection hub;
@@ -26,6 +29,17 @@ public partial class FruitViewModel : BaseViewModel, IAsyncDisposable
 
         hub.On<string, string>("SendFruit", (source, name) =>
         {
+            if(source == "column")
+            {
+                Columns = int.Parse(name);
+                return;
+            }
+            else if (source == "size")
+            {
+                Size = int.Parse(name);
+                return;
+            }
+
             Fruit fruit = new (source, name);
 #if !DEBUG
             _telemetryClient.TrackEvent(fruit.Name);

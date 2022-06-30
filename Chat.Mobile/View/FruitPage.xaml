@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Name="page"
              x:Class="Chat.Mobile.View.FruitPage">
     <Shell.TitleView>
         <AbsoluteLayout
@@ -21,15 +22,24 @@
                 Margin="10,10,10,0"
                 VerticalOptions="FillAndExpand"
                 ItemsSource="{Binding Fruits}"
-                ItemsLayout="VerticalGrid, 4"    
                 SelectionMode="Single">
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Vertical"  Span="{Binding Columns}" />
+            </CollectionView.ItemsLayout>
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <StackLayout>
                         <Image  
                                 x:Name="fruit"
-                                HeightRequest="100"
-                                WidthRequest="100"
+                            
+                                HeightRequest="{Binding 
+                                Source={x:Reference page},
+                                Path=BindingContext.Size}"
+                            
+                                WidthRequest="{Binding 
+                                Source={x:Reference page},
+                                Path=BindingContext.Size}" 
+                            
                                 AutomationId="Fruit"
                                 Source="{Binding Source}"/>
                     </StackLayout>

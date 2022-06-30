@@ -41,8 +41,28 @@
            Style="font-size:30px;background-color:red;color:mediumspringgreen">
     Apple
 </MudButton>
+<br />
+<br />
+<div>
+    <MudStack Spacing="1" Row="true">
+        <MudTextField Label="Set Columns"
+                      Style="font-size:40px;"
+                      OnKeyUp="@(e => {if(e.Key == "Enter"|| e.Code == "NumpadEnter"){SetColumn();}})"
+                      @bind-Value="Column"
+                      Variant="Variant.Outlined"></MudTextField>
+
+        <MudTextField Label="Set Size"
+                      Style="font-size:40px;"
+                  OnKeyUp="@(e => {if(e.Key == "Enter"|| e.Code == "NumpadEnter"){SetSize();}})"
+                      @bind-Value="Size"
+                      Variant="Variant.Outlined"></MudTextField>
+    </MudStack>
+
+</div>
 @code {
     HubConnection hub;
+    int Column = 4;
+    int Size = 100;
 
     protected async override void OnInitialized()
     {
@@ -56,6 +76,16 @@
         });
 
         await hub.StartAsync();
+    }
+
+    async void SetColumn()
+    {
+        await hub.SendAsync(nameof(SendFruit), "column", Column);
+    }
+
+    async void SetSize()
+    {
+        await hub.SendAsync(nameof(SendFruit), "size", Size);
     }
 
     private async void SendFruit(string name, string fruit)
