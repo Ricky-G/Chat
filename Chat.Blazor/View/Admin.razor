@@ -5,7 +5,7 @@
 <h1>Admin</h1>
 <MudButton FullWidth="true"
            Variant="Variant.Filled"
-           OnClick="@(() => SendFruit("", "guava.png"))"
+           OnClick="@(() => SendFruit("Guava", "guava.png"))"
            Style="font-size:30px;background-color:#4CAF50;color:lightpink">
     Guava
 </MudButton>
@@ -13,7 +13,7 @@
 <br />
 <MudButton FullWidth="true"
            Variant="Variant.Filled"
-           OnClick="@(() => SendFruit("", "bananas.png"))"
+           OnClick="@(() => SendFruit("Bananas", "bananas.png"))"
            Style="font-size:30px;background-color:yellow;color:black">
     Bananas
 </MudButton>
@@ -21,7 +21,7 @@
 <br />
 <MudButton FullWidth="true"
            Variant="Variant.Filled"
-           OnClick="@(() => SendFruit("", "watermelon.png"))"
+           OnClick="@(() => SendFruit("Watermelon", "watermelon.png"))"
            Style="font-size:30px;background-color:#ff6057;color:lawngreen">
     Watermelon
 </MudButton>
@@ -29,11 +29,18 @@
 <br />
 <MudButton FullWidth="true"
            Variant="Variant.Filled"
-           OnClick="@(() => SendFruit("", "orange.png"))"
+           OnClick="@(() => SendFruit("Orange", "orange.png"))"
            Style="font-size:30px;background-color:darkorange;color:black">
     Orange
 </MudButton>
-
+<br />
+<br />
+<MudButton FullWidth="true"
+           Variant="Variant.Filled"
+           OnClick="@(() => SendFruit("Apple", "apple.png"))"
+           Style="font-size:30px;background-color:red;color:green">
+    Apple
+</MudButton>
 @code {
     HubConnection hub;
 
