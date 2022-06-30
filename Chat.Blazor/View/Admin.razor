@@ -43,7 +43,7 @@
         .WithUrl("https://microsoft-chat.azurewebsites.net/chat")
         .Build();
 
-        hub.On<string, string>("SendFruit", (n, f) =>
+        hub.On<string, string>(nameof(SendFruit), (n, f) =>
         {
             Console.WriteLine($"{n} {f}");
         });
@@ -53,7 +53,7 @@
 
     private async void SendFruit(string name, string fruit)
     {  
-        await hub.SendAsync("SendFruit", "fruit", fruit);
+        await hub.SendAsync(nameof(SendFruit), name, fruit);
     }
 
     public async ValueTask DisposeAsync()
