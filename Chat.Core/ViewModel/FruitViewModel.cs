@@ -7,9 +7,10 @@ public partial class FruitViewModel : BaseViewModel, IAsyncDisposable
 {
     public ObservableCollection<Fruit> Fruits { get; set; } = new ObservableCollection<Fruit>();
     [ObservableProperty]
-    int columns = 4;
+    [AlsoNotifyChangeForAttribute(nameof(Fruits))]
+    int rot = 2;
     [ObservableProperty]
-    [AlsoNotifyFor(nameof(Fruits))]
+    [AlsoNotifyChangeForAttribute(nameof(Fruits))]
     int size = 100;
     private readonly FruitService _fruitService;
     private readonly TelemetryClient _telemetryClient;
@@ -32,7 +33,7 @@ public partial class FruitViewModel : BaseViewModel, IAsyncDisposable
         {
             if(source == "column")
             {
-                Columns = int.Parse(name);
+                Rot = int.Parse(name);
                 return;
             }
             else if (source == "size")

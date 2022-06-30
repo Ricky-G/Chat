@@ -22,10 +22,11 @@
                 Margin="10,10,10,0"
                 VerticalOptions="FillAndExpand"
                 ItemsSource="{Binding Fruits}"
+                Rotation="{Binding Rot}"
                 SelectionMode="Single">
             <CollectionView.ItemsLayout>
                 <GridItemsLayout Orientation="Vertical"  
-                                 Span="{Binding Columns}" />
+                                 Span="4" />
             </CollectionView.ItemsLayout>
             <CollectionView.ItemTemplate>
                 <DataTemplate>

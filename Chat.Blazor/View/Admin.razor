@@ -45,7 +45,7 @@
 <br />
 <div>
     <MudStack Spacing="1" Row="true">
-        <MudTextField Label="Set Columns"
+        <MudTextField Label="Set Rotation"
                       Style="font-size:40px;"
                       OnKeyUp="@(e => {if(e.Key == "Enter"|| e.Code == "NumpadEnter"){SetColumn();}})"
                       @bind-Value="Column"
@@ -61,7 +61,7 @@
 </div>
 @code {
     HubConnection hub;
-    string Column = "4";
+    string Column = "0";
     string Size = "100";
 
     protected async override void OnInitialized()
