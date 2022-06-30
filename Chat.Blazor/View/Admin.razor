@@ -5,7 +5,7 @@
 <h1>Admin</h1>
 <MudButton FullWidth="true"
            Variant="Variant.Filled"
-           OnClick="@(() => SendFruit("Guava", "guava.png"))"
+           OnClick="@(() => SendFruit("guava.png", "Guava"))"
            Style="font-size:30px;background-color:#4CAF50;color:lightpink">
     Guava
 </MudButton>
@@ -13,7 +13,7 @@
 <br />
 <MudButton FullWidth="true"
            Variant="Variant.Filled"
-           OnClick="@(() => SendFruit("Bananas", "bananas.png"))"
+           OnClick="@(() => SendFruit("bananas.png", "Bananas"))"
            Style="font-size:30px;background-color:yellow;color:black">
     Bananas
 </MudButton>
@@ -21,7 +21,7 @@
 <br />
 <MudButton FullWidth="true"
            Variant="Variant.Filled"
-           OnClick="@(() => SendFruit("Watermelon", "watermelon.png"))"
+           OnClick="@(() => SendFruit("watermelon.png","Watermelon"))"
            Style="font-size:30px;background-color:#ff6057;color:lawngreen">
     Watermelon
 </MudButton>
@@ -29,7 +29,7 @@
 <br />
 <MudButton FullWidth="true"
            Variant="Variant.Filled"
-           OnClick="@(() => SendFruit("Orange", "orange.png"))"
+           OnClick="@(() => SendFruit("orange.png", "Orange"))"
            Style="font-size:30px;background-color:darkorange;color:black">
     Orange
 </MudButton>
@@ -37,7 +37,7 @@
 <br />
 <MudButton FullWidth="true"
            Variant="Variant.Filled"
-           OnClick="@(() => SendFruit("Apple", "apple.png"))"
+           OnClick="@(() => SendFruit("apple.png", "Apple"))"
            Style="font-size:30px;background-color:red;color:mediumspringgreen">
     Apple
 </MudButton>
@@ -50,9 +50,9 @@
         .WithUrl("https://microsoft-chat.azurewebsites.net/chat")
         .Build();
 
-        hub.On<string, string>(nameof(SendFruit), (n, f) =>
+        hub.On<string, string>(nameof(SendFruit), (source, name) =>
         {
-            Console.WriteLine($"{n} {f}");
+            Console.WriteLine($"{source} {name}");
         });
 
         await hub.StartAsync();

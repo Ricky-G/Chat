@@ -24,9 +24,9 @@ public partial class FruitViewModel : BaseViewModel, IAsyncDisposable
                     .WithUrl("https://microsoft-chat.azurewebsites.net/chat")
                     .Build();
 
-        hub.On<string, string>("SendFruit", (n, f) =>
+        hub.On<string, string>("SendFruit", (source, name) =>
         {
-            Fruit fruit = new (n, f);
+            Fruit fruit = new (source, name);
 #if !DEBUG
             _telemetryClient.TrackEvent(fruit.Name);
 #endif

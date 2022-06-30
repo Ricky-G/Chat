@@ -36,8 +36,8 @@ public class Chat : Hub
     {
         await Clients.All.SendAsync(nameof(Broadcast), name, message);
     }
-    public async void SendFruit(string name, string fruit)
+    public async void SendFruit(string source, string name)
     {
-        await Clients.All.SendAsync(nameof(SendFruit), name, fruit);
+        await Clients.All.SendAsync(nameof(SendFruit), source, name);
     }
 }
