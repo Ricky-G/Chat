@@ -30,4 +30,10 @@ public partial class MoviesViewModel : BaseViewModel
             Telemetry.TrackException(e);
         }
     }
+
+    [ICommand]
+    private async void MovieSelected(Search searchItem)
+    {
+        Shell.Current.CurrentPage.DisplayAlert("Selected", searchItem.Title, "ok");
+    }
 }

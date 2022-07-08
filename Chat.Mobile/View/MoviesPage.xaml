@@ -24,14 +24,18 @@
             SearchCommand="{Binding SearchMoviesCommand}"
             Text="{Binding Search}" />
         <CollectionView 
+            x:Name="collection"
             VerticalOptions="FillAndExpand"
             VerticalScrollBarVisibility="Always"
             Margin="2,0,2,0"
+            SelectionMode="Single"
+            SelectionChangedCommandParameter="{Binding SelectedItem, Source={x:Reference collection}}"
+            SelectionChangedCommand="{Binding MovieSelectedCommand}"
             ItemsSource="{Binding Movies}"
             ItemsLayout="VerticalGrid, 2">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <StackLayout
+                    <StackLayout    
                         AutomationId="{Binding Title}"
                         Margin="2,0,2,0"
                         Padding="0,2,0,2">
