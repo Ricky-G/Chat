@@ -1,6 +1,7 @@
 
 using ChatCore;
 using Microsoft.ApplicationInsights;
+using Microsoft.ApplicationInsights.AspNetCore.Extensions;
 using Microsoft.AspNetCore.SignalR;
 
 
@@ -9,6 +10,15 @@ builder.Services.AddSignalR();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddSingleton(Globals.GetTelemetryClient());
+
+
+var aiOptions = new ApplicationInsightsServiceOptions();
+// Disables adaptive sampling.
+aiOptions.EnableAdaptiveSampling = false;
+// Disables QuickPulse (Live Metrics stream).
+aiOptions.EnableQuickPulseMetricStream = true;
+
+builder.Services.AddApplicationInsightsTelemetry(aiOptions);
 
 var app = builder.Build();
 app.MapHub<Chat>(nameof(Chat));
