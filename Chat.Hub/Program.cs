@@ -17,6 +17,7 @@ var aiOptions = new ApplicationInsightsServiceOptions();
 aiOptions.EnableAdaptiveSampling = false;
 // Disables QuickPulse (Live Metrics stream).
 aiOptions.EnableQuickPulseMetricStream = true;
+aiOptions.ConnectionString = "InstrumentationKey=e14a93ed-fdf0-45db-8aec-5b20a4fd0fad;IngestionEndpoint=https://eastus-8.in.applicationinsights.azure.com/;LiveEndpoint=https://eastus.livediagnostics.monitor.azure.com/";
 
 builder.Services.AddApplicationInsightsTelemetry(aiOptions);
 
