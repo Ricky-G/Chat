@@ -24,7 +24,7 @@ builder.Services.ConfigureTelemetryModule<QuickPulseTelemetryModule>((module, o)
 
 var app = builder.Build();
 app.MapHub<Chat>(nameof(Chat));
-//app.MapGet("/", () => "Hello Index");
+app.MapGet("/", () => "Hello Index");
 app.MapGet("/null", () =>
 {
     var telemetry = app.Services.GetService<TelemetryClient>();
