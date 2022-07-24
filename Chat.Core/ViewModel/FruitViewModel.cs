@@ -25,33 +25,40 @@ public partial class FruitViewModel : BaseViewModel, IAsyncDisposable
 
     private async void LoadAsync()
     {
-        hub = new HubConnectionBuilder()
-                    .WithUrl("https://microsoft-chat.azurewebsites.net/chat")
-                    .Build();
-
-        hub.On<string, string>("SendFruit", (source, name) =>
+        try
         {
-            if(source == "column")
-            {
-                Rot = int.Parse(name);
-                return;
-            }
-            else if (source == "size")
-            {
-                Size = int.Parse(name);
-             
-                return;
-            }
+            hub = new HubConnectionBuilder()
+                        .WithUrl("https://microsoft-chat.azurewebsites.net/chat")
+                        .Build();
 
-            Fruit fruit = new (source, name);
+            hub.On<string, string>("SendFruit", (source, name) =>
+            {
+                if (source == "column")
+                {
+                    Rot = int.Parse(name);
+                    return;
+                }
+                else if (source == "size")
+                {
+                    Size = int.Parse(name);
+
+                    return;
+                }
+
+                Fruit fruit = new(source, name);
 #if !DEBUG
             _telemetryClient.TrackEvent(fruit.Name);
 #endif
-            Fruits.Insert(0, fruit);
+                Fruits.Insert(0, fruit);
 
-        });
+            });
 
-        await hub.StartAsync();
+            await hub.StartAsync();
+        }
+        catch(Exception e)
+        {
+            Telemetry.TrackException(e);
+        }
     }
 
     [ICommand]

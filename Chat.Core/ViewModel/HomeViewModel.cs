@@ -19,19 +19,26 @@ public partial class HomeViewModel : BaseViewModel, IAsyncDisposable
 
     private async void SubscribeChatAsync()
     {
-        hub = new HubConnectionBuilder()
-            .WithUrl("https://microsoft-chat.azurewebsites.net/chat")
-            .Build();
-
-        hub.On<string, string>(nameof(Broadcast), (n, b) =>
+        try
         {
-            temp.Insert(0, new Message(n, b));
-            Messages = null;
-            Messages = temp;
+            hub = new HubConnectionBuilder()
+                .WithUrl("https://microsoft-chat.azurewebsites.net/chat")
+                .Build();
 
-        });
+            hub.On<string, string>(nameof(Broadcast), (n, b) =>
+            {
+                temp.Insert(0, new Message(n, b));
+                Messages = null;
+                Messages = temp;
 
-        await hub.StartAsync();
+            });
+
+            await hub.StartAsync();
+        }
+        catch(Exception e)
+        {
+            Telemetry.TrackException(e);
+        }
     }
 
     [ICommand]
