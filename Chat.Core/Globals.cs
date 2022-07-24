@@ -45,7 +45,7 @@ public static class Globals
 
         string uniqueID = Guid.NewGuid().ToString();
 
-     //   RegisterUnhandledExceptions();
+        RegisterUnhandledExceptions();
 
         client.Context.User.AccountId ??= uniqueID;
         client.Context.User.Id ??= uniqueID;
@@ -70,10 +70,11 @@ public static class Globals
         // This is a hack, purpose is only to show it is possible
         AppDomain.CurrentDomain.UnhandledException += (s, e) =>
         {
-            string page = Shell.Current.CurrentPage?.GetType().Name;
-            string viewmodel = Shell.Current.CurrentPage?.BindingContext?.GetType().Name;
 
-            Preferences.Set("Exception", $"{(e.ExceptionObject as Exception).Message}");
+            string page = Shell.Current?.CurrentPage?.GetType().Name;
+            string viewmodel = Shell.Current?.CurrentPage?.BindingContext?.GetType().Name;
+
+            Preferences.Set("Exception", $"{page} {viewmodel} =>  {(e.ExceptionObject as Exception).Message} {(e.ExceptionObject as Exception)?.InnerException} {(e.ExceptionObject as Exception)}");
         };
 
         AppDomain.CurrentDomain.FirstChanceException += (sender, args) =>
@@ -86,7 +87,7 @@ public static class Globals
 
             string page = Shell.Current.CurrentPage?.GetType().Name;
             string viewmodel = Shell.Current.CurrentPage?.BindingContext?.GetType().Name;
-            Preferences.Set("Exception", $"{page} {viewmodel} => {args.Exception.Message}");
+            Preferences.Set("Exception", $"{page} {viewmodel} => {args.Exception.Message} {args.Exception?.InnerException}  {args.Exception}");
         };
     }
 
