@@ -23,7 +23,7 @@ builder.Services.AddApplicationInsightsTelemetry(aiOptions);
 builder.Services.ConfigureTelemetryModule<QuickPulseTelemetryModule>((module, o) => module.AuthenticationApiKey = "8hxec7lfgznbtb2jgeotb4hnrkbf087jnmwpejgl");
 
 var app = builder.Build();
-app.MapHub<Chat>(nameof(Chat));
+/*app.MapHub<Chat>(nameof(Chat));
 app.MapGet("/", () => "Hello Index");
 app.MapGet("/null", () =>
 {
@@ -37,9 +37,12 @@ app.MapGet("/null", () =>
     {
         telemetry.TrackException(e);
     }
-});
-app.UseSwagger();
-app.UseSwaggerUI();
+});*/
+
+app.MapGet("helloali",()=> "hello form new API");
+
+/*app.UseSwagger();
+app.UseSwaggerUI();*/
 app.Run();
 
 public class Chat : Hub
