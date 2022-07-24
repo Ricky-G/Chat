@@ -8,7 +8,7 @@ on:
       - 'Chat.Test.**'
       - '**/microsoft-chat-mobile-ios.yml'
       - '**/microsoft-chat-mobile-android.yml'
-      - '**/microsoft-chat-blazor.yml'
+      - '**/main_microsoft_chat.yml'
       - 'README.md'
     branches:
       - main
