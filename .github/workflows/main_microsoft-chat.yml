@@ -49,7 +49,7 @@ jobs:
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
         with:
-          app-name: 'microsoft-chat'
+          app-name: 'alfarahn-chat'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_29C8A19BC7FA46DDACC3166927BF1902 }}
           package: .
