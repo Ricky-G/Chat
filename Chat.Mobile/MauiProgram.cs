@@ -8,6 +8,8 @@ global using CommunityToolkit.Maui;
 global using System.Reflection;
 global using Chat.Mobile.View;
 using ChatCore;
+using System.Globalization;
+using Microsoft.ApplicationInsights.DataContracts;
 
 namespace Chat.Mobile;
 public static class MauiProgram
@@ -29,12 +31,15 @@ public static class MauiProgram
         return builder.Build();
     }
 
+
     private static void RegisterTypes(IServiceCollection s)
     {
         s.AddSingleton(s.BuildServiceProvider());
 
         var t = Globals.GetTelemetryClient();
-            t.Context.SetMAUIProperties();
+            t.Context.SetDeviceProperties();
+
+        RegisterUnhandledExceptions();
 
         s.AddSingleton(t);
         s.AddSingleton<MovieService>();
@@ -58,5 +63,43 @@ public static class MauiProgram
         s.AddSingleton<DrawViewModel>();
         s.AddSingleton<DrawPage>();
     }
+
+    public static void SetDeviceProperties(this TelemetryContext context)
+    {
+        context.Device.Model ??= DeviceInfo.Model;
+        context.Device.OperatingSystem ??= DeviceInfo.Platform.ToString();
+        context.Device.Language ??= CultureInfo.CurrentUICulture.TwoLetterISOLanguageName;
+        // client.Context.Device.ScreenResolution ??= DeviceDisplay.MainDisplayInfo.ToString();
+        context.Device.OemName ??= DeviceInfo.Current.Manufacturer.ToString();
+        context.Device.Type ??= $"{DeviceInfo.Current.DeviceType} {DeviceInfo.Current.Idiom}";
+        context.Device.NetworkType ??= Connectivity.Current.NetworkAccess.ToString();
+    }
+
+    private static void RegisterUnhandledExceptions()
+    {
+        // This is a hack, purpose is only to show it is possible
+        AppDomain.CurrentDomain.UnhandledException += (s, e) =>
+        {
+
+            string page = Shell.Current?.CurrentPage?.GetType().Name;
+            string viewmodel = Shell.Current?.CurrentPage?.BindingContext?.GetType().Name;
+
+            Preferences.Set("Exception", $"{page} {viewmodel} =>  {(e.ExceptionObject as Exception).Message} {(e.ExceptionObject as Exception)?.InnerException} {(e.ExceptionObject as Exception)}");
+        };
+
+        AppDomain.CurrentDomain.FirstChanceException += (sender, args) =>
+        {
+            if (args.Exception.Message.Contains("canceled") ||
+                args.Exception.Message.Contains("supported") ||
+                args.Exception.Message.Contains("Failed to perform") ||
+                !string.IsNullOrEmpty(Preferences.Get("Exception", "")))
+                return;
+
+            string page = Shell.Current.CurrentPage?.GetType().Name;
+            string viewmodel = Shell.Current.CurrentPage?.BindingContext?.GetType().Name;
+            Preferences.Set("Exception", $"{page} {viewmodel} => {args.Exception.Message} {args.Exception?.InnerException}  {args.Exception}");
+        };
+    }
+
 }
 
