@@ -1,4 +1,4 @@
-name: Chat.Hub
+name: Chat
 
 on:
   push:
