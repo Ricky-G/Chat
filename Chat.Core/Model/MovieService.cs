@@ -1,4 +1,6 @@
 ﻿
+using System.Net.Http;
+
 namespace Chat.Core.Model;
 
 public class MovieService

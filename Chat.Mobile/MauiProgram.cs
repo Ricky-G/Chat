@@ -7,7 +7,10 @@ global using Microsoft.Extensions.Configuration;
 global using CommunityToolkit.Maui;
 global using System.Reflection;
 global using Chat.Mobile.View;
-using ChatCore;
+global using CommunityToolkit.Mvvm.Input;
+global using CommunityToolkit.Mvvm.ComponentModel;
+global using System.Threading;
+global using ChatCore;
 using System.Globalization;
 using Microsoft.ApplicationInsights.DataContracts;
 
