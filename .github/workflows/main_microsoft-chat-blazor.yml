@@ -8,7 +8,7 @@ on:
       - 'Chat.Test.**'
       - '**/microsoft-chat-mobile-ios.yml'
       - '**/microsoft-chat-mobile-android.yml'
-      - '**/main_microsoft_chat.yml'
+      - '**/main_microsoft-chat.yml'
       - 'README.md'
     branches:
       - main
@@ -50,7 +50,7 @@ jobs:
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
         with:
-          app-name: 'microsoft-chat-blazor'
+          app-name: 'alfarahn-chat-blazor'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_4EC55626E3CD4A8CA9E65DDDBA006E2F }}
           package: .
