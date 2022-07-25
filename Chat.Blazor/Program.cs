@@ -1,5 +1,6 @@
 using Chat.Blazor;
 using Chat.Core.ViewModel;
+using ChatCore;
 using Microsoft.ApplicationInsights;
 using Microsoft.ApplicationInsights.AspNetCore.Extensions;
 using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.QuickPulse;
@@ -23,7 +24,7 @@ aiOptions.ConnectionString = "InstrumentationKey=e14a93ed-fdf0-45db-8aec-5b20a4f
 builder.Services.AddApplicationInsightsTelemetry(aiOptions);
 builder.Services.ConfigureTelemetryModule<QuickPulseTelemetryModule>((module, o) => module.AuthenticationApiKey = "8hxec7lfgznbtb2jgeotb4hnrkbf087jnmwpejgl");
 
-//builder.Services.AddSingleton(Chat.Core.Globals.GetTelemetryClient());
+builder.Services.AddSingleton(Globals.GetTelemetryClient());
 builder.Services.AddSingleton<HomeViewModel>();
 
 await builder.Build().RunAsync();
