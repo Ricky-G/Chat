@@ -1,9 +1,6 @@
 using Chat.Blazor;
 using Chat.Core.ViewModel;
 using ChatCore;
-using Microsoft.ApplicationInsights;
-using Microsoft.ApplicationInsights.AspNetCore.Extensions;
-using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.QuickPulse;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using MudBlazor.Services;

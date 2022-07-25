@@ -105,7 +105,6 @@
 	<ItemGroup>
 		<PackageReference Include="CommunityToolkit.Maui" Version="1.2.0" />
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="7.1.2" />
-		<PackageReference Include="Microsoft.ApplicationInsights.PerfCounterCollector" Version="2.21.0" />
 		<PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="6.0.7" />
 		<PackageReference Include="Microsoft.AspNetCore.SignalR.Client.Core" Version="6.0.7" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
