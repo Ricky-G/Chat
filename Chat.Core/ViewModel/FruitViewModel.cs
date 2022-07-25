@@ -28,7 +28,7 @@ public partial class FruitViewModel : BaseViewModel, IAsyncDisposable
         try
         {
             hub = new HubConnectionBuilder()
-                        .WithUrl("https://microsoft-chat.azurewebsites.net/chat")
+                        .WithUrl("https://alfarahn-chat.azurewebsites.net/chat")
                         .Build();
 
             hub.On<string, string>("SendFruit", (source, name) =>

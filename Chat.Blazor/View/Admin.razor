@@ -67,7 +67,7 @@
     protected async override void OnInitialized()
     {
         hub = new HubConnectionBuilder()
-        .WithUrl("https://microsoft-chat.azurewebsites.net/chat")
+        .WithUrl("https://alfarahn-chat.azurewebsites.net/chat")
         .Build();
 
         hub.On<string, string>(nameof(SendFruit), (source, name) =>
