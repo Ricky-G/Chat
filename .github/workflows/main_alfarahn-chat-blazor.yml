@@ -24,8 +24,8 @@ jobs:
         run: | 
           cd Chat.Blazor        
           dotnet workload restore     
-          dotnet build -c Release
-          dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
+          dotnet build -c Debug
+          dotnet publish -c Debug -o ${{env.DOTNET_ROOT}}/myapp
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
