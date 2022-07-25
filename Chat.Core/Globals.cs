@@ -45,7 +45,7 @@ public static class Globals
 
         string uniqueID = Guid.NewGuid().ToString();
 
-        RegisterUnhandledExceptions();
+      //  RegisterUnhandledExceptions();
 
         client.Context.User.AccountId ??= uniqueID;
         client.Context.User.Id ??= uniqueID;
