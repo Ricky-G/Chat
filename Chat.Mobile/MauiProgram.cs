@@ -43,6 +43,7 @@ public static class MauiProgram
             t.Context.SetDeviceProperties();
 
         RegisterUnhandledExceptions();
+        SendUnhandledException();
 
         s.AddSingleton(t);
         s.AddSingleton<MovieService>();
@@ -87,7 +88,7 @@ public static class MauiProgram
             string page = Shell.Current?.CurrentPage?.GetType().Name;
             string viewmodel = Shell.Current?.CurrentPage?.BindingContext?.GetType().Name;
 
-            Preferences.Set("Exception", $"{page} {viewmodel} =>  {(e.ExceptionObject as Exception).Message} {(e.ExceptionObject as Exception)?.InnerException} {(e.ExceptionObject as Exception)}");
+            Preferences.Set("Exception", $"{page} {viewmodel} {(e.ExceptionObject as Exception).Message} {(e.ExceptionObject as Exception)?.InnerException} {(e.ExceptionObject as Exception)}");
         };
 
         AppDomain.CurrentDomain.FirstChanceException += (sender, args) =>
@@ -100,9 +101,30 @@ public static class MauiProgram
 
             string page = Shell.Current.CurrentPage?.GetType().Name;
             string viewmodel = Shell.Current.CurrentPage?.BindingContext?.GetType().Name;
-            Preferences.Set("Exception", $"{page} {viewmodel} => {args.Exception.Message} {args.Exception?.InnerException}  {args.Exception}");
+            Preferences.Set("Exception", $"{page} {viewmodel} {args.Exception.Message} {args.Exception?.InnerException} {args.Exception}");
         };
     }
 
+
+    private static void SendUnhandledException()
+    {
+        Task.Run(async () => { 
+        if (Preferences.Get("Exception", "") is string exception &&
+            !string.IsNullOrEmpty(exception))
+        {
+            await Task.Delay(3000);
+            ChatCore.Globals.TelemetryInstance.TrackException(new UnhandledException(exception));
+            Preferences.Set("Exception", "");
+        }
+        });
+    }
+
+    public class UnhandledException : Exception
+    {
+        public UnhandledException(string e) : base(e)
+        {
+
+        }
+    }
 }
 
