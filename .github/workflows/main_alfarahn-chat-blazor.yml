@@ -1,4 +1,4 @@
-name: Blazor
+name: Chat.Blazor
 
 on:
   push:
