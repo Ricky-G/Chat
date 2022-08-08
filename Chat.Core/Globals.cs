@@ -21,6 +21,9 @@ public static class Globals
 
     public static TelemetryClient GetTelemetryClient()
     {
+        if (TelemetryInstance != null)
+            return TelemetryInstance;
+
         TelemetrySettings settings = Settings();
         TelemetryConfiguration cfg = TelemetryConfiguration.CreateDefault();
                                cfg.ConnectionString = settings.AppInsights;
