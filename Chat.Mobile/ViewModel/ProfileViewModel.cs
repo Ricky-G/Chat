@@ -6,15 +6,15 @@ public partial class ProfileViewModel : BaseViewModel
 {
     private bool _runThread;
 
-    [ICommand]
+    [RelayCommand]
     private async void LogOut()
         => await Shell.Current.GoToAsync($"//Login");
 
-    [ICommand]
+    [RelayCommand]
     private void Unhandled()
         => int.Parse("invalid");
 
-    [ICommand]
+    [RelayCommand]
     public async void StartMonitor()
     {
         _runThread = true;

@@ -7,10 +7,10 @@ public partial class FruitViewModel : BaseViewModel, IAsyncDisposable
 {
     public ObservableCollection<Fruit> Fruits { get; set; } = new ObservableCollection<Fruit>();
     [ObservableProperty]
-    [AlsoNotifyChangeForAttribute(nameof(Fruits))]
+    [NotifyPropertyChangedFor(nameof(Fruits))]
     int rot = 2;
     [ObservableProperty]
-    [AlsoNotifyChangeForAttribute(nameof(Fruits))]
+    [NotifyPropertyChangedFor(nameof(Fruits))]
     int size = 100;
     private readonly FruitService _fruitService;
     private readonly TelemetryClient _telemetryClient;
@@ -61,7 +61,7 @@ public partial class FruitViewModel : BaseViewModel, IAsyncDisposable
         }
     }
 
-    [ICommand]
+    [RelayCommand]
     public void Add()
     {
         Fruit fruit = _fruitService.GetFruit();
@@ -69,7 +69,7 @@ public partial class FruitViewModel : BaseViewModel, IAsyncDisposable
         Fruits.Insert(0, fruit);
     }
 
-    [ICommand]
+    [RelayCommand]
     public void Remove()
     {
         if (Fruits.Count == 0)

@@ -19,6 +19,7 @@
         <SearchBar 
             AutomationId="search"
             Margin="15,20,15,0"
+            BackgroundColor="White"
             CancelButtonColor="{StaticResource Primary}"
             Placeholder="Search Movies.."       
             SearchCommand="{Binding SearchMoviesCommand}"

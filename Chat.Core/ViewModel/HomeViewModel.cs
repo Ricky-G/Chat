@@ -41,7 +41,7 @@ public partial class HomeViewModel : BaseViewModel, IAsyncDisposable
         }
     }
 
-    [ICommand]
+    [RelayCommand]
     public async void Broadcast()
     {
         await hub.SendAsync(nameof(Broadcast), Name, Message);

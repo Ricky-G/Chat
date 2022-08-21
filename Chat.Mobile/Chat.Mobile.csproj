@@ -20,7 +20,7 @@
 
 		<!-- Versions -->
 		<ApplicationDisplayVersion>1.0.0</ApplicationDisplayVersion>
-		<ApplicationVersion>19</ApplicationVersion>
+		<ApplicationVersion>20</ApplicationVersion>
 
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">14.2</SupportedOSPlatformVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">14.0</SupportedOSPlatformVersion>
@@ -104,10 +104,10 @@
 
 	<ItemGroup>
 		<PackageReference Include="CommunityToolkit.Maui" Version="1.2.0" />
-		<PackageReference Include="CommunityToolkit.Mvvm" Version="7.1.2" />
+		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.0.0" />
 		<PackageReference Include="Microsoft.ApplicationInsights.PerfCounterCollector" Version="2.21.0" />
-		<PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="6.0.7" />
-		<PackageReference Include="Microsoft.AspNetCore.SignalR.Client.Core" Version="6.0.7" />
+		<PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="6.0.8" />
+		<PackageReference Include="Microsoft.AspNetCore.SignalR.Client.Core" Version="6.0.8" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
 		<PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="6.0.0" />
 		<PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="6.0.0" />

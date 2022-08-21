@@ -18,7 +18,7 @@ public partial class MoviesViewModel : BaseViewModel
         _movieService = movieService;
     }
 
-    [ICommand]
+    [RelayCommand]
     private async void SearchMovies()
     {
         try
@@ -31,7 +31,7 @@ public partial class MoviesViewModel : BaseViewModel
         }
     }
 
-    [ICommand]
+    [RelayCommand]
     private async void MovieSelected(Search searchItem)
     {
         Shell.Current.CurrentPage.DisplayAlert("Selected", searchItem.Title, "ok");
