@@ -41,9 +41,9 @@
                 ContentTemplate="{DataTemplate views:ProfilePage}" />
         </Tab>
         <Tab 
-            Route="Stream"
-            Title="Stream"
-            Icon="person.png">
+            Route="Azure"
+            Title="Azure"
+            Icon="guava.png">
             <ShellContent 
                 ContentTemplate="{DataTemplate views:StreamPage}" />
         </Tab>

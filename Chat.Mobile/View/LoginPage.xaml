@@ -3,8 +3,16 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Chat.Mobile.View.LoginPage"
              Title="LoginPage">
-    <StackLayout
-        BackgroundColor="{StaticResource Primary}">
+    <StackLayout>
+        <StackLayout.Background>
+            <!-- StartPoint defaults to (0,0) -->
+            <LinearGradientBrush>
+                <GradientStop Color="{StaticResource Primary}"
+                          Offset="0.1" />
+                <GradientStop Color="#6382FF"
+                          Offset="1.0" />
+            </LinearGradientBrush>
+        </StackLayout.Background>
         <Label
             x:Name="logo"
             VerticalOptions="CenterAndExpand"
@@ -22,6 +30,7 @@
             Command="{Binding LoginCommand}"
             CommandParameter="{x:Reference logo}"/>
     </StackLayout>
+
 </ContentPage>
 
   

@@ -3,10 +3,25 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Chat.Mobile.View.StreamPage"
              Title="StreamPage">
-    <VerticalStackLayout>
+    <Shell.TitleView>
+        <AbsoluteLayout
+            HorizontalOptions="FillAndExpand">
+            <Label 
+             AbsoluteLayout.LayoutFlags="PositionProportional"
+             AbsoluteLayout.LayoutBounds="0.5, 0.5, 400, 50"
+             HorizontalOptions="CenterAndExpand"
+             HorizontalTextAlignment="Center"
+             VerticalOptions="Center"
+             Text="Azure Media Service" 
+             TextColor="White"/>
+        </AbsoluteLayout>
+    </Shell.TitleView>
+    <StackLayout>
         <WebView
             Margin="10"
-            x:Name="web">
+            x:Name="web"
+            VerticalOptions="FillAndExpand"
+            Grid.RowSpan="8">
             <WebView.Source>
                 <HtmlWebViewSource>
                     <HtmlWebViewSource.Html>
@@ -67,13 +82,15 @@
             </WebView.Source>
         </WebView>
         <Button
+            HeightRequest="50"
             Margin="20,0,20,10"
             Text="Forward"
             Clicked="Forward"/>
         <Button
-            Margin="20,0,20,0"
+            HeightRequest="50"
+            Margin="20,0,20,10"
             Text="Back"
             Clicked="Back"/>
-    </VerticalStackLayout>
+    </StackLayout>
         
 </ContentPage>
