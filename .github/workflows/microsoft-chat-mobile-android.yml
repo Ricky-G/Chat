@@ -22,16 +22,16 @@ jobs:
       - name: Build Debug
         run: |
           cd Chat.Mobile
-          dotnet build -f net6.0-android -c Debug -o out
+          dotnet build -f net6.0-android -c Debug -o ./out
           ls
-          cd out 
+          cd ./out 
           ls
           
       - name: Upload Android artifact
         uses: actions/upload-artifact@v2
         with:
           name: android-app
-          path: out
+          path: ./out
   
   Integration:
     runs-on: windows-latest
