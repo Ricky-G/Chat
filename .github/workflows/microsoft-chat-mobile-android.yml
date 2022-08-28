@@ -54,9 +54,10 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Download Android artifact
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v3
         with:
           name: android-app
+          path: ${{ env.GITHUB_ACTION_PATH }}/app/
           
       - name: Restore MuGet (needed for legacy dotnet)
         run: nuget restore 'Chat.sln'
