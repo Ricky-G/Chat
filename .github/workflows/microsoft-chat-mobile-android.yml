@@ -22,16 +22,16 @@ jobs:
       - name: Build Debug
         run: |
           cd Chat.Mobile
-          dotnet build -f net6.0-android -c Debug -o ${{ RUNNER_TEMP }}
+          dotnet build -f net6.0-android -c Debug -o ${{ env.RUNNER_TEMP }}
           ls
-          cd ${{ RUNNER_TEMP }} 
+          cd ${{ env.RUNNER_TEMP }} 
           ls
           
       - name: Upload Android artifact
         uses: actions/upload-artifact@v2
         with:
           name: android-app
-          path: ${{ RUNNER_TEMP }}
+          path: ${{ env.RUNNER_TEMP }}
   
   Integration:
     runs-on: windows-latest
@@ -90,12 +90,12 @@ jobs:
       - name: Build Release
         run: |
           cd Chat.Mobile
-          dotnet build -f net6.0-android -c Release -o ${{ RUNNER_TEMP }}
-          cd ${{ RUNNER_TEMP }}
+          dotnet build -f net6.0-android -c Release -o ${{ env.RUNNER_TEMP }}
+          cd ${{ env.RUNNER_TEMP }}
           ls
       - run: npm install -g appcenter-cli
         name: Install App Center CLI
       
-      - run: appcenter distribute stores publish --file '${{ RUNNER_TEMP }}/ms.chat.mobile-Signed.aab' --store Production --app 'AliRezaFarahnak/Chat.Android' --release-notes 'New Features..' --token ${{ secrets.APPCENTER_TOKEN }}
+      - run: appcenter distribute stores publish --file '${{ env.RUNNER_TEMP }}/ms.chat.mobile-Signed.aab' --store Production --app 'AliRezaFarahnak/Chat.Android' --release-notes 'New Features..' --token ${{ secrets.APPCENTER_TOKEN }}
         name: Publish to Google Play
         
