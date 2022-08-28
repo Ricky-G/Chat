@@ -76,7 +76,7 @@ jobs:
       - run: npm install -g appcenter-cli
         name: Install App Center CLI
 
-      - run: appcenter test run uitest --app 'AliRezaFarahnak/Chat.Android' --devices '1ba98115' --app-path '${{ env.GITHUB_ACTION_PATH }}/app/ms.chat.mobile.apk' --test-series "master" --build-dir '${{ env.GITHUB_ACTION_PATH }}/app/' --uitest-tools-dir 'D:\a\Chat\Chat\Chat.Test.UI\bin\Debug\' --token ${{ secrets.APPCENTER_TOKEN }}
+      - run: appcenter test run uitest --app 'AliRezaFarahnak/Chat.Android' --devices '1ba98115' --app-path '${{ env.GITHUB_ACTION_PATH }}/app/ms.chat.mobile.apk' --test-series "master" --build-dir 'D:\a\Chat\Chat\Chat.Test.UI\bin\Debug\' --uitest-tools-dir 'D:\a\Chat\Chat\Chat.Test.UI\bin\Debug\' --token ${{ secrets.APPCENTER_TOKEN }}
         name: Test UI
         
   Internal:
