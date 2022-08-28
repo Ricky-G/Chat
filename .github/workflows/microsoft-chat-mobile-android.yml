@@ -22,16 +22,16 @@ jobs:
       - name: Build Debug
         run: |
           cd Chat.Mobile
-          dotnet build -f net6.0-android -c Debug -o ./out
+          dotnet build -f net6.0-android -c Debug -o ${{ RUNNER_TEMP }}
           ls
-          cd ./out 
+          cd ${{ RUNNER_TEMP }} 
           ls
           
       - name: Upload Android artifact
         uses: actions/upload-artifact@v2
         with:
           name: android-app
-          path: ./out
+          path: ${{ RUNNER_TEMP }}
   
   Integration:
     runs-on: windows-latest
@@ -70,7 +70,7 @@ jobs:
       - run: npm install -g appcenter-cli
         name: Install App Center CLI
 
-      - run: appcenter test run uitest --app 'AliRezaFarahnak/Chat.Android' --devices '1ba98115' --app-path 'ms.chat.mobile.apk' --test-series "master" --build-dir 'D:\a\Chat\Chat\Chat.Test.UI\bin\Debug\' --uitest-tools-dir 'D:\a\Chat\Chat\Chat.Test.UI\bin\Debug\' --token ${{ secrets.APPCENTER_TOKEN }}
+      - run: appcenter test run uitest --app 'AliRezaFarahnak/Chat.Android' --devices '1ba98115' --app-path 'ms.chat.mobile.apk' --test-series "master" --build-dir '${{ RUNNER_TEMP }}' --uitest-tools-dir 'D:\a\Chat\Chat\Chat.Test.UI\bin\Debug\' --token ${{ secrets.APPCENTER_TOKEN }}
         name: Test UI
         
   Internal:
@@ -90,14 +90,12 @@ jobs:
       - name: Build Release
         run: |
           cd Chat.Mobile
-          dotnet workload restore 
-          dotnet build -f net6.0-android -c Release
-          cd ..
-          cd Chat.Mobile/bin/Release/net6.0-android
+          dotnet build -f net6.0-android -c Release -o ${{ RUNNER_TEMP }}
+          cd ${{ RUNNER_TEMP }}
           ls
       - run: npm install -g appcenter-cli
         name: Install App Center CLI
       
-      - run: appcenter distribute stores publish --file 'Chat.Mobile/bin/Release/net6.0-android/ms.chat.mobile-Signed.aab' --store Production --app 'AliRezaFarahnak/Chat.Android' --release-notes 'New Features..' --token ${{ secrets.APPCENTER_TOKEN }}
+      - run: appcenter distribute stores publish --file '${{ RUNNER_TEMP }}/ms.chat.mobile-Signed.aab' --store Production --app 'AliRezaFarahnak/Chat.Android' --release-notes 'New Features..' --token ${{ secrets.APPCENTER_TOKEN }}
         name: Publish to Google Play
         
