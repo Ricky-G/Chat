@@ -31,7 +31,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: android-app
-          path: ${{ env.GITHUB_ACTION_PATH }}
+          path: ${{ env.GITHUB_ACTION_PATH }}/app/ms.chat.mobile.apk
   
   Integration:
     runs-on: windows-latest
