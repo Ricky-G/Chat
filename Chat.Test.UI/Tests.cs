@@ -27,17 +27,20 @@ namespace Chat.UITest
         [Test]
         public async Task LoginTest()
         {
+            app.Screenshot("Login Screen");
             app.Repl();
             app.Tap(ui => ui.Marked("Login"));
             await Task.Delay(8000);
 
             AppResult[] homeElements = app.WaitForElement(c => c.Marked("Home"));
+            app.Screenshot("Home Screen");
             Assert.IsTrue(homeElements.Any());
         }
 
         [Test]
         public async Task MovieTest()
         {
+            app.Screenshot("Login Screen");
             app.Tap(ui => ui.Marked("Login"));
             await Task.Delay(8000);
 

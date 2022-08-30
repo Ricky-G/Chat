@@ -28,7 +28,7 @@ public partial class ProfileViewModel : BaseViewModel
         _runThread = false;
 
         Telemetry.TrackTrace("Some Bad things about to happen");
-        Telemetry.TrackTrace("I am happy we have proper tracing in the code now!")
+        Telemetry.TrackTrace("I am happy we have proper tracing in the code now!");
 
 
         try { int.Parse("invalid"); }
