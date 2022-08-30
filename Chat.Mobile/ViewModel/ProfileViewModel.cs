@@ -27,37 +27,9 @@ public partial class ProfileViewModel : BaseViewModel
 
         _runThread = false;
 
-        for (int i = 0; i < 20; i++)
-        {
-            Telemetry.TrackDependency(
-                "Bad Dependency",
-                "target",
-                "data",
-                DateTimeOffset.Now,
-                TimeSpan.FromMilliseconds(50 * i),
-                true);
+        Telemetry.TrackTrace("Some Bad things about to happen");
+        Telemetry.TrackTrace("I am happy we have proper tracing in the code now!")
 
-            Telemetry.TrackDependency(
-                "Good Dependency",
-                "target",
-                "data",
-                DateTimeOffset.Now,
-                TimeSpan.FromMilliseconds(3 * i),
-                true);
-
-            Telemetry.TrackRequest("Bad Request",
-                DateTimeOffset.Now,
-                TimeSpan.FromMilliseconds(50 * i),
-                "200",
-                true);
-            Telemetry.TrackRequest("Bad Request",
-                DateTimeOffset.Now,
-                TimeSpan.FromMilliseconds(3 * i),
-                "200",
-                true);
-
-            await Task.Delay(100);
-        }
 
         try { int.Parse("invalid"); }
         catch (Exception e) { Telemetry.TrackException(e); }

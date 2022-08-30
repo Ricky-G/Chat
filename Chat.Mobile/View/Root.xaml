@@ -42,8 +42,7 @@
         </Tab>
         <Tab 
             Route="Azure"
-            Title="Azure"
-            Icon="guava.png">
+            Title="Azure">
             <ShellContent 
                 ContentTemplate="{DataTemplate views:StreamPage}" />
         </Tab>
