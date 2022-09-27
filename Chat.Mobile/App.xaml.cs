@@ -1,4 +1,5 @@
-﻿namespace Chat.Mobile;
+﻿
+namespace Chat.Mobile;
 
 public partial class App : Application, IDisposable
 {
@@ -32,20 +33,12 @@ public partial class App : Application, IDisposable
         }
         else
         {
-            var p = e.GetType().Name;
-
-            if (!p.Contains("Page"))
+            if (!e.GetType().Name.Contains("Page"))
                 return;
 
-            var vmString = $"{p.Substring(0, p.Length - 4)}ViewModel";
+            var type = this.GetType().Assembly.GetTypes().First(x => x.Name == e.GetType().Name.Replace("Page", "ViewModel"));
 
-            var type = this.GetType().Assembly.GetType($"Chat.Core.ViewModel.{vmString}");
-
-            var ser = MauiProgram.Services.GetServices<object>();
-
-            var context = MauiProgram.Services.GetService(type);
-            e.BindingContext = context;
-
+            e.BindingContext = MauiProgram.Services.GetService(type);
         }
     }
 

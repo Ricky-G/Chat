@@ -2,9 +2,8 @@ namespace Chat.Mobile.View;
 
 public partial class FruitPage : ContentPage
 {
-	public FruitPage(FruitViewModel vm)
+	public FruitPage()
 	{
 		InitializeComponent();
-		BindingContext = vm;
 	}
 }

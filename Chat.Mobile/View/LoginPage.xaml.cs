@@ -3,9 +3,8 @@ namespace Chat.Mobile.View;
 
 public partial class LoginPage : ContentPage
 {
-    public LoginPage(LoginViewModel vm)
+    public LoginPage()
     {
         InitializeComponent();
-        BindingContext = vm;
     }
 }
