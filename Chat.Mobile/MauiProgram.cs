@@ -17,6 +17,8 @@ using Microsoft.ApplicationInsights.DataContracts;
 namespace Chat.Mobile;
 public static class MauiProgram
 {
+    public static IServiceProvider Services { get; private set; }
+
     public static MauiApp CreateMauiApp()
     {
         var builder = MauiApp.CreateBuilder();
@@ -30,13 +32,17 @@ public static class MauiProgram
             });
 
         RegisterTypes(builder.Services);
+        var app = builder.Build();
 
-        return builder.Build();
+        Services = app.Services;
+
+        return app;
     }
 
 
     private static void RegisterTypes(IServiceCollection s)
     {
+        
         s.AddSingleton(s.BuildServiceProvider());
 
         var t = Globals.GetTelemetryClient();

@@ -12,7 +12,7 @@ public partial class App : Application, IDisposable
         MainPage = new Root();
 
         Shell.Current.GoToAsync("//Login");
-      
+
     }
 
     private void App_PageDisappearing(object sender, Page e)
@@ -20,7 +20,6 @@ public partial class App : Application, IDisposable
         if (e.BindingContext is BaseViewModel vm)
         {
             vm.OnDisappearing();
-     
         }
     }
 
@@ -30,6 +29,23 @@ public partial class App : Application, IDisposable
         {
             vm.OnAppearing();
             Globals.TelemetryInstance.TrackPageView(e.GetType().Name);
+        }
+        else
+        {
+            var p = e.GetType().Name;
+
+            if (!p.Contains("Page"))
+                return;
+
+            var vmString = $"{p.Substring(0, p.Length - 4)}ViewModel";
+
+            var type = this.GetType().Assembly.GetType($"Chat.Core.ViewModel.{vmString}");
+
+            var ser = MauiProgram.Services.GetServices<object>();
+
+            var context = MauiProgram.Services.GetService(type);
+            e.BindingContext = context;
+
         }
     }
 
