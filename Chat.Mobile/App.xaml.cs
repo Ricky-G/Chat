@@ -33,12 +33,17 @@ public partial class App : Application, IDisposable
         }
         else
         {
-            if (!e.GetType().Name.Contains("Page"))
+            if (!e.GetType().Name.Contains(nameof(Page)))
                 return;
 
-            var type = this.GetType().Assembly.GetTypes().First(x => x.Name == e.GetType().Name.Replace("Page", "ViewModel"));
+            var type = this.GetType().Assembly.GetTypes()?.
+                            Where(x => x?.Name == e?.GetType()?.Name?.
+                            Replace(nameof(Page), "ViewModel"));
 
-            e.BindingContext = MauiProgram.Services.GetService(type);
+            if(!type.Any())
+                return;
+
+            e.BindingContext = MauiProgram.Services.GetService(type.First());
         }
     }
 
